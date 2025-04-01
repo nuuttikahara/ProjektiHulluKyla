@@ -41,6 +41,7 @@ namespace HulluKyla.Models
 
         // Getterit ja setterit
 
+        // id:llä pelkkä get koska se on readonly
         public int AsiakasId => asiakasId;
 
 
