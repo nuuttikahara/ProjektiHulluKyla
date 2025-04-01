@@ -24,16 +24,15 @@ namespace HulluKyla.Services
 
             while (reader.Read()) 
             {
-                asiakkaat.Add(new Asiakas
-                {
-                    AsiakasId = reader.GetInt32("asiakas_id"),
-                    Etunimi = reader.GetString("etunimi"),
-                    Sukunimi = reader.GetString("sukunimi"),
-                    Lahiosoite = reader.GetString("lahiosoite"),
-                    Postinro = reader.GetString("postinro"),
-                    Email = reader.GetString("email"),
-                    Puhelinnro = reader.GetString("puhelinnro")
-                });
+                asiakkaat.Add(new Asiakas(
+                    reader.GetInt32("asiakas_id"),
+                    reader.GetString("etunimi"),
+                    reader.GetString("sukunimi"),
+                    reader.GetString("lahiosoite"),
+                    reader.GetString("postinro"),
+                    reader.GetString("email"),
+                    reader.GetString("puhelinnro")
+                ));
             }
 
             return asiakkaat;
