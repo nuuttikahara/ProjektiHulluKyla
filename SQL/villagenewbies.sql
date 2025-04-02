@@ -256,9 +256,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `vn`;
-INSERT INTO `vn`.`mokki` (`mokki_id`, `alue_id`, `postinro`, `mokkinimi`, `katuosoite`, `hinta`, `kuvaus`, `henkilomaara`, `varustelu`) VALUES (110, 1, '99100', 'Mellu', 'Levintie 2', 1200, 'Kaunis ja tilava perhemökki', 7, 'Suihku, pesukone, astianpesukone, sauna, TV, poreallas');
-INSERT INTO `vn`.`mokki` (`mokki_id`, `alue_id`, `postinro`, `mokkinimi`, `katuosoite`, `hinta`, `kuvaus`, `henkilomaara`, `varustelu`) VALUES (305, 3, '93100', 'Rutku', 'Rukantie 17', 890, 'Pieni ja valoisa mökki', 3, 'Suihku, sauna, astianpesukone');
-INSERT INTO `vn`.`mokki` (`mokki_id`, `alue_id`, `postinro`, `mokkinimi`, `katuosoite`, `hinta`, `kuvaus`, `henkilomaara`, `varustelu`) VALUES (75, 2, '95100', 'Lumiparatiisi', 'Äkäslompolontie 4', 1599.99, 'Paratiisi mökissä', 9, 'Suihku, sauna, pesukone, astianpesukone, TV, poreallas, pelihuone');
+INSERT INTO `vn`.`mokki` (`mokki_id`, `alue_id`, `postinro`, `mokkinimi`, `katuosoite`, `hinta`, `kuvaus`, `henkilomaara`, `varustelu`) VALUES (1, 1, '99100', 'Mellu', 'Levintie 2', 1200, 'Kaunis ja tilava perhemökki', 7, 'Suihku, pesukone, astianpesukone, sauna, TV, poreallas');
+INSERT INTO `vn`.`mokki` (`mokki_id`, `alue_id`, `postinro`, `mokkinimi`, `katuosoite`, `hinta`, `kuvaus`, `henkilomaara`, `varustelu`) VALUES (3, 3, '93100', 'Rutku', 'Rukantie 17', 890, 'Pieni ja valoisa mökki', 3, 'Suihku, sauna, astianpesukone');
+INSERT INTO `vn`.`mokki` (`mokki_id`, `alue_id`, `postinro`, `mokkinimi`, `katuosoite`, `hinta`, `kuvaus`, `henkilomaara`, `varustelu`) VALUES (2, 2, '95100', 'Lumiparatiisi', 'Ylläksentie 4', 1599.99, 'Paratiisi mökissä', 9, 'Suihku, sauna, pesukone, astianpesukone, TV, poreallas, pelihuone');
 
 COMMIT;
 
@@ -268,9 +268,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `vn`;
-INSERT INTO `vn`.`varaus` (`varaus_id`, `asiakas_id`, `mokki_id`, `varattu_pvm`, `vahvistus_pvm`, `varattu_alkupvm`, `varattu_loppupvm`) VALUES (1, 1, 305, '2024-11-09 12:31:24', '2024-11-09 12:33:05', '2025-02-27 12:00:00', '2025-03-03 12:00:00');
-INSERT INTO `vn`.`varaus` (`varaus_id`, `asiakas_id`, `mokki_id`, `varattu_pvm`, `vahvistus_pvm`, `varattu_alkupvm`, `varattu_loppupvm`) VALUES (2, 2, 110, '2024-05-11 20:29:01', '2024-05-11 20:31:04', '2024-12-23 12:00:00', '2024-12-30 12:00:00');
-INSERT INTO `vn`.`varaus` (`varaus_id`, `asiakas_id`, `mokki_id`, `varattu_pvm`, `vahvistus_pvm`, `varattu_alkupvm`, `varattu_loppupvm`) VALUES (3, 3, 75, '2024-08-05 09:24:22', '2024-08-05 09:24:57', '2024-12-30 14:00:00', '2025-01-02 12:00:00');
+INSERT INTO `vn`.`varaus` (`varaus_id`, `asiakas_id`, `mokki_id`, `varattu_pvm`, `vahvistus_pvm`, `varattu_alkupvm`, `varattu_loppupvm`) VALUES (1, 1, 3, '2024-11-09 12:31:24', '2024-11-09 12:33:05', '2025-02-27 12:00:00', '2025-03-03 12:00:00');
+INSERT INTO `vn`.`varaus` (`varaus_id`, `asiakas_id`, `mokki_id`, `varattu_pvm`, `vahvistus_pvm`, `varattu_alkupvm`, `varattu_loppupvm`) VALUES (2, 2, 1, '2024-05-11 20:29:01', '2024-05-11 20:31:04', '2024-12-23 12:00:00', '2024-12-30 12:00:00');
+INSERT INTO `vn`.`varaus` (`varaus_id`, `asiakas_id`, `mokki_id`, `varattu_pvm`, `vahvistus_pvm`, `varattu_alkupvm`, `varattu_loppupvm`) VALUES (3, 3, 2, '2024-08-05 09:24:22', '2024-08-05 09:24:57', '2024-12-30 14:00:00', '2025-01-02 12:00:00');
 
 COMMIT;
 
