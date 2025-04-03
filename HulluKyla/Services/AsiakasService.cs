@@ -123,13 +123,12 @@ namespace HulluKyla.Services
 
 
         // Poista-metodi, jolla poistetaan asiakas tietokannasta asiakasId:n perusteella
-        public static void Poista(int id) 
+        public static void Poista(uint id) 
         {
             using var conn = SqlService.GetConnection();
             conn.Open();
 
             var cmd = new MySqlCommand("DELETE FROM asiakas WHERE asiakas_id = @id", conn);
-
             cmd.Parameters.AddWithValue("@id", id);
 
             cmd.ExecuteNonQuery();
