@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,47 @@ namespace HulluKyla.Services
             while (reader.Read()) 
             {
                 asiakkaat.Add(new Asiakas(
-                    reader.GetInt32("asiakas_id"),
+                    (uint)reader.GetInt32("asiakas_id"),
+                    reader.GetString("etunimi"),
+                    reader.GetString("sukunimi"),
+                    reader.GetString("lahiosoite"),
+                    reader.GetString("postinro"),
+                    reader.GetString("email"),
+                    reader.GetString("puhelinnro")
+                ));
+            }
+
+            return asiakkaat;
+        }
+
+
+        // HaeHakusanalla-metodi, joka ottaa syötetyn stringin ja hakee tietokannasta asiakkaat
+        // joiden jokin sarake sisältää haetun hakusanan ja tekee löydetyistä asiakkaista 
+        // Asiakas-olioita, jotka lisätään asiakkaat-listaan joka palautuu metodista.
+        public static List<Asiakas> HaeHakusanalla(string hakusana) 
+        {
+            var asiakkaat = new List<Asiakas>();
+
+            using var conn = SqlService.GetConnection();
+            conn.Open();
+
+            var cmd = new MySqlCommand(@"
+                SELECT * FROM asiakas
+                WHERE LOWER(etunimi) LIKE @haku
+                   OR LOWER(sukunimi) LIKE @haku
+                   OR lahiosoite LIKE @haku
+                   OR postinro LIKE @haku
+                   OR LOWER(email) LIKE @haku
+                   OR puhelinnro LIKE @haku", conn);
+
+            cmd.Parameters.AddWithValue("@haku", "%" + hakusana.ToLower() + "%");
+
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read()) 
+            {
+                asiakkaat.Add(new Asiakas(
+                    (uint)reader.GetInt32("asiakas_id"),
                     reader.GetString("etunimi"),
                     reader.GetString("sukunimi"),
                     reader.GetString("lahiosoite"),
