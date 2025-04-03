@@ -16,11 +16,12 @@ namespace HulluKyla.Models
         private string katuosoite;
         private double hinta;
         private string kuvaus;
-        private int henkiloMaara;
+        private long henkiloMaara;
         private string varustelu;
 
         // Static Properties
         private readonly double DMAX = 100000000;
+        private readonly long IMAX = 100000000000;
 
         // Constructors
         // Getters and Setters
@@ -85,12 +86,44 @@ namespace HulluKyla.Models
             {
                 if (value >= DMAX)
                     throw new ArgumentException(
-                        "Hinta ei voi olla yhtä suuri tai suurempi kuin " + DMAX + "."
+                        "Hinta ei voi olla yhtä suuri tai suurempi kuin {0}.",
+                        DMAX.ToString()
                     );
                 else if (value < 0)
                     throw new ArgumentException("Hinta ei voi olla alle 0.");
                 else
                     this.hinta = value;
+            }
+        }
+
+        public string Kuvaus
+        {
+            get => kuvaus;
+            set
+            {
+                if (String.IsNullOrWhiteSpace(value))
+                    this.kuvaus = null;
+                else if (value.Trim().Length > 100)
+                    throw new ArgumentException("Kuvauksen maksimipituus on 100 merkkiä.");
+                else
+                    this.kuvaus = value.Trim();
+            }
+        }
+
+        public long HenkiloMaara
+        {
+            get => henkiloMaara;
+            set
+            {
+                if (value >= IMAX)
+                    throw new ArgumentException(
+                        "Henkilömäärä ei voi olla yhtä suuri tai suurempi kuin {0}.",
+                        IMAX.ToString()
+                    );
+                else if (value < 0)
+                    throw new ArgumentException("Henkilömäärä ei voi olla alle 0.");
+                else
+                    this.henkiloMaara = value;
             }
         }
 
