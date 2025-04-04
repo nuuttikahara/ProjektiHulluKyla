@@ -9,12 +9,12 @@ namespace HulluKyla.Models
     public class Asiakas
     {
         private readonly uint asiakasId;
-        private string etunimi;
-        private string sukunimi;
-        private string lahiosoite;
+        private string? etunimi;
+        private string? sukunimi;
+        private string? lahiosoite;
         private string postinro;
-        private string email;
-        private string puhelinnro;
+        private string? email;
+        private string? puhelinnro;
 
         // Konstruktori ilman asiakasId:tä (esim. luodessa uusi asiakas)
         public Asiakas(
@@ -26,6 +26,9 @@ namespace HulluKyla.Models
             string puhelinnro
         )
         {
+            // INIT
+            this.postinro = "00720";
+            // VALUES
             Etunimi = etunimi;
             Sukunimi = sukunimi;
             Lahiosoite = lahiosoite;
@@ -56,7 +59,13 @@ namespace HulluKyla.Models
 
         public string Etunimi
         {
-            get => etunimi;
+            get
+            {
+                if (null != this.etunimi)
+                    return this.etunimi;
+                else
+                    return "";
+            }
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -70,7 +79,13 @@ namespace HulluKyla.Models
 
         public string Sukunimi
         {
-            get => sukunimi;
+            get
+            {
+                if (null != this.sukunimi)
+                    return this.sukunimi;
+                else
+                    return "";
+            }
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -84,7 +99,13 @@ namespace HulluKyla.Models
 
         public string Lahiosoite
         {
-            get => lahiosoite;
+            get
+            {
+                if (null != this.lahiosoite)
+                    return this.lahiosoite;
+                else
+                    return "";
+            }
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -112,7 +133,13 @@ namespace HulluKyla.Models
 
         public string Email
         {
-            get => email;
+            get
+            {
+                if (null != this.email)
+                    return this.email;
+                else
+                    return "";
+            }
             set
             {
                 if (!value.Contains("@"))
@@ -128,7 +155,13 @@ namespace HulluKyla.Models
 
         public string Puhelinnro
         {
-            get => puhelinnro;
+            get
+            {
+                if (null != this.puhelinnro)
+                    return this.puhelinnro;
+                else
+                    return "";
+            }
             set
             {
                 if (string.IsNullOrWhiteSpace(value))

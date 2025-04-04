@@ -75,11 +75,11 @@ namespace HulluKyla.Models
             set
             {
                 if (Double.IsNaN(value))
-                    throw new ArgumentException("ALV arvon täytyy olla numero.");
+                    throw new ArgumentException("ALV täytyy olla numero.");
+                else if (value < DMIN)
+                    throw new ArgumentException("ALV minimiarvo on {0}.", DMIN.ToString());
                 else if (value >= DMAX)
                     throw new ArgumentException("Liian suuri ALV arvo.");
-                else if (value < DMIN)
-                    throw new ArgumentException("ALV minimiarvo on 0.");
                 else
                     this.alv = value;
             }

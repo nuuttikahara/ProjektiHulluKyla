@@ -12,12 +12,12 @@ namespace HulluKyla.Models
         private readonly uint mokkiId;
         private uint alueId;
         private string postinro;
-        private string mokkiNimi;
-        private string katuosoite;
+        private string? mokkiNimi;
+        private string? katuosoite;
         private double hinta;
-        private string kuvaus;
-        private long henkiloMaara;
-        private string varustelu;
+        private string? kuvaus;
+        private long? henkiloMaara;
+        private string? varustelu;
 
         // Static Properties
         private readonly double DMAX = 100000000;
@@ -40,7 +40,7 @@ namespace HulluKyla.Models
         )
             : this(alueId, postinro, mokkiNimi, katuosoite, hinta, kuvaus, henkiloMaara, varustelu)
         {
-            this.MokkiId(mokkiId);
+            this.mokkiId = mokkiId;
         }
 
         // Uusille.
@@ -56,26 +56,34 @@ namespace HulluKyla.Models
         )
             : this(alueId, postinro, hinta)
         {
-            this.MokkiNimi(mokkiNimi);
-            this.Katuosoite(katuosoite);
-            this.Kuvaus(kuvaus);
-            this.HenkiloMaara(henkiloMaara);
-            this.Varustelu(varustelu);
+            this.MokkiNimi = mokkiNimi;
+            this.Katuosoite = katuosoite;
+            this.Kuvaus = kuvaus;
+            this.HenkiloMaara = henkiloMaara;
+            this.Varustelu = varustelu;
         }
 
         // Vain non-nullablet, paitsi mokkiId.
         public Mokki(uint alueId, string postinro, double hinta)
         {
-            this.AlueId(alueId);
-            this.Postinro(postinro);
-            this.Hinta(hinta);
+            //INIT
+            this.postinro = "00720";
+            // NOT NULL
+            this.AlueId = alueId;
+            this.Postinro = postinro;
+            this.Hinta = hinta;
+            // NULL
+            this.mokkiNimi = null;
+            this.katuosoite = null;
+            this.kuvaus = null;
+            this.henkiloMaara = 0;
+            this.varustelu = null;
         }
 
         // Getters and Setters
         public uint MokkiId
         {
             get => this.mokkiId;
-            private set { this.mokkiId = value; }
         }
 
         public uint AlueId
@@ -100,7 +108,13 @@ namespace HulluKyla.Models
 
         public string MokkiNimi
         {
-            get => this.mokkiNimi;
+            get
+            {
+                if (null != this.mokkiNimi)
+                    return this.mokkiNimi;
+                else
+                    return "";
+            }
             set
             {
                 if (String.IsNullOrWhiteSpace(value))
@@ -114,7 +128,13 @@ namespace HulluKyla.Models
 
         public string Katuosoite
         {
-            get => this.katuosoite;
+            get
+            {
+                if (null != this.katuosoite)
+                    return this.katuosoite;
+                else
+                    return "";
+            }
             set
             {
                 if (String.IsNullOrWhiteSpace(value))
@@ -151,7 +171,13 @@ namespace HulluKyla.Models
 
         public string Kuvaus
         {
-            get => this.kuvaus;
+            get
+            {
+                if (null != this.kuvaus)
+                    return this.kuvaus;
+                else
+                    return "";
+            }
             set
             {
                 if (String.IsNullOrWhiteSpace(value))
@@ -174,7 +200,13 @@ namespace HulluKyla.Models
 
         public long HenkiloMaara
         {
-            get => this.henkiloMaara;
+            get
+            {
+                if (null != this.henkiloMaara)
+                    return (long)this.henkiloMaara;
+                else
+                    return 0;
+            }
             set
             {
                 if (value >= LMAX)
@@ -197,7 +229,13 @@ namespace HulluKyla.Models
 
         public string Varustelu
         {
-            get => this.varustelu;
+            get
+            {
+                if (null != this.varustelu)
+                    return this.varustelu;
+                else
+                    return "";
+            }
             set
             {
                 if (String.IsNullOrWhiteSpace(value))

@@ -10,7 +10,7 @@ namespace HulluKyla.Models
     {
         // Properties
         private readonly uint alueId;
-        private string nimi;
+        private string? nimi;
 
         // Constructors
         public Alue(string nimi)
@@ -29,7 +29,13 @@ namespace HulluKyla.Models
 
         public string Nimi
         {
-            get => nimi;
+            get
+            {
+                if (null != this.nimi)
+                    return this.nimi;
+                else
+                    return "";
+            }
             set
             {
                 if (String.IsNullOrWhiteSpace(value))
