@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace HulluKyla.Models
 {
-    internal class Lasku
+    public class Lasku
     {
         // Properties
         private int laskuId;
         private uint varausId;
         private double summa;
         private double alv;
-        private byte maksettu;
+        private bool maksettu;
 
         // Static properties
         private readonly double DMAX = 100000000;
@@ -21,7 +21,7 @@ namespace HulluKyla.Models
 
         // Constructors
         // Tietokannasta otetuille laskuille.
-        public Lasku(int laskuId, uint varausId, double summa, double alv, byte maksettu)
+        public Lasku(int laskuId, uint varausId, double summa, double alv, bool maksettu)
         {
             this.LaskuId = laskuId;
             this.VarausId = varausId;
@@ -37,19 +37,19 @@ namespace HulluKyla.Models
             this.VarausId = varausId;
             this.Summa = summa;
             this.Alv = alv;
-            this.Maksettu = 0;
+            this.Maksettu = false;
         }
 
-        // Getters and Getters
+        // Getters and Setters
         public int LaskuId
         {
-            get => laskuId;
+            get => this.laskuId;
             set { this.laskuId = value; }
         }
 
         public uint VarausId
         {
-            get => varausId;
+            get => this.varausId;
             set { this.varausId = value; }
         }
 
@@ -59,13 +59,13 @@ namespace HulluKyla.Models
             set
             {
                 if (Double.IsNaN(value))
-                    throw new ArgumentException("Arvon täytyy olla numero.");
+                    throw new ArgumentException("Summan arvo täytyy olla numero.");
                 else if (value >= DMAX)
-                    throw new ArgumentException("Liian suuri arvo.");
+                    throw new ArgumentException("Liian suuri arvo summalle.");
                 else if (value < DMIN)
-                    throw new ArgumentException("Minimiarvo on 0.");
-
-                this.summa = value;
+                    throw new ArgumentException("Summan minimiarvo on 0.");
+                else
+                    this.summa = value;
             }
         }
 
@@ -75,29 +75,20 @@ namespace HulluKyla.Models
             set
             {
                 if (Double.IsNaN(value))
-                    throw new ArgumentException("Arvon täytyy olla numero.");
+                    throw new ArgumentException("ALV arvon täytyy olla numero.");
                 else if (value >= DMAX)
-                    throw new ArgumentException("Liian suuri arvo.");
+                    throw new ArgumentException("Liian suuri ALV arvo.");
                 else if (value < DMIN)
-                    throw new ArgumentException("Minimiarvo on 0.");
-
-                this.alv = value;
+                    throw new ArgumentException("ALV minimiarvo on 0.");
+                else
+                    this.alv = value;
             }
         }
 
-        // Toimii kuin boolean.
-        public byte Maksettu
+        public bool Maksettu
         {
-            get => maksettu;
-            set
-            {
-                if (value > 1)
-                    throw new ArgumentException("Maksimiarvo on 1.");
-                else if (value < 0)
-                    throw new ArgumentException("Minimiarvo on 0.");
-
-                this.maksettu = value;
-            }
+            get => this.maksettu;
+            set { this.maksettu = value; }
         }
 
         // Methods

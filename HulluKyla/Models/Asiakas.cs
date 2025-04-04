@@ -60,11 +60,11 @@ namespace HulluKyla.Models
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Etunimi ei voi olla tyhjä.");
+                    etunimi = null;
                 else if (value.Trim().Length > 20)
                     throw new ArgumentException("Etunimen maksimipituus on 20 merkkiä.");
-
-                etunimi = value.Trim();
+                else
+                    etunimi = value.Trim();
             }
         }
 
@@ -74,11 +74,11 @@ namespace HulluKyla.Models
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Sukunimi ei voi olla tyhjä.");
+                    sukunimi = null;
                 else if (value.Trim().Length > 40)
                     throw new ArgumentException("Sukunimen maksimipituus on 40 merkkiä.");
-
-                sukunimi = value.Trim();
+                else
+                    sukunimi = value.Trim();
             }
         }
 
@@ -88,11 +88,11 @@ namespace HulluKyla.Models
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Lähiosoite ei voi olla tyhjä");
+                    lahiosoite = null;
                 else if (value.Trim().Length > 40)
                     throw new ArgumentException("Lähiosoitteen maksimipituus on 40 merkkiä.");
-
-                lahiosoite = value.Trim();
+                else
+                    lahiosoite = value.Trim();
             }
         }
 
@@ -105,8 +105,8 @@ namespace HulluKyla.Models
                     throw new ArgumentException("Postinumero ei voi olla tyhjä tai null.");
                 else if (value.Trim().Length != 5)
                     throw new ArgumentException("Postinumeron täytyy olla 5 merkkiä pitkä.");
-
-                postinro = value.Trim();
+                else
+                    postinro = value.Trim();
             }
         }
 
@@ -115,12 +115,14 @@ namespace HulluKyla.Models
             get => email;
             set
             {
-                if (string.IsNullOrEmpty(value) || !value.Contains("@"))
+                if (!value.Contains("@"))
                     throw new ArgumentException("Virheellinen sähköpostiosoite.");
+                else if (String.IsNullOrWhiteSpace(value))
+                    email = null;
                 else if (value.Trim().Length > 50)
                     throw new ArgumentException("Sähköpostiosoitteen maksimipituus on 50 merkkiä.");
-
-                email = value.Trim();
+                else
+                    email = value.Trim();
             }
         }
 
@@ -133,8 +135,8 @@ namespace HulluKyla.Models
                     throw new ArgumentException("Puhelinnumero ei voi olla tyhjä.");
                 else if (value.Trim().Length > 15)
                     throw new ArgumentException("Puhelinnumeron maksimipituus on 15 merkkiä.");
-
-                puhelinnro = value.Trim();
+                else
+                    puhelinnro = value.Trim();
             }
         }
     }

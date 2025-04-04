@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HulluKyla.Models
 {
-    internal class Mokki
+    public class Mokki
     {
         // Properties
-        private uint mokkiId;
+        private readonly uint mokkiId;
         private uint alueId;
         private string postinro;
         private string mokkiNimi;
@@ -21,39 +21,86 @@ namespace HulluKyla.Models
 
         // Static Properties
         private readonly double DMAX = 100000000;
-        private readonly long IMAX = 100000000000;
+        private readonly long LMAX = 100000000000;
+        private readonly int KUVAUS_MAX = 150;
+        private readonly int VARUSTELU_MAX = 100;
 
         // Constructors
+        // Tietokanta import.
+        public Mokki(
+            uint mokkiId,
+            uint alueId,
+            string postinro,
+            string mokkiNimi,
+            string katuosoite,
+            double hinta,
+            string kuvaus,
+            long henkiloMaara,
+            string varustelu
+        )
+            : this(alueId, postinro, mokkiNimi, katuosoite, hinta, kuvaus, henkiloMaara, varustelu)
+        {
+            this.MokkiId(mokkiId);
+        }
+
+        // Uusille.
+        public Mokki(
+            uint alueId,
+            string postinro,
+            string mokkiNimi,
+            string katuosoite,
+            double hinta,
+            string kuvaus,
+            long henkiloMaara,
+            string varustelu
+        )
+            : this(alueId, postinro, hinta)
+        {
+            this.MokkiNimi(mokkiNimi);
+            this.Katuosoite(katuosoite);
+            this.Kuvaus(kuvaus);
+            this.HenkiloMaara(henkiloMaara);
+            this.Varustelu(varustelu);
+        }
+
+        // Vain non-nullablet, paitsi mokkiId.
+        public Mokki(uint alueId, string postinro, double hinta)
+        {
+            this.AlueId(alueId);
+            this.Postinro(postinro);
+            this.Hinta(hinta);
+        }
+
         // Getters and Setters
         public uint MokkiId
         {
-            get => mokkiId;
+            get => this.mokkiId;
             private set { this.mokkiId = value; }
         }
 
         public uint AlueId
         {
-            get => alueId;
+            get => this.alueId;
             set { this.alueId = value; }
         }
 
         public string Postinro
         {
-            get => postinro;
+            get => this.postinro;
             set
             {
                 if (!string.IsNullOrWhiteSpace(value))
                     throw new ArgumentException("Postinumero ei voi olla tyhjä tai null.");
                 else if (value.Trim().Length != 5)
                     throw new ArgumentException("Postinumeron täytyy olla 5 merkkiä pitkä.");
-
-                postinro = value.Trim();
+                else
+                    this.postinro = value.Trim();
             }
         }
 
         public string MokkiNimi
         {
-            get => mokkiNimi;
+            get => this.mokkiNimi;
             set
             {
                 if (String.IsNullOrWhiteSpace(value))
@@ -67,7 +114,7 @@ namespace HulluKyla.Models
 
         public string Katuosoite
         {
-            get => katuosoite;
+            get => this.katuosoite;
             set
             {
                 if (String.IsNullOrWhiteSpace(value))
@@ -85,45 +132,89 @@ namespace HulluKyla.Models
             set
             {
                 if (value >= DMAX)
+                {
                     throw new ArgumentException(
                         "Hinta ei voi olla yhtä suuri tai suurempi kuin {0}.",
                         DMAX.ToString()
                     );
+                }
                 else if (value < 0)
+                {
                     throw new ArgumentException("Hinta ei voi olla alle 0.");
+                }
                 else
+                {
                     this.hinta = value;
+                }
             }
         }
 
         public string Kuvaus
         {
-            get => kuvaus;
+            get => this.kuvaus;
             set
             {
                 if (String.IsNullOrWhiteSpace(value))
+                {
                     this.kuvaus = null;
-                else if (value.Trim().Length > 100)
-                    throw new ArgumentException("Kuvauksen maksimipituus on 100 merkkiä.");
+                }
+                else if (value.Trim().Length > KUVAUS_MAX)
+                {
+                    throw new ArgumentException(
+                        "Kuvauksen maksimipituus on {0} merkkiä.",
+                        KUVAUS_MAX.ToString()
+                    );
+                }
                 else
+                {
                     this.kuvaus = value.Trim();
+                }
             }
         }
 
         public long HenkiloMaara
         {
-            get => henkiloMaara;
+            get => this.henkiloMaara;
             set
             {
-                if (value >= IMAX)
+                if (value >= LMAX)
+                {
                     throw new ArgumentException(
                         "Henkilömäärä ei voi olla yhtä suuri tai suurempi kuin {0}.",
-                        IMAX.ToString()
+                        LMAX.ToString()
                     );
+                }
                 else if (value < 0)
+                {
                     throw new ArgumentException("Henkilömäärä ei voi olla alle 0.");
+                }
                 else
+                {
                     this.henkiloMaara = value;
+                }
+            }
+        }
+
+        public string Varustelu
+        {
+            get => this.varustelu;
+            set
+            {
+                if (String.IsNullOrWhiteSpace(value))
+                {
+                    this.varustelu = null;
+                }
+                else if (value.Trim().Length > VARUSTELU_MAX)
+                {
+                    throw new ArgumentException(
+                        "Varustelun maksimipituus on {0} merkkiä.",
+                        VARUSTELU_MAX.ToString()
+                    );
+                }
+                else
+                {
+                    this.varustelu = value.Trim();
+                }
             }
         }
 

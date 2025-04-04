@@ -33,11 +33,11 @@ namespace HulluKyla.Models
             set
             {
                 if (String.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Nimi ei voi olla tyhjä.");
+                    nimi = null;
                 else if (value.Trim().Length > 40)
                     throw new ArgumentException("Nimen maksimipituus on 40 merkkiä.");
-
-                nimi = value.Trim();
+                else
+                    nimi = value.Trim();
             }
         }
 
