@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `vn`.`lasku` (
   `varaus_id` INT UNSIGNED NOT NULL,
   `summa` DOUBLE(8,2) NOT NULL,
   `alv` DOUBLE(8,2) NOT NULL,
-  `maksettu` DOUBLE(8,2) NOT NULL DEFAULT 0,
+  `maksettu` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`lasku_id`),
   INDEX `lasku_ibfk_1` (`varaus_id` ASC) VISIBLE,
   CONSTRAINT `lasku_ibfk_1`
@@ -280,9 +280,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `vn`;
-INSERT INTO `vn`.`lasku` (`lasku_id`, `varaus_id`, `summa`, `alv`, `maksettu`) VALUES (1, 1, 1340, 10, 890);
+INSERT INTO `vn`.`lasku` (`lasku_id`, `varaus_id`, `summa`, `alv`, `maksettu`) VALUES (1, 1, 1340, 10, 1);
 INSERT INTO `vn`.`lasku` (`lasku_id`, `varaus_id`, `summa`, `alv`, `maksettu`) VALUES (2, 2, 1480, 10, 0);
-INSERT INTO `vn`.`lasku` (`lasku_id`, `varaus_id`, `summa`, `alv`, `maksettu`) VALUES (3, 3, 1959.99, 10, 1959.99);
+INSERT INTO `vn`.`lasku` (`lasku_id`, `varaus_id`, `summa`, `alv`, `maksettu`) VALUES (3, 3, 1959.99, 10, 1);
 
 COMMIT;
 
