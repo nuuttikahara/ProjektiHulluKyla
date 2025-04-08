@@ -106,6 +106,8 @@ namespace HulluKyla.Services
 
 
         // Luo laskut kaikille päättyneille varauksille joille sitä ei ole vielä luotu
+        // Ideana siis, että lasku luodaan varaukselle vasta varauksen loputtua, eikä heti varaus luodessa
+        // Hyödynnetään Laskujen hallinta/seuraus sivulla 
         public static void LuoLaskutPaattyneille() 
         {
             using var conn = SqlService.GetConnection();
