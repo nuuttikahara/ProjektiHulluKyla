@@ -47,9 +47,9 @@ namespace HulluKyla.Services
 
 
         // Palveluiden ja niiden määrän haku annetun varaus_id:n mukaan
-        public static List<(Palvelu p, int lkm)> HaeVarauksenPalvelut(uint varausId) 
+        public static List<VarauksenPalvelu> HaeVarauksenPalvelut(uint varausId) 
         {
-            var tulokset = new List<(Palvelu, int)>();
+            var tulokset = new List<VarauksenPalvelu>();
 
             using var conn = SqlService.GetConnection();
             conn.Open();
@@ -77,7 +77,11 @@ namespace HulluKyla.Services
                 );
 
                 int lkm = reader.GetInt32("lkm");
-                tulokset.Add((palvelu, lkm));
+                tulokset.Add(new VarauksenPalvelu(
+                    varausId,
+                    palvelu,
+                    lkm
+                ));
             }
 
             return tulokset;
