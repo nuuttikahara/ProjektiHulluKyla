@@ -9,31 +9,43 @@ namespace HulluKyla.Models
 {
     public class VarauksenPalvelu
     {
+        // Properties
         private uint varausId;
         private Palvelu palvelu;
         private int lkm;
 
+        // Static Properties
+        private readonly Palvelu DEFAULT_PALVELU = new Palvelu(99999, 99999, 99999, 99999);
 
-        public VarauksenPalvelu(uint varausId, Palvelu palvelu, int lkm) 
+        // Constructors
+        public VarauksenPalvelu(uint varausId, int lkm, Palvelu palvelu)
         {
+            this.palvelu = DEFAULT_PALVELU;
             this.VarausId = varausId;
-            this.Palvelu = palvelu;
             this.Lkm = lkm;
+            this.Palvelu = palvelu;
         }
 
-        public uint VarausId 
+        // Getters and Setters
+        public uint VarausId
         {
             get { return varausId; }
             set { varausId = value; }
         }
 
-        public Palvelu Palvelu 
+        public Palvelu Palvelu
         {
-            get { return palvelu; }
-            set { palvelu = value; }
+            get { return this.palvelu; }
+            set
+            {
+                if (null != value && Palvelu.GetType().Equals(value.GetType()))
+                    this.palvelu = value;
+                else
+                    throw new ArgumentException("Palvelu ei voi olla tyhjä.");
+            }
         }
 
-        public int Lkm 
+        public int Lkm
         {
             get { return lkm; }
             set { lkm = value; }
