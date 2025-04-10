@@ -5,7 +5,7 @@
 
     <ScrollView>
         <VerticalStackLayout>
-            
+            <Button Text="TestiSivu" Clicked="TestiSivuClicked" />
         </VerticalStackLayout>
     </ScrollView>
 

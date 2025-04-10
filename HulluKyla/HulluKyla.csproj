@@ -65,4 +65,16 @@
 		<PackageReference Include="MySql.Data" Version="9.2.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Pages\TestiSivu.xaml.cs">
+	    <DependentUpon>TestiSivu.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\TestiSivu.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
