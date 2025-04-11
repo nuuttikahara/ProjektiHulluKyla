@@ -12,6 +12,9 @@ namespace HulluKyla.Models
         private readonly uint alueId;
         private string? nimi;
 
+        // Static Properties
+        private readonly int NIMI_MAX_LENGTH = 40;
+
         // Constructors
         public Alue(string nimi)
         {
@@ -39,11 +42,20 @@ namespace HulluKyla.Models
             set
             {
                 if (String.IsNullOrWhiteSpace(value))
+                {
                     nimi = null;
-                else if (value.Trim().Length > 40)
-                    throw new ArgumentException("Nimen maksimipituus on 40 merkkiä.");
+                }
+                else if (value.Trim().Length > NIMI_MAX_LENGTH)
+                {
+                    throw new ArgumentException(
+                        "Nimen maksimipituus on {0} merkkiä.",
+                        NIMI_MAX_LENGTH.ToString()
+                    );
+                }
                 else
+                {
                     nimi = value.Trim();
+                }
             }
         }
 

@@ -20,10 +20,11 @@ namespace HulluKyla.Models
         private string? varustelu;
 
         // Static Properties
-        private readonly double DMAX = 100000000;
-        private readonly long LMAX = 100000000000;
         private readonly int KUVAUS_MAX = 150;
         private readonly int VARUSTELU_MAX = 100;
+        private readonly long HENKILOMAARA_DEFAULT = 0;
+        private readonly double DOUBLE_MIN_ALLOWED = 0;
+        private readonly string POSTINRO_DEFAULT = "00720";
 
         // Constructors
         // Tietokanta import.
@@ -67,17 +68,16 @@ namespace HulluKyla.Models
         public Mokki(uint alueId, string postinro, double hinta)
         {
             //INIT
-            this.postinro = "00720";
-            // NOT NULL
-            this.AlueId = alueId;
-            this.Postinro = postinro;
-            this.Hinta = hinta;
-            // NULL
+            this.postinro = POSTINRO_DEFAULT;
             this.mokkiNimi = null;
             this.katuosoite = null;
             this.kuvaus = null;
-            this.henkiloMaara = 0;
+            this.henkiloMaara = HENKILOMAARA_DEFAULT;
             this.varustelu = null;
+            // VALUES
+            this.AlueId = alueId;
+            this.Postinro = postinro;
+            this.Hinta = hinta;
         }
 
         // Getters and Setters
@@ -97,7 +97,7 @@ namespace HulluKyla.Models
             get => this.postinro;
             set
             {
-                if (!string.IsNullOrWhiteSpace(value))
+                if (String.IsNullOrWhiteSpace(value))
                     throw new ArgumentException("Postinumero ei voi olla tyhjä tai null.");
                 else if (value.Trim().Length != 5)
                     throw new ArgumentException("Postinumeron täytyy olla 5 merkkiä pitkä.");
@@ -151,11 +151,11 @@ namespace HulluKyla.Models
             get => hinta;
             set
             {
-                if (value >= DMAX)
+                if (value > Double.MaxValue)
                 {
                     throw new ArgumentException(
-                        "Hinta ei voi olla yhtä suuri tai suurempi kuin {0}.",
-                        DMAX.ToString()
+                        "Maksimihinta on {0:f2}€.",
+                        Double.MaxValue.ToString()
                     );
                 }
                 else if (value < 0)

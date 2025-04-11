@@ -8,6 +8,7 @@ namespace HulluKyla.Models
 {
     public class Asiakas
     {
+        // Properties
         private readonly uint asiakasId;
         private string? etunimi;
         private string? sukunimi;
@@ -15,6 +16,13 @@ namespace HulluKyla.Models
         private string postinro;
         private string? email;
         private string? puhelinnro;
+
+        // Static Properties
+        private readonly int ETUNIMI_MAX_LENGTH = 20;
+        private readonly int SUKUNIMI_MAX_LENGTH = 40;
+        private readonly int LAHIOSOITE_MAX_LENGTH = 40;
+        private readonly int EMAIL_MAX_LENGTH = 50;
+        private readonly int PUHELINNRO_MAX_LENGTH = 15;
 
         // Konstruktori ilman asiakasId:tä (esim. luodessa uusi asiakas)
         public Asiakas(
@@ -27,7 +35,7 @@ namespace HulluKyla.Models
         )
         {
             // INIT
-            this.postinro = "00720";
+            this.postinro = PostiUtil.POSTINRO_DEFAULT;
             // VALUES
             Etunimi = etunimi;
             Sukunimi = sukunimi;
@@ -53,7 +61,6 @@ namespace HulluKyla.Models
         }
 
         // Getterit ja setterit
-
         // id:llä pelkkä get koska se on readonly
         public uint AsiakasId => asiakasId;
 
@@ -69,11 +76,20 @@ namespace HulluKyla.Models
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
+                {
                     etunimi = null;
-                else if (value.Trim().Length > 20)
-                    throw new ArgumentException("Etunimen maksimipituus on 20 merkkiä.");
+                }
+                else if (value.Trim().Length > ETUNIMI_MAX_LENGTH)
+                {
+                    throw new ArgumentException(
+                        "Etunimen maksimipituus on {0} merkkiä.",
+                        ETUNIMI_MAX_LENGTH.ToString()
+                    );
+                }
                 else
+                {
                     etunimi = value.Trim();
+                }
             }
         }
 
@@ -89,11 +105,20 @@ namespace HulluKyla.Models
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
+                {
                     sukunimi = null;
-                else if (value.Trim().Length > 40)
-                    throw new ArgumentException("Sukunimen maksimipituus on 40 merkkiä.");
+                }
+                else if (value.Trim().Length > SUKUNIMI_MAX_LENGTH)
+                {
+                    throw new ArgumentException(
+                        "Sukunimen maksimipituus on {0} merkkiä.",
+                        SUKUNIMI_MAX_LENGTH.ToString()
+                    );
+                }
                 else
+                {
                     sukunimi = value.Trim();
+                }
             }
         }
 
@@ -109,26 +134,27 @@ namespace HulluKyla.Models
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
+                {
                     lahiosoite = null;
-                else if (value.Trim().Length > 40)
-                    throw new ArgumentException("Lähiosoitteen maksimipituus on 40 merkkiä.");
+                }
+                else if (value.Trim().Length > LAHIOSOITE_MAX_LENGTH)
+                {
+                    throw new ArgumentException(
+                        "Lähiosoitteen maksimipituus on {0} merkkiä.",
+                        LAHIOSOITE_MAX_LENGTH.ToString()
+                    );
+                }
                 else
+                {
                     lahiosoite = value.Trim();
+                }
             }
         }
 
         public string Postinro
         {
             get => postinro;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Postinumero ei voi olla tyhjä tai null.");
-                else if (value.Trim().Length != 5)
-                    throw new ArgumentException("Postinumeron täytyy olla 5 merkkiä pitkä.");
-                else
-                    postinro = value.Trim();
-            }
+            set { this.postinro = PostiUtil.PostinroHandler(value); }
         }
 
         public string Email
@@ -142,12 +168,19 @@ namespace HulluKyla.Models
             }
             set
             {
-                if (!value.Contains("@"))
-                    throw new ArgumentException("Virheellinen sähköpostiosoite.");
-                else if (String.IsNullOrWhiteSpace(value))
+                if (String.IsNullOrWhiteSpace(value))
+                {
                     email = null;
-                else if (value.Trim().Length > 50)
-                    throw new ArgumentException("Sähköpostiosoitteen maksimipituus on 50 merkkiä.");
+                }
+                else if (!value.Contains('@'))
+                {
+                    throw new ArgumentException("Virheellinen sähköpostiosoite.");
+                }
+                else if (value.Trim().Length > EMAIL_MAX_LENGTH)
+                    throw new ArgumentException(
+                        "Sähköpostiosoitteen maksimipituus on {0} merkkiä.",
+                        EMAIL_MAX_LENGTH.ToString()
+                    );
                 else
                     email = value.Trim();
             }
@@ -164,12 +197,32 @@ namespace HulluKyla.Models
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Puhelinnumero ei voi olla tyhjä.");
-                else if (value.Trim().Length > 15)
-                    throw new ArgumentException("Puhelinnumeron maksimipituus on 15 merkkiä.");
+                if (!String.IsNullOrWhiteSpace(value))
+                {
+                    string parsed = "";
+                    foreach (char c in value)
+                    {
+                        if (Char.IsNumber(c))
+                            parsed += c;
+                    }
+
+                    if (
+                        !String.IsNullOrWhiteSpace(parsed)
+                        && parsed.Length <= PUHELINNRO_MAX_LENGTH
+                    )
+                        this.puhelinnro = parsed.TrimStart();
+                }
+                else if (value.Trim().Length > PUHELINNRO_MAX_LENGTH)
+                {
+                    throw new ArgumentException(
+                        "Puhelinnumeron maksimipituus on {0} merkkiä.",
+                        PUHELINNRO_MAX_LENGTH.ToString()
+                    );
+                }
                 else
-                    puhelinnro = value.Trim();
+                {
+                    throw new ArgumentException("Puhelinnumero ei voi olla tyhjä.");
+                }
             }
         }
     }

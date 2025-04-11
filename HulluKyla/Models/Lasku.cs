@@ -9,29 +9,26 @@ namespace HulluKyla.Models
     public class Lasku
     {
         // Properties
-        private int laskuId;
+        // TODO: LASKUID AUTOINCREMENT
+        private uint laskuId;
         private uint varausId;
         private double summa;
         private double alv;
         private bool maksettu;
 
-        // Static properties
-        private readonly double DMAX = 100000000;
-        private readonly double DMIN = 0;
+        // Static Properties
+        private readonly double DOUBLE_MIN_ALLOWED = 0;
 
         // Constructors
         // Tietokannasta otetuille laskuille.
-        public Lasku(int laskuId, uint varausId, double summa, double alv, bool maksettu)
+        public Lasku(uint laskuId, uint varausId, double summa, double alv, bool maksettu)
+            : this(laskuId, varausId, summa, alv)
         {
-            this.LaskuId = laskuId;
-            this.VarausId = varausId;
-            this.Summa = summa;
-            this.Alv = alv;
             this.Maksettu = maksettu;
         }
 
         // Uusille laskuille.
-        public Lasku(int laskuId, uint varausId, double summa, double alv)
+        public Lasku(uint laskuId, uint varausId, double summa, double alv)
         {
             this.LaskuId = laskuId;
             this.VarausId = varausId;
@@ -41,10 +38,10 @@ namespace HulluKyla.Models
         }
 
         // Getters and Setters
-        public int LaskuId
+        public uint LaskuId
         {
             get => this.laskuId;
-            set { this.laskuId = value; }
+            private set { this.laskuId = value; }
         }
 
         public uint VarausId
@@ -58,14 +55,25 @@ namespace HulluKyla.Models
             get => summa;
             set
             {
-                if (Double.IsNaN(value))
-                    throw new ArgumentException("Summan arvo täytyy olla numero.");
-                else if (value >= DMAX)
-                    throw new ArgumentException("Liian suuri arvo summalle.");
-                else if (value < DMIN)
-                    throw new ArgumentException("Summan minimiarvo on 0.");
+                if (!Double.IsNaN(value))
+                {
+                    if (value > Double.MaxValue)
+                        throw new ArgumentException(
+                            "Summan maksimiarvo on {0:f2}€.",
+                            Double.MaxValue.ToString()
+                        );
+                    else if (value < DOUBLE_MIN_ALLOWED)
+                        throw new ArgumentException(
+                            "Summan minimiarvo on {0:f2}€.",
+                            DOUBLE_MIN_ALLOWED.ToString()
+                        );
+                    else
+                        this.summa = value;
+                }
                 else
-                    this.summa = value;
+                {
+                    throw new ArgumentException("Summan täytyy olla numero.");
+                }
             }
         }
 
@@ -74,14 +82,25 @@ namespace HulluKyla.Models
             get => alv;
             set
             {
-                if (Double.IsNaN(value))
-                    throw new ArgumentException("ALV täytyy olla numero.");
-                else if (value < DMIN)
-                    throw new ArgumentException("ALV minimiarvo on {0}.", DMIN.ToString());
-                else if (value >= DMAX)
-                    throw new ArgumentException("Liian suuri ALV arvo.");
+                if (!Double.IsNaN(value))
+                {
+                    if (value > Double.MaxValue)
+                        throw new ArgumentException(
+                            "ALV maksimiarvo on {0:f2}€.",
+                            Double.MaxValue.ToString()
+                        );
+                    else if (value < DOUBLE_MIN_ALLOWED)
+                        throw new ArgumentException(
+                            "ALV minimiarvo on {0:f2}€.",
+                            DOUBLE_MIN_ALLOWED.ToString()
+                        );
+                    else
+                        this.alv = value;
+                }
                 else
-                    this.alv = value;
+                {
+                    throw new ArgumentException("ALV täytyy olla numero.");
+                }
             }
         }
 
