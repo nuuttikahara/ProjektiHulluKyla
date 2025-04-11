@@ -144,7 +144,7 @@ COLLATE = utf8mb4_bin;
 DROP TABLE IF EXISTS `vn`.`lasku` ;
 
 CREATE TABLE IF NOT EXISTS `vn`.`lasku` (
-  `lasku_id` INT NOT NULL,
+  `lasku_id` INT UNSIGNED NOT NULL,
   `varaus_id` INT UNSIGNED NOT NULL,
   `summa` DOUBLE(8,2) NOT NULL,
   `alv` DOUBLE(8,2) NOT NULL,
