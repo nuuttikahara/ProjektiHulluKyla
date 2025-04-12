@@ -32,7 +32,7 @@ namespace HulluKyla.Models
             "Oletus",
             "Asiakas",
             "Oletuskatu 1",
-            "00720",
+            PostiUtil.POSTINRO_DEFAULT,
             "oletus@email.com",
             "0123456789"
         );
