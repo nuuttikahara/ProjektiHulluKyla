@@ -25,7 +25,9 @@ namespace HulluKyla.Models
         // Constructors
         public VarauksenPalvelu(uint varausId, int lkm, Palvelu palvelu)
         {
+            // INIT
             this.palvelu = DEFAULT_PALVELU;
+            // VALUES
             this.VarausId = varausId;
             this.Lkm = lkm;
             this.Palvelu = palvelu;
