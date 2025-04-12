@@ -20,9 +20,11 @@ namespace HulluKyla.Models
         // Max
         private const int NIMI_MAX = 40;
         private const int KUVAUS_MAX = 255;
+        private const double ALV_MAX = 100;
 
         // Min
         private const double DOUBLE_MIN_ALLOWED = 0;
+        private const double ALV_MIN = 0;
 
         // Null String return value
         private const string STRING_NULL = "NULL";
@@ -154,25 +156,25 @@ namespace HulluKyla.Models
             }
         }
 
+        // ALV on prosenttimäärä, 0 - 100%.
         public double Alv
         {
             get => this.alv;
             set
             {
-                if (Double.IsNaN(value))
-                    throw new ArgumentException("ALV täytyy olla numero.");
-                else if (value < DOUBLE_MIN_ALLOWED)
-                    throw new ArgumentException(
-                        "ALV minimiarvo on {0:f2}€.",
-                        DOUBLE_MIN_ALLOWED.ToString()
-                    );
-                else if (value > Double.MaxValue)
-                    throw new ArgumentException(
-                        "ALV maksimiarvo on {0:f2}€.",
-                        Double.MaxValue.ToString()
-                    );
+                if (!Double.IsNaN(value))
+                {
+                    if (value > ALV_MAX)
+                        throw new ArgumentException("ALV maksimiarvo on {0}%.", ALV_MAX.ToString());
+                    else if (value < ALV_MIN)
+                        throw new ArgumentException("ALV minimiarvo on {0}%.", ALV_MIN.ToString());
+                    else
+                        this.alv = value;
+                }
                 else
-                    this.alv = value;
+                {
+                    throw new ArgumentException("ALV täytyy olla numero.");
+                }
             }
         }
 

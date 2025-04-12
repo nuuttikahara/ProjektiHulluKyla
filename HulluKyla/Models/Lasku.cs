@@ -81,6 +81,7 @@ namespace HulluKyla.Models
             }
         }
 
+        // ALV on rahamäärä, 0 - Double.MaxValue €.
         public double Alv
         {
             get => alv;
