@@ -12,15 +12,19 @@ namespace HulluKyla.Models
         private string numero;
         private string toimipaikka;
 
-        // Static Properties
-        private readonly int NUMERO_LENGTH = 5;
+        // Constants
+        // Default
+        private const string TOIMIPAIKKA_DEFAULT = "HELSINKI";
+
+        // Null String return value
+        private const string STRING_NULL = "NULL";
 
         // Constructors
         public Posti(string numero, string toimipaikka)
         {
             // INIT
-            this.numero = "00720";
-            this.toimipaikka = "HELSINKI";
+            this.numero = PostiUtil.POSTINRO_DEFAULT;
+            this.toimipaikka = TOIMIPAIKKA_DEFAULT;
             // VALUES
             this.Numero = numero;
             this.Toimipaikka = toimipaikka;
@@ -30,32 +34,7 @@ namespace HulluKyla.Models
         public string Numero
         {
             get { return this.numero; }
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                {
-                    string parsed = "";
-                    foreach (char c in value)
-                    {
-                        parsed += c;
-                    }
-                    if (null != parsed && parsed.Length == NUMERO_LENGTH)
-                    {
-                        this.numero = parsed.TrimStart();
-                    }
-                    else
-                    {
-                        throw new ArgumentException(
-                            "Postinumeron täytyy olla {0} merkkiä pitkä.",
-                            NUMERO_LENGTH.ToString()
-                        );
-                    }
-                }
-                else
-                {
-                    throw new ArgumentException("Postinumero ei voi olla tyhjä.");
-                }
-            }
+            set { this.numero = PostiUtil.PostinroHandler(value); }
         }
 
         public string Toimipaikka
@@ -65,11 +44,11 @@ namespace HulluKyla.Models
                 if (null != this.toimipaikka)
                     return this.toimipaikka;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {
-                if (!string.IsNullOrWhiteSpace(value))
+                if (!String.IsNullOrWhiteSpace(value))
                     this.toimipaikka = value.Trim().ToUpper();
                 else
                     throw new ArgumentException("Toimipaikka ei voi olla tyhjä.");

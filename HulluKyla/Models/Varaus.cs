@@ -17,7 +17,13 @@ namespace HulluKyla.Models
         private DateTime varattuAlkuPvm;
         private DateTime varattuLoppuPvm;
 
-        // Static Properties
+        // Constants and Static Properties
+        // Default
+        private readonly Mokki MOKKI_DEFAULT = new Mokki(uint.MaxValue, "00720", double.MaxValue);
+        private readonly DateTime VARATTU_PVM_DEFAULT = DateTime.MinValue;
+        private readonly DateTime VAHVISTUS_PVM_DEFAULT = DateTime.MinValue;
+        private readonly DateTime VARATTU_ALKU_PVM_DEFAULT = DateTime.MinValue;
+        private readonly DateTime VARATTU_LOPPU_PVM_DEFAULT = DateTime.MaxValue;
         private readonly Asiakas ASIAKAS_DEFAULT = new Asiakas(
             "Oletus",
             "Asiakas",
@@ -26,11 +32,6 @@ namespace HulluKyla.Models
             "oletus@email.com",
             "0123456789"
         );
-        private readonly Mokki MOKKI_DEFAULT = new Mokki(uint.MaxValue, "00720", double.MaxValue);
-        private readonly DateTime VARATTU_PVM_DEFAULT = DateTime.MinValue;
-        private readonly DateTime VAHVISTUS_PVM_DEFAULT = DateTime.MinValue;
-        private readonly DateTime VARATTU_ALKU_PVM_DEFAULT = DateTime.MinValue;
-        private readonly DateTime VARATTU_LOPPU_PVM_DEFAULT = DateTime.MaxValue;
 
         // Constructors
         // Non-nullables

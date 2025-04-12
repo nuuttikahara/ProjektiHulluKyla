@@ -12,8 +12,12 @@ namespace HulluKyla.Models
         private readonly uint alueId;
         private string? nimi;
 
-        // Static Properties
-        private readonly int NIMI_MAX_LENGTH = 40;
+        // Constants
+        // Max
+        private const int NIMI_MAX_LENGTH = 40;
+
+        // Null String return value
+        private const string STRING_NULL = "NULL";
 
         // Constructors
         public Alue(string nimi)
@@ -37,7 +41,7 @@ namespace HulluKyla.Models
                 if (null != this.nimi)
                     return this.nimi;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {

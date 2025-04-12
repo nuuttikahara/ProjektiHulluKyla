@@ -16,8 +16,12 @@ namespace HulluKyla.Models
         private double alv;
         private bool maksettu;
 
-        // Static Properties
-        private readonly double DOUBLE_MIN_ALLOWED = 0;
+        // Constants
+        // Min
+        private const double DOUBLE_MIN_ALLOWED = 0;
+
+        // Default
+        private const bool MAKSETTU_DEFAULT = false;
 
         // Constructors
         // Tietokannasta otetuille laskuille.
@@ -34,7 +38,7 @@ namespace HulluKyla.Models
             this.VarausId = varausId;
             this.Summa = summa;
             this.Alv = alv;
-            this.Maksettu = false;
+            this.Maksettu = MAKSETTU_DEFAULT;
         }
 
         // Getters and Setters

@@ -16,11 +16,16 @@ namespace HulluKyla.Models
         private double hinta;
         private double alv;
 
-        // Static Properties
-        private readonly int NIMI_MAX = 40;
-        private readonly int KUVAUS_MAX = 255;
-        private readonly double DMIN = 0;
-        private readonly double DMAX = 100000000;
+        // Constants
+        // Max
+        private const int NIMI_MAX = 40;
+        private const int KUVAUS_MAX = 255;
+
+        // Min
+        private const double DOUBLE_MIN_ALLOWED = 0;
+
+        // Null String return value
+        private const string STRING_NULL = "NULL";
 
         // Constructors
         // Non-nullablet, paitsi ID.
@@ -76,7 +81,7 @@ namespace HulluKyla.Models
                 if (null != this.nimi)
                     return this.nimi;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {
@@ -105,7 +110,7 @@ namespace HulluKyla.Models
                 if (null != this.kuvaus)
                     return this.kuvaus;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {
@@ -134,10 +139,16 @@ namespace HulluKyla.Models
             {
                 if (Double.IsNaN(value))
                     throw new ArgumentException("Hinnan täytyy olla numero.");
-                else if (value < DMIN)
-                    throw new ArgumentException("Minimihinta on {0}€.", DMIN.ToString());
-                else if (value >= DMAX)
-                    throw new ArgumentException("Maksimihinta on {0}€.", DMAX.ToString());
+                else if (value < DOUBLE_MIN_ALLOWED)
+                    throw new ArgumentException(
+                        "Minimihinta on {0:f2}€.",
+                        DOUBLE_MIN_ALLOWED.ToString()
+                    );
+                else if (value > Double.MaxValue)
+                    throw new ArgumentException(
+                        "Maksimihinta on {0:f2}€.",
+                        Double.MaxValue.ToString()
+                    );
                 else
                     this.hinta = value;
             }
@@ -150,10 +161,16 @@ namespace HulluKyla.Models
             {
                 if (Double.IsNaN(value))
                     throw new ArgumentException("ALV täytyy olla numero.");
-                else if (value < DMIN)
-                    throw new ArgumentException("ALV minimiarvo on {0}.", DMIN.ToString());
-                else if (value >= DMAX)
-                    throw new ArgumentException("Liian suuri ALV arvo.");
+                else if (value < DOUBLE_MIN_ALLOWED)
+                    throw new ArgumentException(
+                        "ALV minimiarvo on {0:f2}€.",
+                        DOUBLE_MIN_ALLOWED.ToString()
+                    );
+                else if (value > Double.MaxValue)
+                    throw new ArgumentException(
+                        "ALV maksimiarvo on {0:f2}€.",
+                        Double.MaxValue.ToString()
+                    );
                 else
                     this.alv = value;
             }

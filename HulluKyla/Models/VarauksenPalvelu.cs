@@ -14,7 +14,7 @@ namespace HulluKyla.Models
         private Palvelu palvelu;
         private int lkm;
 
-        // Static Properties
+        // Constants and Static Properties
         private readonly Palvelu DEFAULT_PALVELU = new Palvelu(
             uint.MaxValue,
             uint.MaxValue,

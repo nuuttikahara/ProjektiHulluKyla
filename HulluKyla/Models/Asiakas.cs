@@ -17,12 +17,16 @@ namespace HulluKyla.Models
         private string? email;
         private string? puhelinnro;
 
-        // Static Properties
-        private readonly int ETUNIMI_MAX_LENGTH = 20;
-        private readonly int SUKUNIMI_MAX_LENGTH = 40;
-        private readonly int LAHIOSOITE_MAX_LENGTH = 40;
-        private readonly int EMAIL_MAX_LENGTH = 50;
-        private readonly int PUHELINNRO_MAX_LENGTH = 15;
+        // Constants
+        // Max
+        private const int ETUNIMI_MAX_LENGTH = 20;
+        private const int SUKUNIMI_MAX_LENGTH = 40;
+        private const int LAHIOSOITE_MAX_LENGTH = 40;
+        private const int EMAIL_MAX_LENGTH = 50;
+        private const int PUHELINNRO_MAX_LENGTH = 15;
+
+        // Null String return value
+        private const string STRING_NULL = "NULL";
 
         // Konstruktori ilman asiakasId:tä (esim. luodessa uusi asiakas)
         public Asiakas(
@@ -71,7 +75,7 @@ namespace HulluKyla.Models
                 if (null != this.etunimi)
                     return this.etunimi;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {
@@ -100,7 +104,7 @@ namespace HulluKyla.Models
                 if (null != this.sukunimi)
                     return this.sukunimi;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {
@@ -129,7 +133,7 @@ namespace HulluKyla.Models
                 if (null != this.lahiosoite)
                     return this.lahiosoite;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {
@@ -164,7 +168,7 @@ namespace HulluKyla.Models
                 if (null != this.email)
                     return this.email;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {
@@ -193,7 +197,7 @@ namespace HulluKyla.Models
                 if (null != this.puhelinnro)
                     return this.puhelinnro;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {

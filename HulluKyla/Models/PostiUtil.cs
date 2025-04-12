@@ -9,7 +9,7 @@ namespace HulluKyla.Models
     // Vain postinumeroiden käsittelyyn. Ei luotavaksi.
     public static class PostiUtil
     {
-        // Const
+        // Constants
         public const string POSTINRO_DEFAULT = "00720";
         public const int POSTINRO_LENGTH = 5;
 

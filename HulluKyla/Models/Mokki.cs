@@ -19,12 +19,22 @@ namespace HulluKyla.Models
         private long? henkiloMaara;
         private string? varustelu;
 
-        // Static Properties
-        private readonly int KUVAUS_MAX = 150;
-        private readonly int VARUSTELU_MAX = 100;
-        private readonly long HENKILOMAARA_DEFAULT = 0;
-        private readonly double DOUBLE_MIN_ALLOWED = 0;
-        private readonly string POSTINRO_DEFAULT = "00720";
+        // Constants
+        // Max
+        private const int KUVAUS_MAX_LENGTH = 150;
+        private const int VARUSTELU_MAX_LENGTH = 100;
+        private const int MOKKINIMI_MAX_LENGTH = 45;
+        private const int KATUOSOITE_MAX_LENGTH = 45;
+
+        // Min
+        private const long HENKILOMAARA_MIN_ALLOWED = 0;
+        private const double DOUBLE_MIN_ALLOWED = 0;
+
+        // Default
+        private const long HENKILOMAARA_DEFAULT = 0;
+
+        // Null String return value
+        private const string STRING_NULL = "NULL";
 
         // Constructors
         // Tietokanta import.
@@ -68,7 +78,7 @@ namespace HulluKyla.Models
         public Mokki(uint alueId, string postinro, double hinta)
         {
             //INIT
-            this.postinro = POSTINRO_DEFAULT;
+            this.postinro = PostiUtil.POSTINRO_DEFAULT;
             this.mokkiNimi = null;
             this.katuosoite = null;
             this.kuvaus = null;
@@ -95,15 +105,7 @@ namespace HulluKyla.Models
         public string Postinro
         {
             get => this.postinro;
-            set
-            {
-                if (String.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Postinumero ei voi olla tyhjä tai null.");
-                else if (value.Trim().Length != 5)
-                    throw new ArgumentException("Postinumeron täytyy olla 5 merkkiä pitkä.");
-                else
-                    this.postinro = value.Trim();
-            }
+            set { this.postinro = PostiUtil.PostinroHandler(value); }
         }
 
         public string MokkiNimi
@@ -113,14 +115,17 @@ namespace HulluKyla.Models
                 if (null != this.mokkiNimi)
                     return this.mokkiNimi;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {
                 if (String.IsNullOrWhiteSpace(value))
                     this.mokkiNimi = null;
-                else if (value.Trim().Length > 45)
-                    throw new ArgumentException("Mökin nimen maksimipituus on 45 merkkiä.");
+                else if (value.Trim().Length > MOKKINIMI_MAX_LENGTH)
+                    throw new ArgumentException(
+                        "Mökin nimen maksimipituus on {0} merkkiä.",
+                        MOKKINIMI_MAX_LENGTH.ToString()
+                    );
                 else
                     this.mokkiNimi = value.Trim();
             }
@@ -133,14 +138,17 @@ namespace HulluKyla.Models
                 if (null != this.katuosoite)
                     return this.katuosoite;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {
                 if (String.IsNullOrWhiteSpace(value))
                     this.katuosoite = null;
-                else if (value.Trim().Length > 45)
-                    throw new ArgumentException("Katuosoitteen maksimipituus on 45 merkkiä.");
+                else if (value.Trim().Length > KATUOSOITE_MAX_LENGTH)
+                    throw new ArgumentException(
+                        "Katuosoitteen maksimipituus on {0} merkkiä.",
+                        KATUOSOITE_MAX_LENGTH.ToString()
+                    );
                 else
                     this.katuosoite = value.Trim();
             }
@@ -158,9 +166,12 @@ namespace HulluKyla.Models
                         Double.MaxValue.ToString()
                     );
                 }
-                else if (value < 0)
+                else if (value < DOUBLE_MIN_ALLOWED)
                 {
-                    throw new ArgumentException("Hinta ei voi olla alle 0.");
+                    throw new ArgumentException(
+                        "Minimihinta on {0:f2}€.",
+                        DOUBLE_MIN_ALLOWED.ToString()
+                    );
                 }
                 else
                 {
@@ -176,7 +187,7 @@ namespace HulluKyla.Models
                 if (null != this.kuvaus)
                     return this.kuvaus;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {
@@ -184,11 +195,11 @@ namespace HulluKyla.Models
                 {
                     this.kuvaus = null;
                 }
-                else if (value.Trim().Length > KUVAUS_MAX)
+                else if (value.Trim().Length > KUVAUS_MAX_LENGTH)
                 {
                     throw new ArgumentException(
                         "Kuvauksen maksimipituus on {0} merkkiä.",
-                        KUVAUS_MAX.ToString()
+                        KUVAUS_MAX_LENGTH.ToString()
                     );
                 }
                 else
@@ -209,16 +220,19 @@ namespace HulluKyla.Models
             }
             set
             {
-                if (value >= LMAX)
+                if (value > long.MaxValue)
                 {
                     throw new ArgumentException(
-                        "Henkilömäärä ei voi olla yhtä suuri tai suurempi kuin {0}.",
-                        LMAX.ToString()
+                        "Henkilömäärän maksimiarvo on {0}.",
+                        long.MaxValue.ToString()
                     );
                 }
-                else if (value < 0)
+                else if (value < HENKILOMAARA_MIN_ALLOWED)
                 {
-                    throw new ArgumentException("Henkilömäärä ei voi olla alle 0.");
+                    throw new ArgumentException(
+                        "Henkilömäärä ei voi olla alle {0}.",
+                        HENKILOMAARA_MIN_ALLOWED.ToString()
+                    );
                 }
                 else
                 {
@@ -234,7 +248,7 @@ namespace HulluKyla.Models
                 if (null != this.varustelu)
                     return this.varustelu;
                 else
-                    return "";
+                    return STRING_NULL;
             }
             set
             {
@@ -242,11 +256,11 @@ namespace HulluKyla.Models
                 {
                     this.varustelu = null;
                 }
-                else if (value.Trim().Length > VARUSTELU_MAX)
+                else if (value.Trim().Length > VARUSTELU_MAX_LENGTH)
                 {
                     throw new ArgumentException(
                         "Varustelun maksimipituus on {0} merkkiä.",
-                        VARUSTELU_MAX.ToString()
+                        VARUSTELU_MAX_LENGTH.ToString()
                     );
                 }
                 else
