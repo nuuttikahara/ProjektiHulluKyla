@@ -19,7 +19,11 @@ namespace HulluKyla.Models
 
         // Constants and Static Properties
         // Default
-        private readonly Mokki MOKKI_DEFAULT = new Mokki(uint.MaxValue, "00720", double.MaxValue);
+        private readonly Mokki MOKKI_DEFAULT = new Mokki(
+            uint.MaxValue,
+            PostiUtil.POSTINRO_DEFAULT,
+            double.MaxValue
+        );
         private readonly DateTime VARATTU_PVM_DEFAULT = DateTime.MinValue;
         private readonly DateTime VAHVISTUS_PVM_DEFAULT = DateTime.MinValue;
         private readonly DateTime VARATTU_ALKU_PVM_DEFAULT = DateTime.MinValue;
