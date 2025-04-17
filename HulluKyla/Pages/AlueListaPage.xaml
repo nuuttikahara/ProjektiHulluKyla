@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HulluKyla.Pages.AlueListaPage"
+             Title="AlueListaPage">
+
+    <Grid Padding="20"
+          RowDefinitions="*,Auto"
+          ColumnDefinitions="*,*">
+
+        <!-- Placeholder alueiden listalle -->
+        <Frame Grid.Row="0" Grid.ColumnSpan="2"
+               BorderColor="LightGray"
+               BackgroundColor="#f9f9f9"
+               CornerRadius="10"
+               HeightRequest="200"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Padding="20">
+            <Label Text="Tähän tulee alueiden lista"
+                   FontSize="16"
+                   TextColor="Gray"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Frame>
+
+        <!-- Alakulman vasemman puolen napit -->
+        <StackLayout Grid.Row="1" Grid.Column="0"
+                     Orientation="Horizontal"
+                     Spacing="15"
+                     HorizontalOptions="Start"
+                     VerticalOptions="End"
+                     Margin="0,20,0,0">
+
+            <Button Text="Etusivu"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="Etusivu" />
+
+            <Button Text="Takaisin"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="HallintaPage" />
+        </StackLayout>
+
+        <!-- Alakulman oikean puolen napit -->
+        <StackLayout Grid.Row="1" Grid.Column="1"
+                     Orientation="Horizontal"
+                     Spacing="15"
+                     HorizontalOptions="End"
+                     VerticalOptions="End"
+                     Margin="0,20,0,0">
+
+            <Button Text="Muokkaa aluetta"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="MuokkaaAluettaPage" />
+
+            <Button Text="Uusi alue"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="UusiAluePage" />
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

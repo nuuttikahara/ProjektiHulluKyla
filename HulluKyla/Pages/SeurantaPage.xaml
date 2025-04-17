@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HulluKyla.Pages.SeurantaPage"
+             Title="SeurantaPage">
+
+    <Grid Padding="20"
+          RowDefinitions="*,Auto"
+          ColumnDefinitions="*,*">
+
+        <!-- Placeholder -->
+        <Frame Grid.Row="0" Grid.ColumnSpan="2"
+               BorderColor="Gray"
+               BackgroundColor="#f5f5f5"
+               Padding="20"
+               CornerRadius="12"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               HeightRequest="200"
+               WidthRequest="300">
+            <Label Text="Tähän tulee listaelementti tjsp."
+                   FontSize="16"
+                   TextColor="Gray"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Frame>
+
+        <!-- Etusivu nappi  -->
+        <Button Grid.Row="1" Grid.Column="0"
+                Text="Takaisin"
+                Clicked="Navigoi_Clicked"
+                CommandParameter="Etusivu"
+                HorizontalOptions="Start"
+                VerticalOptions="End"
+                Margin="0,20,0,0" />
+
+    </Grid>
+</ContentPage>

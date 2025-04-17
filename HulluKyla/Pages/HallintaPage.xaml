@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HulluKyla.Pages.HallintaPage"
+             Title="HallintaPage">
+
+    <Grid Padding="20"
+          RowDefinitions="*,Auto"
+          ColumnDefinitions="*,*">
+
+        <!-- Napit -->
+        <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2"
+                             Spacing="15"
+                             VerticalOptions="Center"
+                             HorizontalOptions="Center">
+
+            <Button Text="AsiakasLista"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="AsiakasListaPage"
+                    WidthRequest="200"/>
+
+            <Button Text="AlueLista"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="AlueListaPage"
+                    WidthRequest="200"/>
+
+            <Button Text="MokkiLista"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="MokkiListaPage"
+                    WidthRequest="200"/>
+
+            <Button Text="PalveluLista"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="PalveluListaPage"
+                    WidthRequest="200"/>
+
+        </VerticalStackLayout>
+
+        <!-- Etusivu nappi - Standardi vasenkulma? -->
+        <Button Grid.Row="1" Grid.Column="0"
+                Text="Etusivu"
+                Clicked="Navigoi_Clicked"
+                CommandParameter="Etusivu"
+                HorizontalOptions="Start"
+                VerticalOptions="End"
+                Margin="0,20,0,0" />
+
+    </Grid>
+</ContentPage>

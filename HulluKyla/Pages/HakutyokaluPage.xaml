@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HulluKyla.Pages.HakutyokaluPage"
+             Title="HakutyokaluPage">
+
+
+    <Grid Padding="20"
+          RowDefinitions="*,Auto"
+          ColumnDefinitions="*,*">
+
+        <!-- Placeholder keskelle -->
+        <Frame Grid.Row="0" Grid.ColumnSpan="2"
+               BorderColor="Gray"
+               BackgroundColor="#f0f0f0"
+               Padding="20"
+               CornerRadius="10"
+               HeightRequest="200"
+               WidthRequest="300"
+               HorizontalOptions="Center"
+               VerticalOptions="Center">
+            <Label Text="Tähän tulee hakutyökalu tjsp."
+                   FontSize="16"
+                   TextColor="Gray"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+        </Frame>
+
+        <!-- Napit -->
+        <StackLayout Grid.Row="1" Grid.Column="0"
+                     Orientation="Horizontal"
+                     Spacing="15"
+                     VerticalOptions="End"
+                     HorizontalOptions="Start"
+                     Margin="0,20,0,0">
+
+            <Button Text="Etusivu"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="Etusivu" />
+
+            <Button Text="Takaisin"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="RaportointiPage" />
+
+        </StackLayout>
+
+    </Grid>
+</ContentPage>
