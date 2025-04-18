@@ -147,7 +147,7 @@ namespace HulluKyla.Services
             while (reader.Read()) 
             {
                 laskut.Add(new Lasku(
-                    reader.GetInt32("lasku_id"),
+                    (uint)reader.GetInt32("lasku_id"),
                     (uint)reader.GetInt32("varaus_id"),
                     reader.GetDouble("summa"),
                     reader.GetDouble("alv"),

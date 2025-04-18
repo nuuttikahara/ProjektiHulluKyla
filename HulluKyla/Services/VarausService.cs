@@ -22,10 +22,19 @@ namespace HulluKyla.Services
 
             while (reader.Read()) 
             {
+                uint asiakasId = (uint)reader.GetInt32("asiakas_id");
+                uint mokkiId = (uint)reader.GetUInt32("mokki_id");
+
+                var asiakas = AsiakasService.HaeKaikki().Find(a  => a.AsiakasId == asiakasId)
+                     ?? throw new Exception($"Asiakasta ID:llä {asiakasId} ei löytynyt.");
+
+                var mokki = MokkiService.HaeKaikki().Find(m => m.MokkiId == mokkiId)
+                    ?? throw new Exception($"Mökkiä ID:llä {mokkiId} ei löytynyt.");
+
                 varaukset.Add(new Varaus(
                     (uint)reader.GetInt32("varaus_id"),
-                    (uint)reader.GetInt32("asiakas_id"),
-                    (uint)reader.GetInt32("mokki_id"),
+                    asiakas,
+                    mokki,
                     reader.GetDateTime("varattu_pvm"),
                     reader.GetDateTime("vahvistus_pvm"),
                     reader.GetDateTime("varattu_alkupvm"),
@@ -51,10 +60,18 @@ namespace HulluKyla.Services
             using var reader = cmd.ExecuteReader();
             while (reader.Read()) 
             {
+                uint mokkiId = (uint)reader.GetUInt32("mokki_id");
+
+                var asiakas = AsiakasService.HaeKaikki().Find(a => a.AsiakasId == id)
+                    ?? throw new Exception($"Asiakasta ID:llä {id} ei löytynyt.");
+
+                var mokki = MokkiService.HaeKaikki().Find(m => m.MokkiId == mokkiId)
+                    ?? throw new Exception($"Mökkiä ID:llä {mokkiId} ei löytynyt.");
+
                 varaukset.Add(new Varaus(
                     (uint)reader.GetInt32("varaus_id"),
-                    (uint)reader.GetInt32("asiakas_id"),
-                    (uint)reader.GetInt32("mokki_id"),
+                    asiakas,
+                    mokki,
                     reader.GetDateTime("varattu_pvm"),
                     reader.GetDateTime("vahvistus_pvm"),
                     reader.GetDateTime("varattu_alkupvm"),
@@ -85,10 +102,19 @@ namespace HulluKyla.Services
             using var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+                uint asiakasId = (uint)reader.GetInt32("asiakas_id");
+                uint mokkiId = (uint)reader.GetUInt32("mokki_id");
+
+                var asiakas = AsiakasService.HaeKaikki().Find(a => a.AsiakasId == asiakasId)
+                    ?? throw new Exception($"Asiakasta ID:llä {asiakasId} ei löytynyt.");
+
+                var mokki = MokkiService.HaeKaikki().Find(m => m.MokkiId == mokkiId)
+                    ?? throw new Exception($"Mökkiä ID:llä {mokkiId} ei löytynyt.");
+
                 varaukset.Add(new Varaus(
                     (uint)reader.GetInt32("varaus_id"),
-                    (uint)reader.GetInt32("asiakas_id"),
-                    (uint)reader.GetInt32("mokki_id"),
+                    asiakas,
+                    mokki,
                     reader.GetDateTime("varattu_pvm"),
                     reader.GetDateTime("vahvistus_pvm"),
                     reader.GetDateTime("varattu_alkupvm"),
@@ -123,10 +149,19 @@ namespace HulluKyla.Services
             using var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+                uint asiakasId = (uint)reader.GetInt32("asiakas_id");
+                uint mokkiId = (uint)reader.GetUInt32("mokki_id");
+
+                var asiakas = AsiakasService.HaeKaikki().Find(a => a.AsiakasId == asiakasId)
+                    ?? throw new Exception($"Asiakasta ID:llä {asiakasId} ei löytynyt.");
+
+                var mokki = MokkiService.HaeKaikki().Find(m => m.MokkiId == mokkiId)
+                    ?? throw new Exception($"Mökkiä ID:llä {mokkiId} ei löytynyt.");
+
                 varaukset.Add(new Varaus(
                     (uint)reader.GetInt32("varaus_id"),
-                    (uint)reader.GetInt32("asiakas_id"),
-                    (uint)reader.GetInt32("mokki_id"),
+                    asiakas,
+                    mokki,
                     reader.GetDateTime("varattu_pvm"),
                     reader.GetDateTime("vahvistus_pvm"),
                     reader.GetDateTime("varattu_alkupvm"),
@@ -147,12 +182,12 @@ namespace HulluKyla.Services
                 INSERT INTO varaus (asiakas_id, mokki_id, varattu_pvm, vahvistus_pvm, varattu_alkupvm, varattu_loppupvm)
                 VALUES (@asiakas_id, @mokki_id, @varattu_pvm, @vahvistus_pvm, @varattu_alkupvm, @varattu_loppupvm)", conn);
 
-            cmd.Parameters.AddWithValue("@asiakas_id", v.AsiakasId);
-            cmd.Parameters.AddWithValue("@mokki_id", v.MokkiId);
+            cmd.Parameters.AddWithValue("@asiakas_id", v.Asiakas.AsiakasId);
+            cmd.Parameters.AddWithValue("@mokki_id", v.Mokki.MokkiId);
             cmd.Parameters.AddWithValue("@varattu_pvm", v.VarattuPvm);
             cmd.Parameters.AddWithValue("@vahvistus_pvm", v.VahvistusPvm);
-            cmd.Parameters.AddWithValue("@varattu_alkupvm", v.VarattuAlkupvm);
-            cmd.Parameters.AddWithValue("@varattu_loppupvm", v.VarattuLoppupvm);
+            cmd.Parameters.AddWithValue("@varattu_alkupvm", v.VarattuAlkuPvm);
+            cmd.Parameters.AddWithValue("@varattu_loppupvm", v.VarattuLoppuPvm);
 
             cmd.ExecuteNonQuery();
         }
@@ -168,12 +203,12 @@ namespace HulluKyla.Services
                     vahvistus_pvm = @vahvistus_pvm, varattu_alkupvm = @varattu_alkupvm, varattu_loppupvm = @varattu_loppupvm
                 WHERE varaus_id = @id", conn);
 
-            cmd.Parameters.AddWithValue("@asiakas_id", v.AsiakasId);
-            cmd.Parameters.AddWithValue("@mokki_id", v.MokkiId);
+            cmd.Parameters.AddWithValue("@asiakas_id", v.Asiakas.AsiakasId);
+            cmd.Parameters.AddWithValue("@mokki_id", v.Mokki.MokkiId);
             cmd.Parameters.AddWithValue("@varattu_pvm", v.VarattuPvm);
             cmd.Parameters.AddWithValue("@vahvistus_pvm", v.VahvistusPvm);
-            cmd.Parameters.AddWithValue("@varattu_alkupvm", v.VarattuAlkupvm);
-            cmd.Parameters.AddWithValue("@varattu_loppupvm", v.VarattuLoppupvm);
+            cmd.Parameters.AddWithValue("@varattu_alkupvm", v.VarattuAlkuPvm);
+            cmd.Parameters.AddWithValue("@varattu_loppupvm", v.VarattuLoppuPvm);
             cmd.Parameters.AddWithValue("@id", v.VarausId);
 
             cmd.ExecuteNonQuery();

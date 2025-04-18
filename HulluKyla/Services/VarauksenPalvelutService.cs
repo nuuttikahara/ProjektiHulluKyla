@@ -79,8 +79,8 @@ namespace HulluKyla.Services
                 int lkm = reader.GetInt32("lkm");
                 tulokset.Add(new VarauksenPalvelu(
                     varausId,
-                    palvelu,
-                    lkm
+                    lkm,
+                    palvelu
                 ));
             }
 
