@@ -15,17 +15,12 @@
     <ShellContent Title="Hallinta" ContentTemplate="{DataTemplate pages:HallintaPage}" Route="HallintaPage" />
     <ShellContent Title="Asiakkaat" ContentTemplate="{DataTemplate pages:AsiakasListaPage}" Route="AsiakasListaPage" />
     <ShellContent Title="Uusi Asiakas" ContentTemplate="{DataTemplate pages:UusiAsiakasPage}" Route="UusiAsiakasPage" />
-    <ShellContent Title="Muokkaa Asiakasta" ContentTemplate="{DataTemplate pages:MuokkaaAsiakastaPage}" Route="MuokkaaAsiakastaPage" />
     <ShellContent Title="Alueet" ContentTemplate="{DataTemplate pages:AlueListaPage}" Route="AlueListaPage" />
     <ShellContent Title="Uusi Alue" ContentTemplate="{DataTemplate pages:UusiAluePage}" Route="UusiAluePage" />
-    <ShellContent Title="Muokkaa Aluetta" ContentTemplate="{DataTemplate pages:MuokkaaAluettaPage}" Route="MuokkaaAluettaPage" />
     <ShellContent Title="Uusi Mökki" ContentTemplate="{DataTemplate pages:UusiMokkiPage}" Route="UusiMokkiPage" />
-    <ShellContent Title="Muokkaa Mökkiä" ContentTemplate="{DataTemplate pages:MuokkaaMokkiaPage}" Route="MuokkaaMokkiaPage" />
     <ShellContent Title="Uusi Palvelu" ContentTemplate="{DataTemplate pages:UusiPalveluPage}" Route="UusiPalveluPage" />
-    <ShellContent Title="Muokkaa Palvelua" ContentTemplate="{DataTemplate pages:MuokkaaPalveluaPage}" Route="MuokkaaPalveluaPage" />
     <ShellContent Title="Varaukset" ContentTemplate="{DataTemplate pages:VarausListaPage}" Route="VarausListaPage" />
     <ShellContent Title="Uusi Varaus" ContentTemplate="{DataTemplate pages:UusiVarausPage}" Route="UusiVarausPage" />
-    <ShellContent Title="Muokkaa Varausta" ContentTemplate="{DataTemplate pages:MuokkaaVaraustaPage}" Route="MuokkaaVaraustaPage" />
     <ShellContent Title="Mökit" ContentTemplate="{DataTemplate pages:MokkiListaPage}" Route="MokkiListaPage" />
     <ShellContent Title="Palvelut" ContentTemplate="{DataTemplate pages:PalveluListaPage}" Route="PalveluListaPage" />
 

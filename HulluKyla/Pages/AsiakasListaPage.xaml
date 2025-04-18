@@ -51,9 +51,6 @@
                      VerticalOptions="End"
                      Margin="0,20,0,0">
 
-            <Button Text="Muokkaa asiakasta"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="MuokkaaAsiakastaPage" />
 
             <Button Text="Uusi asiakas"
                     Clicked="Navigoi_Clicked"

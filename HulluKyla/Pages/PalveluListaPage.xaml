@@ -62,9 +62,7 @@
                      HorizontalOptions="End"
                      VerticalOptions="End"
                      Margin="0,20,0,0">
-            <Button Text="Muokkaa palvelua"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="MuokkaaPalveluaPage" />
+
             <Button Text="Uusi palvelu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="UusiPalveluPage" />

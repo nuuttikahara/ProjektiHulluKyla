@@ -62,9 +62,7 @@
                      HorizontalOptions="End"
                      VerticalOptions="End"
                      Margin="0,20,0,0">
-            <Button Text="Muokkaa mökkiä"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="MuokkaaMokkiaPage" />
+
             <Button Text="Uusi mökki"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="UusiMokkiPage" />

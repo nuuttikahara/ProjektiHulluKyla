@@ -49,10 +49,6 @@
                      VerticalOptions="End"
                      Margin="0,20,0,0">
 
-            <Button Text="Muokkaa aluetta"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="MuokkaaAluettaPage" />
-
             <Button Text="Uusi alue"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="UusiAluePage" />
