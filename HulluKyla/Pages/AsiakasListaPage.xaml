@@ -5,58 +5,67 @@
              Title="AsiakasListaPage">
 
     <Grid Padding="20"
-          RowDefinitions="*,Auto"
+          RowDefinitions="Auto,*,Auto"
           ColumnDefinitions="*,*">
 
-        <!-- Placeholder Asiakas listalle -->
-        <Frame Grid.Row="0" Grid.ColumnSpan="2"
-       BorderColor="LightGray"
-       BackgroundColor="#f9f9f9"
-       CornerRadius="10"
-       HeightRequest="200"
-       HorizontalOptions="Center"
-       VerticalOptions="Center"
-       Padding="20">
-            <Label Text="Tähän tulee Asiakas lista"
-           FontSize="16"
-           TextColor="Gray"
-           HorizontalOptions="Center"
-           VerticalOptions="Center"/>
-        </Frame>
+        <!-- Asiakaslista -->
+        <CollectionView x:Name="AsiakasLista"
+                        Grid.Row="1" Grid.Column="0"
+                        SelectionMode="Single"
+                        SelectionChanged="AsiakasSelected"
+                        BackgroundColor="#f9f9f9">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="{Binding Etunimi}" FontAttributes="Bold" FontSize="14" TextColor="Black" />
+                        <Label Text="{Binding Sukunimi}" FontSize="14" TextColor="Black" />
+                        <Label Text="{Binding Email}" FontSize="12" TextColor="Black" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
+        <!-- Asiakastietojen muokkaus -->
+        <VerticalStackLayout Grid.Row="1" Grid.Column="1"
+                             Spacing="10"
+                             Padding="10">
+            <Entry x:Name="EtunimiEntry" Placeholder="Etunimi..." />
+            <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi..." />
+            <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." />
+            <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." />
+            <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." />
+            <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." />
+            <Button Text="Tallenna asiakas" Clicked="TallennaClicked" HeightRequest="50" />
+            <Button Text="Poista asiakas" Clicked="PoistaClicked" HeightRequest="50" />
+        </VerticalStackLayout>
 
-        <!-- Vasemman reunan napit -->
-        <StackLayout Grid.Row="1" Grid.Column="0"
+        <!-- Vasemman alakulman napit -->
+        <StackLayout Grid.Row="2" Grid.Column="0"
                      Orientation="Horizontal"
                      Spacing="15"
                      HorizontalOptions="Start"
                      VerticalOptions="End"
                      Margin="0,20,0,0">
-
             <Button Text="Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
-
             <Button Text="Takaisin"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="HallintaPage" />
-
         </StackLayout>
 
-        <!-- Oikean reunan napit -->
-        <StackLayout Grid.Row="1" Grid.Column="1"
+        <!-- Oikean alakulman nappi -->
+        <StackLayout Grid.Row="2" Grid.Column="1"
                      Orientation="Horizontal"
                      Spacing="15"
                      HorizontalOptions="End"
                      VerticalOptions="End"
                      Margin="0,20,0,0">
-
-
             <Button Text="Uusi asiakas"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="UusiAsiakasPage" />
-
         </StackLayout>
 
     </Grid>
 </ContentPage>
+

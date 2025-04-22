@@ -8,22 +8,19 @@
           RowDefinitions="*,Auto"
           ColumnDefinitions="*,*">
 
-        <!-- Placeholder keskelle -->
-        <Frame Grid.Row="0" Grid.ColumnSpan="2"
-               BorderColor="Gray"
-               BackgroundColor="#f0f0f0"
-               Padding="20"
-               CornerRadius="10"
-               HeightRequest="300"
-               WidthRequest="320"
-               HorizontalOptions="Center"
-               VerticalOptions="Center">
-            <Label Text="Tähän tulee Asiakasclassin entryt"
-                   FontSize="16"
-                   TextColor="Gray"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
-        </Frame>
+        <!-- Asiakasentryt -->
+        <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2"
+                             Spacing="10"
+                             Padding="20"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center">
+            <Entry x:Name="EtunimiEntry" Placeholder="Etunimi..." />
+            <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi..." />
+            <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." />
+            <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." />
+            <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." />
+            <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." />
+        </VerticalStackLayout>
 
         <!-- Vasemman reunan napit -->
         <StackLayout Grid.Row="1" Grid.Column="0"
@@ -32,7 +29,6 @@
                      HorizontalOptions="Start"
                      VerticalOptions="End"
                      Margin="0,20,0,0">
-
             <Button Text="Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
@@ -40,7 +36,6 @@
             <Button Text="Takaisin Asiakaslistaan"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="AsiakasListaPage" />
-
         </StackLayout>
 
         <!-- Oikean reunan tallenna-nappi -->
