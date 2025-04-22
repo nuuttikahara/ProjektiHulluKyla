@@ -63,11 +63,26 @@ namespace HulluKyla.Models
             this.Kuvaus = kuvaus;
         }
 
+        // Ilman palvelu_id:tä
+        public Palvelu(
+            uint alueId,
+            double hinta,
+            double alv,
+            string nimi,
+            string kuvaus
+        )
+            : this(hinta, alv) 
+        {
+            this.AlueId = alueId;
+            this.Nimi = nimi;
+            this.Kuvaus = kuvaus;
+        }
+
         // Getters and Setters
         public uint PalveluId
         {
             get => this.palveluId;
-            set { this.palveluId = value; }
+            private set => this.palveluId = value;
         }
 
         public uint AlueId

@@ -73,7 +73,7 @@ namespace HulluKyla.Services
         {
             var (summa, alv) = LaskeSummaJaAlv(varausId);
 
-            var lasku = new Lasku(0, varausId, summa, alv);
+            var lasku = new Lasku(varausId, summa, alv);
 
             using var conn = SqlService.GetConnection();
             conn.Open();

@@ -6,7 +6,7 @@ namespace HulluKyla.Pages;
 
 public partial class PalveluListaPage : ContentPage {
 
-    private Palvelu valittuPalvelu;
+    private Palvelu? valittuPalvelu;
 
     public PalveluListaPage() {
         InitializeComponent();
@@ -34,13 +34,13 @@ public partial class PalveluListaPage : ContentPage {
     }
 
     // CollectionView-listan päivitys
-    public void PaivitaLista() {
+    private void PaivitaLista() {
         AluePicker.SelectedItem = null;
         PalveluLista.ItemsSource = PalveluService.HaeKaikki();
     }
 
     // Entry-kenttien tyhjennys
-    public void TyhjennaKentat() {
+    private void TyhjennaKentat() {
         NimiEntry.Text = string.Empty;
         KuvausEntry.Text = string.Empty;
         HintaEntry.Text = string.Empty;

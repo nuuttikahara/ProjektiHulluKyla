@@ -26,15 +26,17 @@ namespace HulluKyla.Models
         // Constructors
         // Tietokannasta otetuille laskuille.
         public Lasku(uint laskuId, uint varausId, double summa, double alv, bool maksettu)
-            : this(laskuId, varausId, summa, alv)
         {
+            this.LaskuId = laskuId;
+            this.VarausId = varausId;
+            this.Summa = summa;
+            this.Alv = alv;
             this.Maksettu = maksettu;
         }
 
         // Uusille laskuille.
-        public Lasku(uint laskuId, uint varausId, double summa, double alv)
+        public Lasku(uint varausId, double summa, double alv)
         {
-            this.LaskuId = laskuId;
             this.VarausId = varausId;
             this.Summa = summa;
             this.Alv = alv;
@@ -45,7 +47,7 @@ namespace HulluKyla.Models
         public uint LaskuId
         {
             get => this.laskuId;
-            private set { this.laskuId = value; }
+            private set => this.laskuId = value;
         }
 
         public uint VarausId

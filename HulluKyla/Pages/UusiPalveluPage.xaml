@@ -5,26 +5,24 @@
              Title="UusiPalveluPage">
 
     <Grid Padding="20"
-          RowDefinitions="*,Auto"
-          ColumnDefinitions="*,*">
+          RowDefinitions="0.8*,0.2*"
+          ColumnDefinitions="0.3*,0.4*,0.3*">
 
-        <!-- Placeholder keskelle -->
-        <Frame Grid.Row="0" Grid.ColumnSpan="2"
-               BorderColor="Gray"
-               BackgroundColor="#f0f0f0"
-               Padding="20"
-               CornerRadius="10"
-               HeightRequest="300"
-               WidthRequest="320"
-               HorizontalOptions="Center"
-               VerticalOptions="Center">
-            <Label Text="Tähän tulee PalveluClassin entryt"
-                   FontSize="16"
-                   TextColor="Gray"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
-        </Frame>
-
+        <!-- Uuden palvelun entryt -->
+        <StackLayout Grid.Row="0"
+                     Grid.Column="1"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Center" 
+                     Spacing="10" >
+            <Picker x:Name="AluePicker" 
+                    Title="Valitse palvelun alue" 
+                    ItemDisplayBinding="{Binding Nimi}" />
+            <Entry x:Name="NimiEntry" Placeholder="Palvelun nimi..." />
+            <Entry x:Name="KuvausEntry" Placeholder="Palvelun kuvaus..." HeightRequest="100" />
+            <Entry x:Name="HintaEntry" Placeholder="Palvelun hinta..." />
+            <Entry x:Name="AlvEntry" Placeholder="Palvelun arvolisävero..." />
+        </StackLayout>
+        
         <!-- Vasemman reunan napit -->
         <StackLayout Grid.Row="1" Grid.Column="0"
                      Orientation="Horizontal"
@@ -44,10 +42,10 @@
 
         </StackLayout>
 
-        <!-- Tallenna-nappi oikeaan alakulmaan -->
-        <Button Grid.Row="1" Grid.Column="1"
-                Text="Tallenna"
-                Clicked="Tallenna_Clicked"
+        <!-- Lisää-nappi oikeaan alakulmaan -->
+        <Button Grid.Row="1" Grid.Column="2"
+                Text="Lisää"
+                Clicked="LisaaClicked"
                 HorizontalOptions="End"
                 VerticalOptions="End"
                 Margin="0,20,0,0" />

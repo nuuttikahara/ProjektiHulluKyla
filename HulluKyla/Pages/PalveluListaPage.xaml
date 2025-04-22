@@ -22,7 +22,7 @@
                             SelectionMode="Single" 
                             SelectionChanged="PalveluSelected"
                             VerticalOptions="Center"
-                            HorizontalOptions="FillAndExpand" >
+                            HorizontalOptions="Fill" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout Spacing="2">
@@ -45,7 +45,7 @@
             <Button Text="Poista palvelu" Clicked="PoistaClicked" HeightRequest="50" />
         </VerticalStackLayout>
 
-        <VerticalStackLayout Spacing="10" Grid.Column="2" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+        <VerticalStackLayout Spacing="10" Grid.Column="2" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Fill">
             <Entry x:Name="NimiEntry" Placeholder="Palvelun nimi..." />
             <Entry x:Name="KuvausEntry" Placeholder="Palvelun kuvaus..." HeightRequest="100" />
             <Entry x:Name="HintaEntry" Placeholder="Palvelun hinta..." />
