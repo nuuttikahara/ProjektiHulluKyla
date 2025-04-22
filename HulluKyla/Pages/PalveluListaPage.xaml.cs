@@ -75,54 +75,56 @@ public partial class PalveluListaPage : ContentPage {
     // TallennaClicked -metodi
     private async void TallennaClicked(object sender, EventArgs e) {
 
-        if (valittuPalvelu != null) {
-            valittuPalvelu.Nimi = NimiEntry.Text;
-            valittuPalvelu.Kuvaus = KuvausEntry.Text;
+        if (valittuPalvelu == null) {
+            await DisplayAlert("Virhe", "Valitse ensin palvelu", "OK");
+            return;
+        }
+        valittuPalvelu.Nimi = NimiEntry.Text;
+        valittuPalvelu.Kuvaus = KuvausEntry.Text;
 
-            if (double.TryParse(HintaEntry.Text, out double hinta)) {
-                valittuPalvelu.Hinta = hinta;
-            }
-            else {
-                await DisplayAlert("Virhe", "Virheellinen hinta-arvo", "OK");
-                return;
-            }
-
-            if (double.TryParse(AlvEntry.Text, out double alv)) {
-                valittuPalvelu.Alv = alv;
-            }
-            else {
-                await DisplayAlert("Virhe", "Virheellinen ALV-arvo", "OK");
-                return;
-            }
-
-            try {
-                PalveluService.Paivita(valittuPalvelu);
-                await DisplayAlert("Tallenus", "Tiedot tallennettu onnistuneesti", "OK");
-                PaivitaLista();
-                
-            } 
-            catch (Exception ex) {
-                await DisplayAlert("Virhe", $"Tallennuksessa tapahtui virhe: {ex.Message}", "OK");
-            }
+        if (double.TryParse(HintaEntry.Text, out double hinta)) {
+            valittuPalvelu.Hinta = hinta;
+        }
+        else {
+            await DisplayAlert("Virhe", "Virheellinen hinta-arvo", "OK");
+            return;
+        }
+        if (double.TryParse(AlvEntry.Text, out double alv)) {
+            valittuPalvelu.Alv = alv;
+        }
+        else {
+            await DisplayAlert("Virhe", "Virheellinen ALV-arvo", "OK");
+            return;
+        }
+        
+        try {
+            PalveluService.Paivita(valittuPalvelu);
+            await DisplayAlert("Tallenus", "Tiedot tallennettu onnistuneesti", "OK");
+            PaivitaLista();
+        } 
+        catch (Exception ex) {
+            await DisplayAlert("Virhe", $"Tallennuksessa tapahtui virhe: {ex.Message}", "OK");
         }
     }
 
 
     // PoistaClicked -metodi
     private async void PoistaClicked(object sender, EventArgs e) {
-        if (valittuPalvelu != null) {
-
-            try {
-                PalveluService.Poista(valittuPalvelu.PalveluId);
-                await DisplayAlert("Poista", "Palvelu poistettu onnistuneesti", "OK");
-                PaivitaLista();
-                TyhjennaKentat();
-
-            }
-            catch (Exception ex) {
-                await DisplayAlert("Virhe", $"Poistaessa tapahtui virhe: {ex.Message}", "OK");
-            }
+        if (valittuPalvelu == null) {
+            await DisplayAlert("Virhe", "Valitse ensin palvelu", "OK");
+            return;
         }
+
+        try {
+            PalveluService.Poista(valittuPalvelu.PalveluId);
+            await DisplayAlert("Poista", "Palvelu poistettu onnistuneesti", "OK");
+            PaivitaLista();
+            TyhjennaKentat();
+        }
+        catch (Exception ex) {
+            await DisplayAlert("Virhe", $"Poistaessa tapahtui virhe: {ex.Message}", "OK");
+        }
+        
     }
 
 
