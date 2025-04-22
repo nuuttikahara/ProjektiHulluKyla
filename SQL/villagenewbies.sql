@@ -144,7 +144,7 @@ COLLATE = utf8mb4_bin;
 DROP TABLE IF EXISTS `vn`.`lasku` ;
 
 CREATE TABLE IF NOT EXISTS `vn`.`lasku` (
-  `lasku_id` INT UNSIGNED NOT NULL,
+  `lasku_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `varaus_id` INT UNSIGNED NOT NULL,
   `summa` DOUBLE(8,2) NOT NULL,
   `alv` DOUBLE(8,2) NOT NULL,
@@ -165,7 +165,7 @@ COLLATE = utf8mb4_bin;
 DROP TABLE IF EXISTS `vn`.`palvelu` ;
 
 CREATE TABLE IF NOT EXISTS `vn`.`palvelu` (
-  `palvelu_id` INT UNSIGNED NOT NULL,
+  `palvelu_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `alue_id` INT UNSIGNED NOT NULL,
   `nimi` VARCHAR(40) NULL DEFAULT NULL,
   `kuvaus` VARCHAR(255) NULL DEFAULT NULL,
