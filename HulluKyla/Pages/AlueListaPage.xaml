@@ -5,24 +5,40 @@
              Title="AlueListaPage">
 
     <Grid Padding="20"
-          RowDefinitions="*,Auto"
-          ColumnDefinitions="*,*">
+          RowDefinitions="0.8*,0.2*"
+          ColumnDefinitions="0.4*,0.2*,0.4*">
 
-        <!-- Placeholder alueiden listalle -->
-        <Frame Grid.Row="0" Grid.ColumnSpan="2"
-               BorderColor="LightGray"
-               BackgroundColor="#f9f9f9"
-               CornerRadius="10"
-               HeightRequest="200"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
-               Padding="20">
-            <Label Text="Tähän tulee alueiden lista"
-                   FontSize="16"
-                   TextColor="Gray"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
-        </Frame>
+        <!-- Aluelista -->
+        <Grid Grid.Row="0" Grid.Column="0" >
+
+            <CollectionView x:Name="AlueLista"
+                    Grid.Row="1"
+                    SelectionMode="Single" 
+                    SelectionChanged="AlueSelected"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Fill" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="{Binding Nimi}" FontSize="14" FontAttributes="Bold" HeightRequest="50" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <!-- Välibuttonit -->
+        
+        <VerticalStackLayout Spacing="10" Grid.Column="1" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
+            <Button Text="Tallenna alue" Clicked="TallennaClicked" HeightRequest="50" />
+            <Button Text="Poista alue" Clicked="PoistaClicked" HeightRequest="50" />
+        </VerticalStackLayout>
+
+        <!-- Entryt -->
+
+        <VerticalStackLayout Spacing="10" Grid.Column="2" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Fill">
+            <Entry x:Name="NimiEntry" Placeholder="Palvelun nimi..." />
+        </VerticalStackLayout>
 
         <!-- Alakulman vasemman puolen napit -->
         <StackLayout Grid.Row="1" Grid.Column="0"
@@ -42,7 +58,7 @@
         </StackLayout>
 
         <!-- Alakulman oikean puolen napit -->
-        <StackLayout Grid.Row="1" Grid.Column="1"
+        <StackLayout Grid.Row="1" Grid.Column="2"
                      Orientation="Horizontal"
                      Spacing="15"
                      HorizontalOptions="End"

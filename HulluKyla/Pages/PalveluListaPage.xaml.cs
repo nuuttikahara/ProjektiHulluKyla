@@ -72,7 +72,7 @@ public partial class PalveluListaPage : ContentPage {
         }
     }
 
-    // TallennaClicked -metodi
+    // Tallennus-metodi
     private async void TallennaClicked(object sender, EventArgs e) {
 
         if (valittuPalvelu == null) {
@@ -103,12 +103,12 @@ public partial class PalveluListaPage : ContentPage {
             PaivitaLista();
         } 
         catch (Exception ex) {
-            await DisplayAlert("Virhe", $"Tallennuksessa tapahtui virhe: {ex.Message}", "OK");
+            await DisplayAlert("Virhe", $"Palvelun tallennuksessa tapahtui virhe: {ex.Message}", "OK");
         }
     }
 
 
-    // PoistaClicked -metodi
+    // Poistamis-metodi
     private async void PoistaClicked(object sender, EventArgs e) {
         if (valittuPalvelu == null) {
             await DisplayAlert("Virhe", "Valitse ensin palvelu", "OK");
@@ -117,12 +117,12 @@ public partial class PalveluListaPage : ContentPage {
 
         try {
             PalveluService.Poista(valittuPalvelu.PalveluId);
-            await DisplayAlert("Poista", "Palvelu poistettu onnistuneesti", "OK");
+            await DisplayAlert("Poista", "Palvelun poisto onnistui", "OK");
             PaivitaLista();
             TyhjennaKentat();
         }
         catch (Exception ex) {
-            await DisplayAlert("Virhe", $"Poistaessa tapahtui virhe: {ex.Message}", "OK");
+            await DisplayAlert("Virhe", $"Palvelua poistaessa tapahtui virhe: {ex.Message}", "OK");
         }
         
     }

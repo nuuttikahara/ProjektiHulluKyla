@@ -60,7 +60,7 @@ public partial class UusiPalveluPage : ContentPage {
 
         }
         catch (Exception ex) {
-            await DisplayAlert("Virhe", $"Palvelun lis‰‰misess‰ tapahtui virhe: {ex.Message}", "OK");
+            await DisplayAlert("Virhe", $"Palvelua lis‰tt‰ess‰ tapahtui virhe: {ex.Message}", "OK");
         }
         
     }
