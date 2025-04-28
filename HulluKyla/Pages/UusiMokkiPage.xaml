@@ -5,28 +5,37 @@
              Title="UusiMokkiPage">
 
     <Grid Padding="20"
-          RowDefinitions="*,Auto"
-          ColumnDefinitions="*,*">
+          RowDefinitions="0.2*,0.8*,0.2*"
+          ColumnDefinitions="0.3*,0.4*,0.3*">
 
-        <!-- Placeholder keskelle -->
-        <Frame Grid.Row="0" Grid.ColumnSpan="2"
-               BorderColor="Gray"
-               BackgroundColor="#f0f0f0"
-               Padding="20"
-               CornerRadius="10"
-               HeightRequest="300"
-               WidthRequest="320"
-               HorizontalOptions="Center"
-               VerticalOptions="Center">
-            <Label Text="Tähän tulee MökkiClassin entryt"
-                   FontSize="16"
-                   TextColor="Gray"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
-        </Frame>
+        <!-- Alueen valinta -->
+        <Picker Grid.Column="1"
+                x:Name="AluePicker" 
+                Title="Valitse alue" 
+                SelectedIndexChanged="AluePickerSelected" 
+                ItemDisplayBinding="{Binding Nimi}"
+                HeightRequest="70"/>
+
+
+        <!-- Uuden mökin entryt -->
+        <StackLayout Grid.Row="1"
+                     Grid.Column="1"
+                     HorizontalOptions="Fill"
+                     VerticalOptions="Center" 
+                     Spacing="10" >
+
+                    <Entry x:Name="NimiEntry" Placeholder="Mökin nimi..." />
+                    <Entry x:Name="OsoiteEntry" Placeholder="Katuosoite..." />
+                    <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." />
+                    <Entry x:Name="HintaEntry" Placeholder="Hinta..." />
+                    <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." />
+                    <Entry x:Name="HloMaaraEntry" Placeholder="Henkilömäärä..." />
+                    <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." />
+
+        </StackLayout>
 
         <!-- Vasemman reunan napit -->
-        <StackLayout Grid.Row="1" Grid.Column="0"
+        <StackLayout Grid.Row="2" Grid.Column="0"
                      Orientation="Horizontal"
                      Spacing="15"
                      HorizontalOptions="Start"
@@ -40,14 +49,12 @@
             <Button Text="Takaisin mökkeihin"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="MokkiListaPage" />
-
-
         </StackLayout>
 
-        <!-- Tallenna-nappi oikeaan alakulmaan -->
-        <Button Grid.Row="1" Grid.Column="1"
-                Text="Tallenna"
-                Clicked="Tallenna_Clicked"
+        <!-- Oikean reunan tallenna-nappi -->
+        <Button Grid.Row="2" Grid.Column="2"
+                Text="Lisää"
+                Clicked="LisaaClicked"
                 HorizontalOptions="End"
                 VerticalOptions="End"
                 Margin="0,20,0,0" />
