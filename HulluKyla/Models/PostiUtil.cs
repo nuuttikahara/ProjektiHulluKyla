@@ -29,8 +29,7 @@ namespace HulluKyla.Models
                     return parsed.TrimStart();
                 else
                     throw new ArgumentException(
-                        "Postinumeron täytyy olla {0} merkkiä pitkä.",
-                        POSTINRO_LENGTH.ToString()
+                        $"Postinumeron täytyy olla {POSTINRO_LENGTH.ToString()} merkkiä pitkä."
                     );
             }
             else
