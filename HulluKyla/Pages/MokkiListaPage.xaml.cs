@@ -19,8 +19,8 @@ public partial class MokkiListaPage : ContentPage {
     protected override void OnAppearing() {
         base.OnAppearing();
         TyhjennaKentat();
-        LataaAlueet();
         PaivitaLista();
+        LataaAlueet();
     }
 
     // Navigointi
@@ -112,7 +112,6 @@ public partial class MokkiListaPage : ContentPage {
         catch (Exception ex) {
             await DisplayAlert("Virhe", "Mökin tallennuksessa tapahtui virhe" + ex.Message, "OK");
         }
-
     }
 
     // Mökin poistaminen

@@ -16,14 +16,13 @@
                 ItemDisplayBinding="{Binding Nimi}"
                 HeightRequest="70"/>
 
-
         <!-- Uuden mökin entryt -->
         <StackLayout Grid.Row="1"
                      Grid.Column="1"
                      HorizontalOptions="Fill"
                      VerticalOptions="Center" 
                      Spacing="10" >
-
+                    
                     <Entry x:Name="NimiEntry" Placeholder="Mökin nimi..." />
                     <Entry x:Name="OsoiteEntry" Placeholder="Katuosoite..." />
                     <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." />
@@ -31,7 +30,7 @@
                     <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." />
                     <Entry x:Name="HloMaaraEntry" Placeholder="Henkilömäärä..." />
                     <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." />
-
+            
         </StackLayout>
 
         <!-- Vasemman reunan napit -->
