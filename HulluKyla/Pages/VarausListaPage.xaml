@@ -4,58 +4,187 @@
              x:Class="HulluKyla.Pages.VarausListaPage"
              Title="VarausListaPage">
 
-    <Grid Padding="20"
-          RowDefinitions="Auto,*,Auto"
-          ColumnDefinitions="*,*,*">
+    <ScrollView>
+        <Grid RowDefinitions="Auto, *, Auto"
+          ColumnDefinitions="*, Auto"
+          Padding="10">
 
-        <!-- Alue Picker Placeholder -->
-        <Frame Grid.Row="0" Grid.ColumnSpan="3"
-               BorderColor="Gray"
-               BackgroundColor="#e0e0e0"
+        <!-- Asiakasvalinta-alue -->
+        <Frame BorderColor="Gray"
                CornerRadius="10"
-               Padding="15"
-               Margin="0,0,0,20"
-               HorizontalOptions="Center">
-            <Label Text="Alue picker - Valitse alue varauslistan suodattamiseen"
-                   FontSize="16"
-                   TextColor="Gray"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
+               Padding="10"
+               Grid.ColumnSpan="2">
+
+            <VerticalStackLayout Spacing="10">
+                <SearchBar x:Name="AsiakasSearchBar"
+                           Placeholder="Etsi asiakasta..."
+                           SearchButtonPressed="AsiakasSearchPressed"
+                           WidthRequest="300"
+                           HorizontalOptions="Center"
+                           TextColor="White"
+                           PlaceholderColor="Gray" />
+
+                <CollectionView x:Name="AsiakasListaView"
+                                SelectionChanged="AsiakasSelected"
+                                HeightRequest="200"
+                                SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Padding="10"
+                                   Margin="0,5"
+                                   BackgroundColor="Gray"
+                                   CornerRadius="10">
+                                <Label Text="{Binding KokoNimi}"
+                                       TextColor="White" />
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
         </Frame>
 
-        <!-- Varauslistan placeholder -->
-        <Frame Grid.Row="1" Grid.ColumnSpan="3"
-               BorderColor="LightGray"
-               BackgroundColor="#f9f9f9"
-               CornerRadius="10"
-               HeightRequest="200"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
-               Padding="20">
-            <Label Text="Tähän tulee varausten lista valitun AlueID:n mukaan"
-                   FontSize="16"
-                   TextColor="Gray"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
-        </Frame>
+        <!-- Keskialue -->
+        <Grid Grid.Row="1"
+              Grid.Column="0"
+              Grid.ColumnSpan="2"
+              ColumnDefinitions="*,*,*"
+              RowDefinitions="*, Auto"
+              VerticalOptions="FillAndExpand">
 
-        <!-- Napit -->
-        <Button Grid.Row="2" Grid.Column="0"
-                Text="Takaisin"
-                Clicked="Navigoi_Clicked"
-                CommandParameter="Etusivu"
-                HorizontalOptions="Start"
-                VerticalOptions="End"
-                Margin="0,20,0,0" />
+            <!-- Vasen sarake: Varaukset -->
+            <Frame Grid.Row="0"
+                   Grid.Column="0"
+                   Margin="5"
+                   CornerRadius="10"
+                   BorderColor="Gray"
+                   
+                   Padding="10">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Varaukset"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="White" 
+                           TextDecorations="Underline" />
+                        <CollectionView x:Name="AsiakkaanVaraukset"
+                                SelectionChanged="VarausSelected"
+                                HeightRequest="200"
+                                SelectionMode="Single">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Padding="10"
+                                        Margin="0,5"
+                                        BackgroundColor="Gray"
+                                        CornerRadius="10">
+                                        <Label Text="{Binding VarausId}"
+                                            TextColor="White" />
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView> 
+                </VerticalStackLayout>
+            </Frame>
 
+            <!-- Keskisarake: Varauksen palvelut -->
+            <Frame Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="5"
+                   CornerRadius="10"
+                   BorderColor="Gray"
+                   
+                   Padding="10">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Varauksen palvelut"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="White" 
+                           TextDecorations="Underline" />
+                        <CollectionView x:Name="VarauksenPalvelut"
+                            SelectionChanged="VarauksenPalveluSelected"
+                            HeightRequest="200"
+                            SelectionMode="Single">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Padding="10"
+                                            Margin="0,5"
+                                            BackgroundColor="Gray"
+                                            CornerRadius="10">
+                                        <VerticalStackLayout>
+                                            <Label Text="{Binding VarausId}"
+                                            TextColor="White" />
+                                            <Label Text="{Binding Lkm}"
+                                            TextColor="White" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+            </Frame>
 
-        <Button Grid.Row="2" Grid.Column="2"
-                Text="Uusi varaus"
-                Clicked="Navigoi_Clicked"
-                CommandParameter="UusiVarausPage"
-                HorizontalOptions="End"
-                VerticalOptions="End"
-                Margin="0,20,0,0" />
+            <!-- Oikea sarake: Kaikki palvelut -->
+            <Frame Grid.Row="0"
+                   Grid.Column="2"
+                   Margin="5"
+                   CornerRadius="10"
+                   BorderColor="Gray"
+                   
+                   Padding="10">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Kaikki palvelut"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="White"
+                           TextDecorations="Underline" />
+                    <CollectionView HeightRequest="200" />
+                </VerticalStackLayout>
+            </Frame>
 
-    </Grid>
+            <!-- Napit -->
+            <StackLayout Grid.Row="1"
+                         Grid.Column="0"
+                         Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Button Text="Muokkaa" Margin="5" />
+                <Button Text="Poista" Margin="5" />
+            </StackLayout>
+
+            <Button Grid.Row="1"
+                    Grid.Column="1"
+                    Text="Poista"
+                    HorizontalOptions="Center"
+                    Margin="5" />
+
+            <Button Grid.Row="1"
+                    Grid.Column="2"
+                    Text="Lisää"
+                    HorizontalOptions="Center"
+                    Margin="5" />
+        </Grid>
+
+        <!-- Alapainikkeet -->
+        <StackLayout Grid.Row="2"
+                     Grid.Column="0"
+                     Orientation="Horizontal"
+                     HorizontalOptions="Start"
+                     VerticalOptions="End"
+                     Margin="10,0,0,5">
+            <Button Text="Etusivu"
+                    Margin="5"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="Etusivu" />
+        </StackLayout>
+
+        <StackLayout Grid.Row="2"
+                     Grid.Column="1"
+                     Orientation="Horizontal"
+                     HorizontalOptions="End"
+                     VerticalOptions="End"
+                     Margin="0,0,10,5">
+            <Button Text="Uusi varaus"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="UusiVarausPage" />
+        </StackLayout>
+        </Grid>
+    </ScrollView>
+
 </ContentPage>
