@@ -2,66 +2,88 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HulluKyla.Pages.SeurantaPage">
 
-    <Grid RowDefinitions="Auto,Auto,Auto,Auto,*">
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="15">
 
-        <!-- Asiakasvalinta -->
-        <Picker x:Name="AsiakasPicker"
-                Grid.Row="0"
-                Title="Valitse asiakas"
-                ItemDisplayBinding="{Binding KokoNimi}"
-                SelectedIndexChanged="AsiakasPicker_SelectedIndexChanged"
-                TextColor="White"/>
+            <!-- Asiakasvalinta-alue -->
+            <Frame BorderColor="Gray" CornerRadius="10" Padding="10">
+                <VerticalStackLayout Spacing="10">
+                    <SearchBar x:Name="AsiakasSearchBar"
+                           Placeholder="Etsi asiakasta..."
+                           TextChanged="AsiakasSearchBar_TextChanged"
+                           HorizontalOptions="Center"
+                           WidthRequest="300"
+                           TextColor="White"
+                           PlaceholderColor="Gray"/>
+                    <CollectionView x:Name="AsiakasListaView"
+                                HeightRequest="200"
+                                SelectionMode="Single"
+                                SelectionChanged="AsiakasListaView_SelectionChanged">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="10" Margin="0,5" BackgroundColor="Gray" CornerRadius="10">
+                                    <Label Text="{Binding KokoNimi}" TextColor="White"/>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
 
-        <!-- Maksamattomat toggle + teksti -->
-        <StackLayout Grid.Row="1"
-                     Orientation="Horizontal"
-                     Padding="5">
-            <Switch x:Name="MaksamattomatSwitch"
-                    Toggled="MaksamattomatSwitch_Toggled"
-                    HorizontalOptions="Start"/>
-            <Label Text="Vain maksamattomat"
-                   VerticalOptions="Center"
-                   TextColor="White"
-                   Margin="10,0,0,0"/>
-        </StackLayout>
+            <!-- Laskut-alue -->
+            <Frame BorderColor="Gray" CornerRadius="10" Padding="10">
+                <VerticalStackLayout Spacing="10">
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Label Text="Nayta maksamattomat" TextColor="White" VerticalOptions="Center"/>
+                        <Switch x:Name="MaksamattomatSwitch"
+                            Toggled="MaksamattomatSwitch_Toggled"
+                            HorizontalOptions="Start"
+                            Margin="10,0,0,0"/>
+                    </HorizontalStackLayout>
 
-        <!-- Sarakeotsikot -->
-        <Grid Grid.Row="2" ColumnDefinitions="*,*,*"
-              Padding="5" Margin="0,5">
-            <Label Text="Lasku ID" TextColor="Gray" FontAttributes="Bold"/>
-            <Label Text="Varaus ID" TextColor="Gray" FontAttributes="Bold" Grid.Column="1"/>
-            <Label Text="Summa" TextColor="Gray" FontAttributes="Bold" Grid.Column="2" HorizontalTextAlignment="End"/>
-        </Grid>
-
-        <!-- Laskulista -->
-        <CollectionView x:Name="LaskuLista" Grid.Row="3">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid ColumnDefinitions="*,*,*"
-                          Padding="5" Margin="0,5">
-                        <Label Text="{Binding LaskuId}" TextColor="White" Grid.Column="0" VerticalOptions="Center"/>
-                        <Label Text="{Binding VarausId}" TextColor="White" Grid.Column="1" VerticalOptions="Center"/>
-                        <Label Text="{Binding Summa, StringFormat='{0:0.00} euroa'}"
-                               TextColor="White"
-                               HorizontalTextAlignment="End"
-                               Grid.Column="2"
-                               VerticalOptions="Center"/>
+                    <!-- Sarakeotsikot -->
+                    <Grid ColumnDefinitions="*,*,*" Padding="0,5">
+                        <Label Text="Lasku ID" TextColor="Gray" FontAttributes="Bold"/>
+                        <Label Text="Varaus ID" TextColor="Gray" FontAttributes="Bold" Grid.Column="1"/>
+                        <Label Text="Summa" TextColor="Gray" FontAttributes="Bold" Grid.Column="2" HorizontalTextAlignment="End"/>
                     </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
 
-        <!-- Etusivu-nappi -->
-        <Button Text="Etusivu"
-                Grid.Row="4"
+                    <!-- Laskulista -->
+                    <CollectionView x:Name="LaskuLista" HeightRequest="300">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="*,*,*" Padding="5" Margin="0,5">
+                                    <Label Text="{Binding LaskuId}" TextColor="White" Grid.Column="0" VerticalOptions="Center"/>
+                                    <Label Text="{Binding VarausId}" TextColor="White" Grid.Column="1" VerticalOptions="Center"/>
+                                    <Label Text="{Binding Summa, StringFormat='{0:0.00} euroa'}"
+                                       TextColor="White"
+                                       HorizontalTextAlignment="End"
+                                       Grid.Column="2"
+                                       VerticalOptions="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <!-- Ei laskuja ilmoitus -->
+                    <Label x:Name="TyhjaIlmoitus"
+                       Text="Ei laskuja"
+                       TextColor="Gray"
+                       FontAttributes="Italic"
+                       HorizontalOptions="Center"
+                       IsVisible="False"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Etusivu-nappi -->
+            <Button Text="Etusivu"
                 Clicked="Navigoi_Clicked"
                 CommandParameter="Etusivu"
                 HorizontalOptions="Start"
-                VerticalOptions="End"
-                Margin="10"
                 BackgroundColor="LightGray"
                 CornerRadius="20"
-                WidthRequest="100" />
+                WidthRequest="100"/>
+        </VerticalStackLayout>
+    </ScrollView>
 
-    </Grid>
 </ContentPage>
