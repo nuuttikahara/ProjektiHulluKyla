@@ -132,6 +132,29 @@ namespace HulluKyla.Services
             }
         }
 
+        // Haku metodi laskujen hakuun tietokannasta.
+        public static List<Lasku> HaeKaikki() {
+            var laskut = new List<Lasku>();
+
+            using var conn = SqlService.GetConnection();
+            conn.Open();
+
+            var cmd = new MySqlCommand("SELECT * FROM lasku", conn);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read()) {
+                laskut.Add(new Lasku(
+                    (uint)reader.GetInt32("lasku_id"),
+                    (uint)reader.GetInt32("varaus_id"),
+                    reader.GetDouble("summa"),
+                    reader.GetDouble("alv"),
+                    reader.GetBoolean("maksettu")
+                ));
+            }
+
+            return laskut;
+        }
+
 
         // Maksamattomien laskujen haku
         public static List<Lasku> HaeMaksamattomatLaskut() 
@@ -159,7 +182,7 @@ namespace HulluKyla.Services
         }
 
 
-        // Laskun maksetuksi merkisteminen lasku_id:n mukaan
+        // Laskun maksetuksi merkitseminen lasku_id:n mukaan
         public static void MerkitseMaksetuksi(int id) 
         {
             using var conn = SqlService.GetConnection();

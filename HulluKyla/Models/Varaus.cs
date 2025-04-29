@@ -69,8 +69,8 @@ namespace HulluKyla.Models
         {
             this.VarattuPvm = varattuPvm;
             this.VahvistusPvm = vahvistusPvm;
-            this.VarattuAlkuPvm = varattuAlkuPvm;
             this.VarattuLoppuPvm = varattuLoppuPvm;
+            this.VarattuAlkuPvm = varattuAlkuPvm;
         }
 
         // Getters and Setters
@@ -116,35 +116,32 @@ namespace HulluKyla.Models
             set { this.vahvistusPvm = value; }
         }
 
-        public DateTime VarattuAlkuPvm
-        {
-            get { return this.varattuAlkuPvm; }
-            // Checks that value is before varattuLoppuPvm.
-            set
-            {
-                if (DateTime.Compare(value, this.VarattuLoppuPvm) < 0)
-                    this.varattuAlkuPvm = value;
-                else
-                    throw new ArgumentException(
-                        "VarattuAlkuPvm täytyy olla ennen VarattuLoppuPvm."
-                    );
+        public DateTime VarattuAlkuPvm {
+            get {
+                return this.varattuAlkuPvm;
+            }
+            set {
+                // Varmistetaan, että LoppuPvm on asetettu ja vertailu on järkevä
+                if (this.VarattuLoppuPvm != default && value >= this.VarattuLoppuPvm)
+                    throw new ArgumentException("VarattuAlkuPvm täytyy olla ennen VarattuLoppuPvm.");
+
+                this.varattuAlkuPvm = value;
             }
         }
 
-        public DateTime VarattuLoppuPvm
-        {
-            get { return this.varattuLoppuPvm; }
-            // Checks that value is after varattuAlkuPvm.
-            set
-            {
-                if (DateTime.Compare(value, this.VarattuAlkuPvm) > 0)
-                    this.varattuLoppuPvm = value;
-                else
-                    throw new ArgumentException(
-                        "VarattuLoppuPvm täytyy olla VarattuAlkuPvm jälkeen."
-                    );
+        public DateTime VarattuLoppuPvm {
+            get {
+                return this.varattuLoppuPvm;
+            }
+            set {
+                // Varmistetaan että AlkuPvm on asetettu ja vertailu on järkevä
+                if (this.VarattuAlkuPvm != default && value <= this.VarattuAlkuPvm)
+                    throw new ArgumentException("VarattuLoppuPvm täytyy olla VarattuAlkuPvm jälkeen.");
+
+                this.varattuLoppuPvm = value;
             }
         }
+
         // Methods
     }
 }

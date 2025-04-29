@@ -229,5 +229,22 @@ namespace HulluKyla.Models
                 }
             }
         }
+
+        //Luodaan yhdistettu nimi, jota on helpompi kutsua pickereissä.
+        public string KokoNimi {
+            get {
+                // Luodaan kevyt exists tarkistus, koska molemmat menevät jo tarkistuksen läpi. ominaan
+                if (!string.IsNullOrWhiteSpace(Etunimi) && !string.IsNullOrWhiteSpace(Sukunimi))
+                    return $"{Etunimi} {Sukunimi}";
+                else if (!string.IsNullOrWhiteSpace(Etunimi))
+                    return Etunimi;
+                else if (!string.IsNullOrWhiteSpace(Sukunimi))
+                    return Sukunimi;
+                else
+                    return "(Tuntematon)";
+            }
+        }
+
+
     }
 }
