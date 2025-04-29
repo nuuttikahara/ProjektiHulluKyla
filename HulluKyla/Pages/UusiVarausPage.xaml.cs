@@ -10,9 +10,6 @@ public partial class UusiVarausPage : ContentPage {
     private Alue? valittuAlue;
     private Mokki? valittuMokki;
     private Asiakas? valittuAsiakas;
-    private List<Alue> kaikkiAlueet = new List<Alue>();
-    private List<Mokki> kaikkiMokit = new List<Mokki>();
-    private List<Asiakas> kaikkiAsiakkaat = new List<Asiakas>();
     public UusiVarausPage() {
         InitializeComponent();
     }
@@ -28,11 +25,11 @@ public partial class UusiVarausPage : ContentPage {
     private void PaivitaSivu() {
         // Listojen tyhjennys ja haku
         valittuMokki = null;
-        kaikkiMokit = MokkiService.HaeKaikki();
+        var kaikkiMokit = MokkiService.HaeKaikki();
         MokkiLista.ItemsSource = kaikkiMokit;
         
         valittuAsiakas = null;
-        kaikkiAsiakkaat = AsiakasService.HaeKaikki();
+        var kaikkiAsiakkaat = AsiakasService.HaeKaikki();
         AsiakasLista.ItemsSource = kaikkiAsiakkaat;
 
         // Pickereiden tyhjennys
@@ -52,7 +49,7 @@ public partial class UusiVarausPage : ContentPage {
 
     // Hakee kaikki alueet
     private void LataaAlueet() {
-        kaikkiAlueet = AlueService.HaeKaikki();
+        var kaikkiAlueet = AlueService.HaeKaikki();
         AluePicker.ItemsSource = kaikkiAlueet; 
     }
 
@@ -122,7 +119,7 @@ public partial class UusiVarausPage : ContentPage {
                 var asiakkaat = AsiakasService.HaeHakusanalla(hakusana);
                 AsiakasLista.ItemsSource = asiakkaat;
             } else {
-                kaikkiAsiakkaat = AsiakasService.HaeKaikki();
+                var kaikkiAsiakkaat = AsiakasService.HaeKaikki();
                 AsiakasLista.ItemsSource = kaikkiAsiakkaat;
             }
         } 
@@ -133,9 +130,7 @@ public partial class UusiVarausPage : ContentPage {
 
     // Mokki-olion valinta CollectionView-listasta
     private void MokkiSelected(object sender, SelectionChangedEventArgs e) {
-        if (e.CurrentSelection != null && e.CurrentSelection.Count > 0) {
-            valittuMokki = e.CurrentSelection[0] as Mokki;
-        }
+        valittuMokki = e.CurrentSelection.FirstOrDefault() as Mokki;
     }
     
     // Asiakkaan valinta CollectionView-listasta
