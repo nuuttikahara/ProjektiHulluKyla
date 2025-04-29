@@ -39,6 +39,51 @@ namespace HulluKyla.Services
             return mokit;
         }
 
+        // Vapaiden mökkien haku tietyllä alueella, tietyllä minimi henkilömäärällä, tiettynä ajanjaksona
+        public static List<Mokki> HaeVapaatMokit(uint alueId, int minHenkilomaara, DateTime alkuPvm, DateTime loppuPvm) {
+
+            var mokit = new List<Mokki>();
+
+            using var conn = SqlService.GetConnection();
+            conn.Open();
+
+            var cmd = new MySqlCommand(@"
+                SELECT * FROM mokki
+                WHERE alue_id = @alueId
+                    AND henkilomaara >= @minHenkilomaara
+                    AND mokki_id NOT IN (
+                        SELECT mokki_id FROM varaus
+                        WHERE NOT (
+                            varattu_loppupvm <= @alkuPvm OR
+                            varattu_alkupvm >= @loppuPvm
+                        )
+                    )", conn);
+
+            cmd.Parameters.AddWithValue("@alueId", alueId);
+            cmd.Parameters.AddWithValue("@minHenkilomaara", minHenkilomaara);
+            cmd.Parameters.AddWithValue("@alkuPvm", alkuPvm);
+            cmd.Parameters.AddWithValue("@loppuPvm", loppuPvm);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read()) {
+                var mokki = new Mokki(
+                    (uint)reader.GetInt32("mokki_id"),
+                    (uint)reader.GetInt32("alue_id"),
+                    reader.GetString("postinro"),
+                    reader.GetString("mokkinimi"),
+                    reader.GetString("katuosoite"),
+                    reader.GetDouble("hinta"),
+                    reader.GetString("kuvaus"),
+                    reader.GetInt32("henkilomaara"),
+                    reader.GetString("varustelu")
+                );
+
+                mokit.Add(mokki);
+            }
+
+            return mokit;
+        }
+
 
         // HaeAlueenMokit-metodi hakee tietyn alueen mökit alue_id:n mukaan
         public static List<Mokki> HaeAlueenMokit(uint id) 
