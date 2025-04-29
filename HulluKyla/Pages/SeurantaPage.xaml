@@ -9,16 +9,16 @@
             <Frame BorderColor="Gray" CornerRadius="10" Padding="10">
                 <VerticalStackLayout Spacing="10">
                     <SearchBar x:Name="AsiakasSearchBar"
-                           Placeholder="Etsi asiakasta..."
-                           TextChanged="AsiakasSearchBar_TextChanged"
-                           HorizontalOptions="Center"
-                           WidthRequest="300"
-                           TextColor="White"
-                           PlaceholderColor="Gray"/>
+                               Placeholder="Etsi asiakasta..."
+                               TextChanged="AsiakasSearchBar_TextChanged"
+                               HorizontalOptions="Center"
+                               WidthRequest="300"
+                               TextColor="White"
+                               PlaceholderColor="Gray"/>
                     <CollectionView x:Name="AsiakasListaView"
-                                HeightRequest="200"
-                                SelectionMode="Single"
-                                SelectionChanged="AsiakasListaView_SelectionChanged">
+                                    HeightRequest="200"
+                                    SelectionMode="Single"
+                                    SelectionChanged="AsiakasListaView_SelectionChanged">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame Padding="10" Margin="0,5" BackgroundColor="Gray" CornerRadius="10">
@@ -33,13 +33,16 @@
             <!-- Laskut-alue -->
             <Frame BorderColor="Gray" CornerRadius="10" Padding="10">
                 <VerticalStackLayout Spacing="10">
-                    <HorizontalStackLayout HorizontalOptions="Center">
-                        <Label Text="Nayta maksamattomat" TextColor="White" VerticalOptions="Center"/>
-                        <Switch x:Name="MaksamattomatSwitch"
-                            Toggled="MaksamattomatSwitch_Toggled"
-                            HorizontalOptions="Start"
-                            Margin="10,0,0,0"/>
-                    </HorizontalStackLayout>
+
+                    <!-- Laskun moodi nappi -->
+                    <Button x:Name="VaihdaNakymaButton"
+                            Text="Maksamattomat Laskut"
+                            Clicked="VaihdaNakyma_Clicked"
+                            BackgroundColor="DarkGray"
+                            TextColor="White"
+                            CornerRadius="10"
+                            WidthRequest="200"
+                            HorizontalOptions="Center"/>
 
                     <!-- Sarakeotsikot -->
                     <Grid ColumnDefinitions="*,*,*" Padding="0,5">
@@ -56,10 +59,10 @@
                                     <Label Text="{Binding LaskuId}" TextColor="White" Grid.Column="0" VerticalOptions="Center"/>
                                     <Label Text="{Binding VarausId}" TextColor="White" Grid.Column="1" VerticalOptions="Center"/>
                                     <Label Text="{Binding Summa, StringFormat='{0:0.00} euroa'}"
-                                       TextColor="White"
-                                       HorizontalTextAlignment="End"
-                                       Grid.Column="2"
-                                       VerticalOptions="Center"/>
+                                           TextColor="White"
+                                           HorizontalTextAlignment="End"
+                                           Grid.Column="2"
+                                           VerticalOptions="Center"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -67,22 +70,22 @@
 
                     <!-- Ei laskuja ilmoitus -->
                     <Label x:Name="TyhjaIlmoitus"
-                       Text="Ei laskuja"
-                       TextColor="Gray"
-                       FontAttributes="Italic"
-                       HorizontalOptions="Center"
-                       IsVisible="False"/>
+                           Text="Ei laskuja"
+                           TextColor="Gray"
+                           FontAttributes="Italic"
+                           HorizontalOptions="Center"
+                           IsVisible="False"/>
                 </VerticalStackLayout>
             </Frame>
 
             <!-- Etusivu-nappi -->
             <Button Text="Etusivu"
-                Clicked="Navigoi_Clicked"
-                CommandParameter="Etusivu"
-                HorizontalOptions="Start"
-                BackgroundColor="LightGray"
-                CornerRadius="20"
-                WidthRequest="100"/>
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="Etusivu"
+                    HorizontalOptions="Start"
+                    BackgroundColor="LightGray"
+                    CornerRadius="20"
+                    WidthRequest="100"/>
         </VerticalStackLayout>
     </ScrollView>
 

@@ -7,6 +7,7 @@ namespace HulluKyla.Pages {
         private List<Asiakas> kaikkiAsiakkaat = new();
         private List<Asiakas> suodatetutAsiakkaat = new();
         private Dictionary<uint, uint> varausAsiakasMap = new();
+        private bool naytaVainMaksamattomat = true;
 
         public SeurantaPage() {
             InitializeComponent();
@@ -26,20 +27,18 @@ namespace HulluKyla.Pages {
             kaikkiAsiakkaat = AsiakasService.HaeKaikki();
             suodatetutAsiakkaat = kaikkiAsiakkaat;
 
-            // Asiakaslistan alustus
+            // Asiakaslista
             AsiakasListaView.ItemsSource = suodatetutAsiakkaat;
 
+            // Varausten asiakas-ID:t
             var varaukset = VarausService.HaeKaikki();
-
-            // Tyhjennetään varmuuden vuoksi ennen uudelleentäyttöä
             varausAsiakasMap.Clear();
             foreach (var varaus in varaukset) {
                 varausAsiakasMap[varaus.VarausId] = varaus.Asiakas.AsiakasId;
             }
 
-            // Näytetään kaikki laskut alkuun
-            LaskuLista.ItemsSource = kaikkiLaskut;
-            TyhjaIlmoitus.IsVisible = kaikkiLaskut.Count == 0;
+            // Näytä aluksi maksamattomat
+            PaivitaNakyma(null);
         }
 
         private void AsiakasSearchBar_TextChanged(object sender, TextChangedEventArgs e) {
@@ -48,16 +47,12 @@ namespace HulluKyla.Pages {
             if (string.IsNullOrWhiteSpace(haku)) {
                 suodatetutAsiakkaat = kaikkiAsiakkaat;
                 AsiakasListaView.SelectedItem = null;
-                LaskuLista.ItemsSource = kaikkiLaskut;
-                TyhjaIlmoitus.IsVisible = kaikkiLaskut.Count == 0;
+                PaivitaNakyma(null);
             } else {
                 suodatetutAsiakkaat = kaikkiAsiakkaat
-                    .Where(a =>
-                        !string.IsNullOrWhiteSpace(a.KokoNimi) &&
-                        a.KokoNimi.ToLower().Contains(haku))
+                    .Where(a => a.KokoNimi.ToLower().Contains(haku))
                     .ToList();
 
-                // Nollaa valinta, jos listaa suodatetaan
                 AsiakasListaView.SelectedItem = null;
             }
 
@@ -70,34 +65,26 @@ namespace HulluKyla.Pages {
             }
         }
 
-        private void MaksamattomatSwitch_Toggled(object sender, ToggledEventArgs e) {
-            if (AsiakasListaView.SelectedItem is Asiakas valittu) {
-                PaivitaNakyma(valittu);
-            } else {
-                // Suodatetaan koko lista, ilman asiakasta
-                IEnumerable<Lasku> suodatettu = kaikkiLaskut;
+        private void VaihdaNakyma_Clicked(object sender, EventArgs e) {
+            naytaVainMaksamattomat = !naytaVainMaksamattomat;
+            VaihdaNakymaButton.Text = naytaVainMaksamattomat
+                ? "Maksamattomat laskut"
+                : "Kaikki laskut";
 
-                if (MaksamattomatSwitch.IsToggled) {
-                    suodatettu = suodatettu.Where(l => !l.Maksettu);
-                }
-
-                var lista = suodatettu.ToList();
-                LaskuLista.ItemsSource = lista;
-                TyhjaIlmoitus.IsVisible = lista.Count == 0;
-            }
+            Asiakas valittu = AsiakasListaView.SelectedItem as Asiakas;
+            PaivitaNakyma(valittu);
         }
 
         private void PaivitaNakyma(Asiakas valittuAsiakas) {
-            if (valittuAsiakas == null)
-                return;
-
             IEnumerable<Lasku> suodatettu = kaikkiLaskut;
 
-            suodatettu = suodatettu.Where(l =>
-                varausAsiakasMap.TryGetValue(l.VarausId, out uint asiakasId) &&
-                asiakasId == valittuAsiakas.AsiakasId);
+            if (valittuAsiakas != null) {
+                suodatettu = suodatettu.Where(l =>
+                    varausAsiakasMap.TryGetValue(l.VarausId, out uint asiakasId) &&
+                    asiakasId == valittuAsiakas.AsiakasId);
+            }
 
-            if (MaksamattomatSwitch.IsToggled) {
+            if (naytaVainMaksamattomat) {
                 suodatettu = suodatettu.Where(l => !l.Maksettu);
             }
 
@@ -113,3 +100,4 @@ namespace HulluKyla.Pages {
         }
     }
 }
+
