@@ -85,10 +85,7 @@ namespace HulluKyla.Models
                 }
                 else if (value.Trim().Length > ETUNIMI_MAX_LENGTH)
                 {
-                    throw new ArgumentException(
-                        "Etunimen maksimipituus on {0} merkkiä.",
-                        ETUNIMI_MAX_LENGTH.ToString()
-                    );
+                    throw new ArgumentException($"Etunimen maksimipituus on {ETUNIMI_MAX_LENGTH} merkkiä.");
                 }
                 else
                 {
@@ -114,10 +111,7 @@ namespace HulluKyla.Models
                 }
                 else if (value.Trim().Length > SUKUNIMI_MAX_LENGTH)
                 {
-                    throw new ArgumentException(
-                        "Sukunimen maksimipituus on {0} merkkiä.",
-                        SUKUNIMI_MAX_LENGTH.ToString()
-                    );
+                    throw new ArgumentException($"Sukunimen maksimipituus on {SUKUNIMI_MAX_LENGTH} merkkiä.");
                 }
                 else
                 {
@@ -143,10 +137,7 @@ namespace HulluKyla.Models
                 }
                 else if (value.Trim().Length > LAHIOSOITE_MAX_LENGTH)
                 {
-                    throw new ArgumentException(
-                        "Lähiosoitteen maksimipituus on {0} merkkiä.",
-                        LAHIOSOITE_MAX_LENGTH.ToString()
-                    );
+                    throw new ArgumentException($"Lähiosoitteen maksimipituus on {LAHIOSOITE_MAX_LENGTH} merkkiä.");
                 }
                 else
                 {
@@ -181,10 +172,7 @@ namespace HulluKyla.Models
                     throw new ArgumentException("Virheellinen sähköpostiosoite.");
                 }
                 else if (value.Trim().Length > EMAIL_MAX_LENGTH)
-                    throw new ArgumentException(
-                        "Sähköpostiosoitteen maksimipituus on {0} merkkiä.",
-                        EMAIL_MAX_LENGTH.ToString()
-                    );
+                    throw new ArgumentException($"Sähköpostiosoitteen maksimipituus on {EMAIL_MAX_LENGTH} merkkiä.");
                 else
                     email = value.Trim();
             }
@@ -218,10 +206,7 @@ namespace HulluKyla.Models
                 }
                 else if (value.Trim().Length > PUHELINNRO_MAX_LENGTH)
                 {
-                    throw new ArgumentException(
-                        "Puhelinnumeron maksimipituus on {0} merkkiä.",
-                        PUHELINNRO_MAX_LENGTH.ToString()
-                    );
+                    throw new ArgumentException($"Puhelinnumeron maksimipituus on {PUHELINNRO_MAX_LENGTH} merkkiä.");
                 }
                 else
                 {

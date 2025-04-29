@@ -17,6 +17,9 @@ namespace HulluKyla.Models
         private bool maksettu;
 
         // Constants
+        //Max
+        private const double DOUBLE_MAX_ALLOWED = 999999.99;
+
         // Min
         private const double DOUBLE_MIN_ALLOWED = 0;
 
@@ -63,16 +66,10 @@ namespace HulluKyla.Models
             {
                 if (!Double.IsNaN(value))
                 {
-                    if (value > Double.MaxValue)
-                        throw new ArgumentException(
-                            "Summan maksimiarvo on {0:f2}€.",
-                            Double.MaxValue.ToString()
-                        );
+                    if (value > DOUBLE_MAX_ALLOWED)
+                        throw new ArgumentException($"Summan maksimiarvo on {DOUBLE_MAX_ALLOWED:f2}€.");
                     else if (value < DOUBLE_MIN_ALLOWED)
-                        throw new ArgumentException(
-                            "Summan minimiarvo on {0:f2}€.",
-                            DOUBLE_MIN_ALLOWED.ToString()
-                        );
+                        throw new ArgumentException($"Summan minimiarvo on {DOUBLE_MIN_ALLOWED:f2}€.");
                     else
                         this.summa = value;
                 }
@@ -91,16 +88,10 @@ namespace HulluKyla.Models
             {
                 if (!Double.IsNaN(value))
                 {
-                    if (value > Double.MaxValue)
-                        throw new ArgumentException(
-                            "ALV maksimiarvo on {0:f2}€.",
-                            Double.MaxValue.ToString()
-                        );
+                    if (value > DOUBLE_MAX_ALLOWED)
+                        throw new ArgumentException($"ALV maksimiarvo on {DOUBLE_MAX_ALLOWED:f2}€.");
                     else if (value < DOUBLE_MIN_ALLOWED)
-                        throw new ArgumentException(
-                            "ALV minimiarvo on {0:f2}€.",
-                            DOUBLE_MIN_ALLOWED.ToString()
-                        );
+                        throw new ArgumentException($"ALV minimiarvo on {DOUBLE_MIN_ALLOWED:f2}€.");
                     else
                         this.alv = value;
                 }

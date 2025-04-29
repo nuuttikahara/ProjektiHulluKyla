@@ -68,7 +68,7 @@ public partial class UusiMokkiPage : ContentPage {
             await NavigointiService.Navigoi("MokkiListaPage");
         } 
         catch (Exception ex) {
-            await DisplayAlert("Virhe", "Mökkiä lisättäessä tapahtui virhe:" + ex.Message, "OK");
+            await DisplayAlert("Virhe", "Mökkiä lisättäessä tapahtui virhe: " + ex.Message, "OK");
         }
     }
 

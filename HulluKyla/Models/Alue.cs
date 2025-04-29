@@ -51,10 +51,7 @@ namespace HulluKyla.Models
                 }
                 else if (value.Trim().Length > NIMI_MAX_LENGTH)
                 {
-                    throw new ArgumentException(
-                        "Nimen maksimipituus on {0} merkkiä.",
-                        NIMI_MAX_LENGTH.ToString()
-                    );
+                    throw new ArgumentException($"Nimen maksimipituus on {NIMI_MAX_LENGTH} merkkiä.");
                 }
                 else
                 {

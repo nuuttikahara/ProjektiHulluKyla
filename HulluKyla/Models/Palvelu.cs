@@ -20,6 +20,7 @@ namespace HulluKyla.Models
         // Max
         private const int NIMI_MAX = 40;
         private const int KUVAUS_MAX = 255;
+        private const double DOUBLE_MAX_ALLOWED = 999999.99;
         private const double ALV_MAX = 100;
 
         // Min
@@ -108,10 +109,7 @@ namespace HulluKyla.Models
                 }
                 else if (value.Trim().Length > NIMI_MAX)
                 {
-                    throw new ArgumentException(
-                        "Nimen maksimipituus on {0} merkkiä.",
-                        NIMI_MAX.ToString()
-                    );
+                    throw new ArgumentException($"Nimen maksimipituus on {NIMI_MAX} merkkiä.");
                 }
                 else
                 {
@@ -137,10 +135,7 @@ namespace HulluKyla.Models
                 }
                 else if (value.Trim().Length > KUVAUS_MAX)
                 {
-                    throw new ArgumentException(
-                        "Kuvauksen maksimipituus on {0} merkkiä.",
-                        KUVAUS_MAX.ToString()
-                    );
+                    throw new ArgumentException($"Kuvauksen maksimipituus on {KUVAUS_MAX} merkkiä.");
                 }
                 else
                 {
@@ -157,15 +152,9 @@ namespace HulluKyla.Models
                 if (Double.IsNaN(value))
                     throw new ArgumentException("Hinnan täytyy olla numero.");
                 else if (value < DOUBLE_MIN_ALLOWED)
-                    throw new ArgumentException(
-                        "Minimihinta on {0:f2}€.",
-                        DOUBLE_MIN_ALLOWED.ToString()
-                    );
-                else if (value > Double.MaxValue)
-                    throw new ArgumentException(
-                        "Maksimihinta on {0:f2}€.",
-                        Double.MaxValue.ToString()
-                    );
+                    throw new ArgumentException($"Minimihinta on {DOUBLE_MIN_ALLOWED:f2}€.");
+                else if (value > DOUBLE_MAX_ALLOWED)
+                    throw new ArgumentException($"Maksimihinta on {DOUBLE_MAX_ALLOWED:f2}€.");
                 else
                     this.hinta = value;
             }

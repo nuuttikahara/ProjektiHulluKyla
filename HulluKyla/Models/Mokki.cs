@@ -25,6 +25,7 @@ namespace HulluKyla.Models
         private const int VARUSTELU_MAX_LENGTH = 100;
         private const int MOKKINIMI_MAX_LENGTH = 45;
         private const int KATUOSOITE_MAX_LENGTH = 45;
+        private const double DOUBLE_MAX_ALLOWED = 999999.99;
 
         // Min
         private const long HENKILOMAARA_MIN_ALLOWED = 0;
@@ -122,10 +123,7 @@ namespace HulluKyla.Models
                 if (String.IsNullOrWhiteSpace(value))
                     this.mokkiNimi = null;
                 else if (value.Trim().Length > MOKKINIMI_MAX_LENGTH)
-                    throw new ArgumentException(
-                        "Mökin nimen maksimipituus on {0} merkkiä.",
-                        MOKKINIMI_MAX_LENGTH.ToString()
-                    );
+                    throw new ArgumentException($"Mökin nimen maksimipituus on {MOKKINIMI_MAX_LENGTH} merkkiä.");
                 else
                     this.mokkiNimi = value.Trim();
             }
@@ -145,10 +143,7 @@ namespace HulluKyla.Models
                 if (String.IsNullOrWhiteSpace(value))
                     this.katuosoite = null;
                 else if (value.Trim().Length > KATUOSOITE_MAX_LENGTH)
-                    throw new ArgumentException(
-                        "Katuosoitteen maksimipituus on {0} merkkiä.",
-                        KATUOSOITE_MAX_LENGTH.ToString()
-                    );
+                    throw new ArgumentException($"Katuosoitteen maksimipituus on {KATUOSOITE_MAX_LENGTH} merkkiä.");
                 else
                     this.katuosoite = value.Trim();
             }
@@ -159,19 +154,13 @@ namespace HulluKyla.Models
             get => hinta;
             set
             {
-                if (value > Double.MaxValue)
+                if (value > DOUBLE_MAX_ALLOWED)
                 {
-                    throw new ArgumentException(
-                        "Maksimihinta on {0:f2}€.",
-                        Double.MaxValue.ToString()
-                    );
+                    throw new ArgumentOutOfRangeException(null, $"Maksimihinta on {DOUBLE_MAX_ALLOWED:f2}€.");
                 }
                 else if (value < DOUBLE_MIN_ALLOWED)
                 {
-                    throw new ArgumentException(
-                        "Minimihinta on {0:f2}€.",
-                        DOUBLE_MIN_ALLOWED.ToString()
-                    );
+                    throw new ArgumentOutOfRangeException(null, $"Minimihinta on {DOUBLE_MIN_ALLOWED:f2}€.");
                 }
                 else
                 {
@@ -197,10 +186,7 @@ namespace HulluKyla.Models
                 }
                 else if (value.Trim().Length > KUVAUS_MAX_LENGTH)
                 {
-                    throw new ArgumentException(
-                        "Kuvauksen maksimipituus on {0} merkkiä.",
-                        KUVAUS_MAX_LENGTH.ToString()
-                    );
+                    throw new ArgumentException($"Kuvauksen maksimipituus on {KUVAUS_MAX_LENGTH} merkkiä.");
                 }
                 else
                 {
@@ -222,17 +208,11 @@ namespace HulluKyla.Models
             {
                 if (value > long.MaxValue)
                 {
-                    throw new ArgumentException(
-                        "Henkilömäärän maksimiarvo on {0}.",
-                        long.MaxValue.ToString()
-                    );
+                    throw new ArgumentException($"Henkilömäärän maksimiarvo on {long.MaxValue}.");
                 }
                 else if (value < HENKILOMAARA_MIN_ALLOWED)
                 {
-                    throw new ArgumentException(
-                        "Henkilömäärä ei voi olla alle {0}.",
-                        HENKILOMAARA_MIN_ALLOWED.ToString()
-                    );
+                    throw new ArgumentException($"Henkilömäärä ei voi olla alle {HENKILOMAARA_MIN_ALLOWED}.");
                 }
                 else
                 {
@@ -258,10 +238,7 @@ namespace HulluKyla.Models
                 }
                 else if (value.Trim().Length > VARUSTELU_MAX_LENGTH)
                 {
-                    throw new ArgumentException(
-                        "Varustelun maksimipituus on {0} merkkiä.",
-                        VARUSTELU_MAX_LENGTH.ToString()
-                    );
+                    throw new ArgumentException($"Varustelun maksimipituus on {VARUSTELU_MAX_LENGTH} merkkiä.");
                 }
                 else
                 {
