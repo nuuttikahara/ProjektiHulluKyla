@@ -180,9 +180,9 @@ namespace HulluKyla.Models
                 if (!Double.IsNaN(value))
                 {
                     if (value > ALV_MAX)
-                        throw new ArgumentException("ALV maksimiarvo on {0}%.", ALV_MAX.ToString());
+                        throw new ArgumentException($"ALV maksimiarvo on {ALV_MAX}%.");
                     else if (value < ALV_MIN)
-                        throw new ArgumentException("ALV minimiarvo on {0}%.", ALV_MIN.ToString());
+                        throw new ArgumentException($"ALV minimiarvo on {ALV_MIN}%.");
                     else
                         this.alv = value;
                 }

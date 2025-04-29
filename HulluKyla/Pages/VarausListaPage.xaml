@@ -34,9 +34,15 @@
                                    Margin="0,5"
                                    BackgroundColor="Gray"
                                    CornerRadius="10">
-                                <Label Text="{Binding KokoNimi}"
-                                       TextColor="White" />
-                            </Frame>
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding KokoNimi}"
+                                               TextColor="White" />
+                                        <Label Text="{Binding Email}"
+                                               TextColor="White" />
+                                        <Label Text="{Binding Puhelinnro}"
+                                               TextColor="White" />
+                                    </VerticalStackLayout>
+                                </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -75,8 +81,14 @@
                                         Margin="0,5"
                                         BackgroundColor="Gray"
                                         CornerRadius="10">
-                                        <Label Text="{Binding VarausId}"
-                                            TextColor="White" />
+                                        <VerticalStackLayout>
+                                            <Label Text="{Binding Mokki.MokkiNimi, StringFormat='Mökin nimi: {0}'}"
+                                                   TextColor="White" />
+                                            <Label Text="{Binding VarattuAlkuPvm, StringFormat='Varaus alkaa: {0}'}"
+                                                   TextColor="White" />
+                                            <Label Text="{Binding VarattuLoppuPvm, StringFormat='Varaus loppuu: {0}'}"
+                                                   TextColor="White" />
+                                        </VerticalStackLayout>
                                     </Frame>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
@@ -109,9 +121,9 @@
                                             BackgroundColor="Gray"
                                             CornerRadius="10">
                                         <VerticalStackLayout>
-                                            <Label Text="{Binding VarausId}"
+                                            <Label Text="{Binding Palvelu.Nimi, StringFormat='Palvelun nimi: {0}'}"
                                             TextColor="White" />
-                                            <Label Text="{Binding Lkm}"
+                                            <Label Text="{Binding Lkm, StringFormat='Määrä: {0}'}"
                                             TextColor="White" />
                                         </VerticalStackLayout>
                                     </Frame>

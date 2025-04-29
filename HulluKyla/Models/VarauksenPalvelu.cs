@@ -16,10 +16,10 @@ namespace HulluKyla.Models
 
         // Constants and Static Properties
         private readonly Palvelu DEFAULT_PALVELU = new Palvelu(
-            uint.MaxValue,
-            uint.MaxValue,
-            double.MaxValue,
-            double.MaxValue
+            1000,
+            1000,
+            0.0,
+            0.0
         );
 
         // Constructors
