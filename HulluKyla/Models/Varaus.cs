@@ -22,7 +22,7 @@ namespace HulluKyla.Models
         private readonly Mokki MOKKI_DEFAULT = new Mokki(
             uint.MaxValue,
             PostiUtil.POSTINRO_DEFAULT,
-            double.MaxValue
+            0.0
         );
         private readonly DateTime VARATTU_PVM_DEFAULT = DateTime.MinValue;
         private readonly DateTime VAHVISTUS_PVM_DEFAULT = DateTime.MinValue;
