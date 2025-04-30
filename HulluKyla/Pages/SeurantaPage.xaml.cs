@@ -18,6 +18,7 @@ namespace HulluKyla.Pages {
             LataaData();
         }
 
+        // Tietokanta kommunikaatio metodit:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         private void LataaData() {
             // Luo laskut tarvittaessa
             LaskuService.LuoLaskutPaattyneille();
@@ -41,6 +42,8 @@ namespace HulluKyla.Pages {
             PaivitaNakyma(null);
         }
 
+
+        //Asiakaslista metodit::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         private void AsiakasSearchBar_TextChanged(object sender, TextChangedEventArgs e) {
             string haku = AsiakasSearchBar.Text?.Trim().ToLower() ?? "";
 
@@ -92,6 +95,33 @@ namespace HulluKyla.Pages {
             LaskuLista.ItemsSource = lista;
             TyhjaIlmoitus.IsVisible = lista.Count == 0;
         }
+
+
+        //LaskuLista Metodit:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        private Lasku valittuLasku;
+
+        private void LaskuLista_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            valittuLasku = e.CurrentSelection.FirstOrDefault() as Lasku;
+        }
+
+
+        private async void TulostaLasku_Clicked(object sender, EventArgs e) {
+            if (LaskuLista.SelectedItem is Lasku valittuLasku) {
+                try {
+                    await PdfService.TulostaLasku(valittuLasku);
+                } catch (Exception ex) {
+                    await DisplayAlert("Virhe", $"PDF:n luonti epäonnistui: {ex.Message}", "OK");
+                }
+            } else {
+                await DisplayAlert("Ei laskua", "Valitse lasku ennen tulostamista.", "OK");
+            }
+        }
+
+
+
+
+
+        //Navigointi Metodi:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
         private async void Navigoi_Clicked(object sender, EventArgs e) {
             var reitti = (sender as Button)?.CommandParameter as string;
