@@ -4,29 +4,73 @@
              x:Class="HulluKyla.Pages.RaportointiPage"
              Title="RaportointiPage">
 
-    <Grid Padding="20"
+    <Grid Padding="20" ColumnSpacing="10"
           RowDefinitions="*,Auto"
           ColumnDefinitions="*,*">
+        <Frame  BorderColor="Gray"
+                CornerRadius="10"
+                Padding="10">
 
-        <!-- Keskellä placeholder -->
-        <Frame Grid.Row="0" Grid.ColumnSpan="2"
+            <VerticalStackLayout Spacing="10">
+                <!-- Aluevalinta -->
+                <Label Text="Aluekohtainen mökkien ja palveluiden tuotto" FontAttributes="Bold" FontSize="20"/>
+                <BoxView HeightRequest="2" Color="Gray" />
+                <Picker x:Name="AluePicker" Title="Valitse alue" ItemDisplayBinding="{Binding Nimi}" />
+
+                <!-- Aikavälin valinta -->
+                <Label Text="Valitse aikaväli (mökki- ja palvelutuotot)"  />
+                <HorizontalStackLayout Spacing="10">
+                    <DatePicker x:Name="AlkuPvmPicker" />
+                    <DatePicker x:Name="LoppuPvmPicker" />
+                </HorizontalStackLayout>
+
+                <Button Text="Laske mökkien ja palveluiden tuotto" Clicked="LaskeTuottoClicked" />
+
+                <Label x:Name="MokkienTuottoLabel" Text="Mökkien tuotto: " FontSize="Medium" FontAttributes="Bold" />
+                <Label x:Name="PalveluidenTuottoLabel" Text="Palveluiden tuotto: " FontSize="Medium" FontAttributes="Bold" />
+                <Label x:Name="TuototYhteensaLabel" FontAttributes="Bold" Text="Yhteensä: " />
+                <BoxView HeightRequest="2" Color="Gray" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <Frame Grid.Column="1" Grid.Row="0"
                BorderColor="Gray"
-               BackgroundColor="#f0f0f0"
-               Padding="20"
                CornerRadius="10"
-               HeightRequest="200"
-               WidthRequest="300"
-               HorizontalOptions="Center"
-               VerticalOptions="Center">
-            <Label Text="Tässä esiintyy raportointipagen sisältö tjsp"
-                   FontSize="16"
-                   TextColor="Gray"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
+               Padding="10">
+            <VerticalStackLayout Spacing="10">
+                
+                <!-- Vuoden valinta -->
+                <Label Text="Vuosikohtainen kokonaistuotto" FontAttributes="Bold" FontSize="20"/>
+                <BoxView HeightRequest="2" Color="Gray" />
+                <Label Text="Valitse vuosi" FontAttributes="Bold" />
+                <Picker x:Name="VuosiPicker" SelectedIndexChanged="VuosiSelected" />
+                
+                <!-- Kuukausittaiset tuotot -->
+                <CollectionView x:Name="TuottoLista">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame  Padding="10"
+                                    Margin="0,5"
+                                    BackgroundColor="Gray"
+                                    CornerRadius="10">
+                                <HorizontalStackLayout Spacing="15">
+                                    <Label Text="{Binding Kuukausi}" WidthRequest="100" />
+                                    <Label Text="{Binding Tuotto, StringFormat='{}{0:F2} €'}" />
+                                </HorizontalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                
+                <!-- Yhteistuotto -->
+                <Label x:Name="VuosiYhteensaLabel" FontAttributes="Bold" Text="Yhteensä: " />
+                <BoxView HeightRequest="2" Color="Gray" />
+                
+            </VerticalStackLayout>
         </Frame>
 
         <!-- Etusivu-nappi -->
-        <Button Grid.Row="1" Grid.Column="0"
+        <Button Grid.Row="2" Grid.Column="0"
                 Text="Takaisin"
                 Clicked="Navigoi_Clicked"
                 CommandParameter="Etusivu"
@@ -35,7 +79,7 @@
                 Margin="0,20,0,0" />
 
         <!-- Hakutyökalu-nappi -->
-        <Button Grid.Row="1" Grid.Column="1"
+        <Button Grid.Row="2" Grid.Column="1"
                 Text="Hakutyökalu"
                 Clicked="Navigoi_Clicked"
                 CommandParameter="HakutyokaluPage"

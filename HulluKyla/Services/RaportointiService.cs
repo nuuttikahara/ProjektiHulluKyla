@@ -49,6 +49,8 @@ namespace HulluKyla.Services
                     ON v.varaus_id = vp.varaus_id
                     JOIN mokki m
                         ON v.mokki_id = m.mokki_id
+                        JOIN palvelu p
+                            ON vp.palvelu_id = p.palvelu_id
                 WHERE v.varattu_alkupvm <= @loppu AND v.varattu_loppupvm >= @alku";
 
             if (alueId.HasValue) {
@@ -82,7 +84,7 @@ namespace HulluKyla.Services
                         FROM varauksen_palvelut vp
                         JOIN palvelu p
                             ON vp.palvelu_id = p.palvelu_id
-                        WHERE vp.varaus_id = v.varausid
+                        WHERE vp.varaus_id = v.varaus_id
                     ), 0) AS kokonaistuotto
                 FROM varaus v
                 JOIN mokki m
