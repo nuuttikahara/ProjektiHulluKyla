@@ -147,30 +147,65 @@
                            HorizontalOptions="Center"
                            TextColor="White"
                            TextDecorations="Underline" />
-                    <CollectionView HeightRequest="200" />
-                </VerticalStackLayout>
+                        <CollectionView x:Name="KaikkiPalvelut"
+                           SelectionChanged="KaikkiPalvelutSelected"
+                           HeightRequest="200"
+                           SelectionMode="Single">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Padding="10"
+                                           Margin="0,5"
+                                           BackgroundColor="Gray"
+                                           CornerRadius="10">
+                                        <VerticalStackLayout>
+                                            <Label Text="{Binding Nimi }"
+                                                   TextColor="White" />
+                                            <Label Text="{Binding Kuvaus}"
+                                                   TextColor="White" />
+                                            <Label Text="{Binding Hinta }"
+                                                   TextColor="White" />
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
             </Frame>
 
             <!-- Napit -->
-            <StackLayout Grid.Row="1"
+                <StackLayout Grid.Row="1"
                          Grid.Column="0"
                          Orientation="Horizontal"
                          HorizontalOptions="Center">
-                <Button Text="Muokkaa" Margin="5" />
-                <Button Text="Poista" Margin="5" />
+                    <Button Text="Poista varaus" Margin="5"
+                            Clicked="PoistaVaraus_Clicked"/>
             </StackLayout>
 
             <Button Grid.Row="1"
                     Grid.Column="1"
-                    Text="Poista"
+                    Clicked="PoistaPalvelu_Clicked"
+                    Text="Poista palvelu varauksesta"
                     HorizontalOptions="Center"
                     Margin="5" />
 
-            <Button Grid.Row="1"
+                <HorizontalStackLayout 
+                    Grid.Row="1"
                     Grid.Column="2"
-                    Text="Lisää"
                     HorizontalOptions="Center"
-                    Margin="5" />
+                    Spacing="10">
+
+                    <Entry x:Name="LkmEntry"
+                           Placeholder="Kappalemäärä">
+                        
+                    </Entry>
+                    <Button 
+                            Clicked="LisaaPalvelu_Clicked"
+                            Text="Lisää palvelu varaukseen"
+                            HorizontalOptions="Center"
+                            Margin="5" />
+                </HorizontalStackLayout>
+            
+            
         </Grid>
 
         <!-- Alapainikkeet -->
