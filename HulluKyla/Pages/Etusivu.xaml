@@ -8,13 +8,8 @@
     <Grid RowDefinitions="Auto,*,Auto" Padding="20">
 
 
-        <Label Text="Projekti: Hullu Kylä"
-               FontSize="28"
-               HorizontalOptions="Center"
-               VerticalOptions="Start"
-               Grid.Row="0"
-               Margin="0,30,0,20" />
-
+        <Image WidthRequest="300" HeightRequest="300" Source="logo.png" 
+               HorizontalOptions="Center"/>
 
         <Grid Grid.Row="1"
               VerticalOptions="Center"
