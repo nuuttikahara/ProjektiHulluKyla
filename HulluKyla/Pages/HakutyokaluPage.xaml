@@ -6,10 +6,21 @@
 
 
     <Grid Padding="20"
-          RowDefinitions="*,Auto"
+          RowDefinitions="*,Auto,*"
           ColumnDefinitions="*,*">
 
-        <!-- Placeholder keskelle -->
+        <Picker x:Name="HakukategoriaPicker"
+                Title="Valitse hakukategoria"
+                SelectedIndexChanged="HakukategoriaSelected" 
+                Grid.ColumnSpan="2" >
+            <Picker.Items>
+                <x:String>Mökit</x:String>
+                <x:String>Asiakkaat</x:String>
+                <x:String>Palvelut</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <!-- Mökit -->
         <Frame Grid.Row="0" Grid.ColumnSpan="2"
                BorderColor="Gray"
                BackgroundColor="#f0f0f0"
@@ -19,11 +30,12 @@
                WidthRequest="300"
                HorizontalOptions="Center"
                VerticalOptions="Center">
-            <Label Text="Tähän tulee hakutyökalu tjsp."
-                   FontSize="16"
-                   TextColor="Gray"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
+            <StackLayout x:Name="MokkiHakuNakyma" IsVisible="False">
+                <Label Text="Vapaiden mökkien haku" FontAttributes="Bold"/>
+                <Picker x:Name="AluePicker" Title="Valitse alue"/>
+                <DatePicker x:Name="AlkuPvmPicker" />
+                <DatePicker x:Name="LoppuPvmPicker" />
+            </StackLayout>
         </Frame>
 
         <!-- Napit -->

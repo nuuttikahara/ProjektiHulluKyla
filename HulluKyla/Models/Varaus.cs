@@ -73,6 +73,23 @@ namespace HulluKyla.Models
             this.VarattuAlkuPvm = varattuAlkuPvm;
         }
 
+        // Uuden varauksen luonti ilman varausId:tä
+        public Varaus(
+            Asiakas asiakas,
+            Mokki mokki,
+            DateTime varattuPvm,
+            DateTime vahvistusPvm,
+            DateTime varattuAlkuPvm,
+            DateTime varattuLoppuPvm
+        )
+            : this(uint.MinValue, asiakas, mokki) 
+        {
+            this.VarattuPvm = varattuPvm;
+            this.VahvistusPvm = vahvistusPvm;
+            this.VarattuAlkuPvm = varattuAlkuPvm;
+            this.VarattuLoppuPvm = varattuLoppuPvm;
+        }
+
         // Getters and Setters
         public uint VarausId
         {

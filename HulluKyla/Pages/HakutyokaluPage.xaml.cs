@@ -16,4 +16,8 @@ public partial class HakutyokaluPage : ContentPage {
     private void Tyhja_Clicked(object sender, EventArgs e) {
         // Ei m‰‰ritetty‰ logiikkaa
     }
+
+    private void HakukategoriaSelected(object sender, EventArgs e) {
+
+    }
 }
