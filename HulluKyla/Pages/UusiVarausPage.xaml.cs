@@ -35,10 +35,12 @@ public partial class UusiVarausPage : ContentPage {
         AsiakasLista.ItemsSource = kaikkiAsiakkaat;
 
         // Pickereiden tyhjennys
+        varausAlkaa = DateTime.Today;
         YhteydenottoPvmPicker.Date = DateTime.Today;
         AlkuPvmPicker.Date = DateTime.Today;
         LoppuPvmPicker.Date = DateTime.Today;
 
+        varausLoppuu = DateTime.Today;
         YhteydenottoAikaPicker.Time = new TimeSpan(12, 0, 0);
         AlkuAikaPicker.Time = new TimeSpan(12, 0, 0);
         LoppuAikaPicker.Time = new TimeSpan(12, 0, 0);
@@ -108,24 +110,32 @@ public partial class UusiVarausPage : ContentPage {
 
     // Varauksen lis‰ys-metodi
     private async void LisaaVaraus_Clicked(object sender, EventArgs e) {
+        varausAlkaa = YhdistaPaivaJaAika(AlkuPvmPicker, AlkuAikaPicker);
+        varausLoppuu = YhdistaPaivaJaAika(LoppuPvmPicker, LoppuAikaPicker);
+
+        if (varausLoppuu <= varausAlkaa) {
+            await DisplayAlert("Virhe", "Varaus ei voi p‰‰tty‰ ennen kuin se alkaa.", "OK");
+            return;
+        }
+
+        if (valittuAsiakas == null) {
+            await DisplayAlert("Virhe", "Valitse asiakas", "OK");
+            return;
+        }
+
+        if (valittuMokki == null) {
+            await DisplayAlert("Virhe", "Valitse mˆkki", "OK");
+            return;
+        }
+
+        DateTime tilausPvm = YhdistaPaivaJaAika(YhteydenottoPvmPicker, YhteydenottoAikaPicker);
+
+        if (tilausPvm.Date >= varausAlkaa.Date && tilausPvm.TimeOfDay >= varausAlkaa.TimeOfDay) {
+            await DisplayAlert("Virhe", "Tilausaika t‰ytyy olla ennen varausta.", "OK");
+            return;
+        }
+
         try {
-            if (valittuAsiakas == null) {
-                await DisplayAlert("Virhe", "Valitse asiakas", "OK");
-                return;
-            }
-
-            if (valittuMokki == null) {
-                await DisplayAlert("Virhe", "Valitse mˆkki", "OK");
-                return;
-            }
-
-            DateTime tilausPvm = YhdistaPaivaJaAika(YhteydenottoPvmPicker, YhteydenottoAikaPicker);
-
-            if (tilausPvm >= varausAlkaa || tilausPvm >= varausLoppuu) {
-                await DisplayAlert("Virhe", "Tilausp‰iv‰m‰‰r‰ t‰ytyy olla ennen varausta.", "OK");
-                return;
-            }
-
             var uusiVaraus = new Varaus(
                 valittuAsiakas,
                 valittuMokki,
