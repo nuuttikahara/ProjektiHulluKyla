@@ -10,7 +10,6 @@ public partial class MokkiListaPage : ContentPage {
     private Mokki? valittuMokki;
     private List<Alue> kaikkiAlueet = new List<Alue>();
     private List<Mokki> kaikkiMokit = new List<Mokki>();
-
     public MokkiListaPage() {
         InitializeComponent();
     }

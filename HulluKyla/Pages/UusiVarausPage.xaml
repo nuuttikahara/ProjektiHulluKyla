@@ -6,55 +6,14 @@
              BackgroundColor="Black">
 
 
-    <Grid RowDefinitions="*,Auto" RowSpacing="0" Padding="10">
+    <Grid RowDefinitions="*,Auto" Padding="20">
 
         <!-- Palveluiden suodatus -->
-        <ScrollView Grid.Row="0" HorizontalOptions="Fill">
-            <Grid RowSpacing="10" RowDefinitions="*,*,*,0.2*">
+        <ScrollView Grid.Row="0">
+            <Grid RowSpacing="10" RowDefinitions="*,*,*">
 
-                <!-- Ylin frame (Asiakastiedot) -->
-                <Frame Grid.Row="0" BorderColor="Gray" CornerRadius="10" BackgroundColor="#1e1e1e">
-                    <StackLayout Spacing="10" Grid.Row="0">
-                        <Grid ColumnDefinitions="*,*" ColumnSpacing="5">
-
-                            <!-- Asiakashaku ja pickerit -->
-                            <SearchBar x:Name="AsiakasSearchBar" 
-                                       Placeholder="Hae asiakasta..."
-                                       SearchButtonPressed="AsiakasSearchPressed"
-                                       WidthRequest="300"
-                                       HeightRequest="50"/>
-
-                            <VerticalStackLayout Spacing="7" Grid.Column="1">
-                                <Label Text="Tilauspäivämäärä" HorizontalOptions="Center" FontAttributes="Bold"/>
-                                <DatePicker x:Name="YhteydenottoPvmPicker" WidthRequest="300"/>
-                                <TimePicker x:Name="YhteydenottoAikaPicker" Format="HH:mm" WidthRequest="300"/>
-                            </VerticalStackLayout>
-                        </Grid>
-
-                        <!-- Asiakaslista -->
-                        <CollectionView x:Name="AsiakasLista"
-                                    SelectionMode="Single"
-                                    SelectionChanged="AsiakasSelected"
-                                    HeightRequest="200">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame BackgroundColor="Gray"
-                                           Padding="10"
-                                           CornerRadius="10">
-                                        <StackLayout>
-                                            <Label Text="{Binding Etunimi}" />
-                                            <Label Text="{Binding Sukunimi}" />
-                                            <Label Text="{Binding Email}" />
-                                        </StackLayout>
-                                    </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
-                </Frame>
-
-                <!-- Keskimmäinen frame (Välitason suodatuselementit) -->
-                <Frame BorderColor="Gray" CornerRadius="10" Grid.Row="1" BackgroundColor="#1e1e1e">
+                <!-- Ylin frame (Mökin suodatuselementit) -->
+                <Frame BorderColor="Gray" CornerRadius="10" Grid.Row="0" BackgroundColor="#1e1e1e">
                     <Grid ColumnDefinitions="0.2*,0.3*,0.3*,0.2*" RowDefinitions="*,*">
 
                         <!-- Alue ja henkilömäärä -->
@@ -91,13 +50,13 @@
                                 TextColor="Black"
                                 Text="Hae mökit"
                                 Clicked="MokkiHaku_Clicked"
-                                HeightRequest="60"
-                                WidthRequest="150"/>
+                                HeightRequest="30"
+                                WidthRequest="130"/>
                     </Grid>
                 </Frame>
 
-                <!-- Alin frame (Mökkilista) -->
-                <Frame Grid.Row="2" BorderColor="Gray" BackgroundColor="#1e1e1e">
+                <!-- Keskimmäinen frame (Mökkilista) -->
+                <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="#1e1e1e">
                     <StackLayout Spacing="10">
                         <CollectionView x:Name="MokkiLista"             
                                 SelectionMode="Single" 
@@ -105,10 +64,11 @@
                                 HeightRequest="300">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Frame BackgroundColor="Gray"
-                                       Padding="10"
-                                       Margin="0,2"
-                                       CornerRadius="10">
+                                    <Frame BackgroundColor="Transparent"
+                                         BorderColor="LightBlue"
+                                         Padding="10"
+                                         Margin="0,2"
+                                         CornerRadius="10">
                                         <VerticalStackLayout>
                                             <Label Text="{Binding MokkiNimi}" FontSize="14" FontAttributes="Bold" HeightRequest="24" HorizontalOptions="Center" />
                                             <Label Text="{Binding Katuosoite, StringFormat='Osoite: {0}'}" FontSize="14" HorizontalOptions="Center"/>
@@ -119,17 +79,60 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
+                    </StackLayout>
+                </Frame>
 
-                        <!-- Varauksen tallennus button -->
-                        <Button Grid.Row="3" Grid.Column="1"
-                        Text="Lisää varaus"
-                        Clicked="TallennaVaraus_Clicked"
-                        HorizontalOptions="Center"
-                        HeightRequest="45"
-                        WidthRequest="130"
-                        BackgroundColor="LightBlue"
-                        BorderColor="Gray"
-                        BorderWidth="3"/>
+
+                <!-- Alin frame (Asiakastiedot) -->
+                <Frame Grid.Row="2" BorderColor="Gray" CornerRadius="10" BackgroundColor="#1e1e1e">
+                    <StackLayout Spacing="10" Grid.Row="2">
+                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="5">
+
+                            <!-- Asiakashaku ja pickerit -->
+                            <SearchBar x:Name="AsiakasSearchBar" 
+                           Placeholder="Hae asiakasta..."
+                           SearchButtonPressed="AsiakasSearchPressed"
+                           WidthRequest="300"
+                           HeightRequest="50"/>
+
+                            <VerticalStackLayout Spacing="7" Grid.Column="1">
+                                <Label Text="Tilauspäivämäärä" HorizontalOptions="Center" FontAttributes="Bold"/>
+                                <DatePicker x:Name="YhteydenottoPvmPicker" WidthRequest="300"/>
+                                <TimePicker x:Name="YhteydenottoAikaPicker" Format="HH:mm" WidthRequest="300"/>
+                            </VerticalStackLayout>
+
+                            <!-- Varauksen tallennus button -->
+                            <Button Grid.Column="2"
+                                    Text="Lisää varaus"
+                                    Clicked="LisaaVaraus_Clicked"
+                                    HorizontalOptions="Center"
+                                    HeightRequest="45"
+                                    WidthRequest="130"
+                                    BackgroundColor="LightBlue"
+                                    BorderColor="Gray"
+                                    BorderWidth="3"/>   
+                        </Grid>
+
+                        <!-- Asiakaslista -->
+                        <CollectionView x:Name="AsiakasLista"
+                        SelectionMode="Single"
+                        SelectionChanged="AsiakasSelected"
+                        HeightRequest="200">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame BackgroundColor="Transparent"
+                                           BorderColor="LightBlue"
+                                           Padding="10"
+                                           CornerRadius="10">
+                                        <StackLayout>
+                                            <Label Text="{Binding Etunimi}" />
+                                            <Label Text="{Binding Sukunimi}" />
+                                            <Label Text="{Binding Email}" />
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
                     </StackLayout>
                 </Frame>
             </Grid>

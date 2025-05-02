@@ -10,6 +10,8 @@ public partial class UusiVarausPage : ContentPage {
     private Alue? valittuAlue;
     private Mokki? valittuMokki;
     private Asiakas? valittuAsiakas;
+    private DateTime varausAlkaa;
+    private DateTime varausLoppuu;
     public UusiVarausPage() {
         InitializeComponent();
     }
@@ -62,7 +64,6 @@ public partial class UusiVarausPage : ContentPage {
 
     // Mökkien haku-metodi
     private async void MokkiHaku_Clicked(object sender, EventArgs e) {
-
         try {
             if (AluePicker.SelectedItem == null) {
                 await DisplayAlert("Virhe", "Valitse alue", "OK");
@@ -77,8 +78,8 @@ public partial class UusiVarausPage : ContentPage {
             valittuAlue = (Alue)AluePicker.SelectedItem;
             uint alueId = valittuAlue.AlueId;
             
-            DateTime varausAlkaa = YhdistaPaivaJaAika(AlkuPvmPicker, AlkuAikaPicker);
-            DateTime varausLoppuu = YhdistaPaivaJaAika(LoppuPvmPicker, LoppuAikaPicker);
+            varausAlkaa = YhdistaPaivaJaAika(AlkuPvmPicker, AlkuAikaPicker);
+            varausLoppuu = YhdistaPaivaJaAika(LoppuPvmPicker, LoppuAikaPicker);
 
             if (varausLoppuu <= varausAlkaa) {
                 await DisplayAlert("Virhe", "Varaus ei voi päättyä ennen kuin se alkaa.", "OK");
@@ -105,8 +106,43 @@ public partial class UusiVarausPage : ContentPage {
             await NavigointiService.Navigoi(target);
     }
 
-    private void TallennaVaraus_Clicked(object sender, EventArgs e) {
-         
+    // Varauksen lisäys-metodi
+    private async void LisaaVaraus_Clicked(object sender, EventArgs e) {
+        try {
+            if (valittuAsiakas == null) {
+                await DisplayAlert("Virhe", "Valitse asiakas", "OK");
+                return;
+            }
+
+            if (valittuMokki == null) {
+                await DisplayAlert("Virhe", "Valitse mökki", "OK");
+                return;
+            }
+
+            DateTime tilausPvm = YhdistaPaivaJaAika(YhteydenottoPvmPicker, YhteydenottoAikaPicker);
+
+            if (tilausPvm >= varausAlkaa || tilausPvm >= varausLoppuu) {
+                await DisplayAlert("Virhe", "Tilauspäivämäärä täytyy olla ennen varausta.", "OK");
+                return;
+            }
+
+            var uusiVaraus = new Varaus(
+                valittuAsiakas,
+                valittuMokki,
+                tilausPvm,
+                DateTime.Now,
+                varausAlkaa,
+                varausLoppuu);
+
+            VarausService.Lisaa(uusiVaraus);
+
+            await DisplayAlert("Onnistui", "Varaus lisätty", "OK");
+            await NavigointiService.Navigoi("VarausListaPage");
+        }
+        catch (Exception ex) {
+            await DisplayAlert("Virhe", "Varausta lisättäessä tapahtui virhe: " + ex.Message, "OK");
+            return;
+        }
     }
 
     // Asiakkaan haku-metodi
@@ -130,11 +166,13 @@ public partial class UusiVarausPage : ContentPage {
 
     // Mokki-olion valinta CollectionView-listasta
     private void MokkiSelected(object sender, SelectionChangedEventArgs e) {
-        valittuMokki = e.CurrentSelection.FirstOrDefault() as Mokki;
+        if (e.CurrentSelection != null && e.CurrentSelection.Count > 0)
+            valittuMokki = e.CurrentSelection.FirstOrDefault() as Mokki;
     }
     
     // Asiakkaan valinta CollectionView-listasta
     private void AsiakasSelected(object sender, SelectionChangedEventArgs e) {
-        valittuAsiakas = e.CurrentSelection.FirstOrDefault() as Asiakas;
+        if (e.CurrentSelection != null && e.CurrentSelection.Count > 0)
+            valittuAsiakas = e.CurrentSelection.FirstOrDefault() as Asiakas;
     }
 }
