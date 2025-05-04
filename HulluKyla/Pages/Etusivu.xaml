@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.Etusivu"
              Title="Etusivu">
 
@@ -22,22 +23,26 @@
 
             <!-- Napit -->
 
-            <Button Text="Seuranta"
+            <controls:ThreeDButton 
+                    Text="Seuranta"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="SeurantaPage"
                     Grid.Row="0" Grid.Column="0" />
 
-            <Button Text="Raportointi"
+            <controls:ThreeDButton 
+                    Text="Raportointi"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="RaportointiPage"
                     Grid.Row="0" Grid.Column="1" />
 
-            <Button Text="Hallinta"
+            <controls:ThreeDButton 
+                    Text="Hallinta"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="HallintaPage"
                     Grid.Row="1" Grid.Column="0" />
 
-            <Button Text="Varaukset"
+            <controls:ThreeDButton 
+                    Text="Varaukset"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="VarausListaPage"
                     Grid.Row="1" Grid.Column="1" />

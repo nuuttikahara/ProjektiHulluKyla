@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.UusiVarausPage"
              Title="UusiVarausPage"
              BackgroundColor="Black">
@@ -43,7 +44,8 @@
                         </VerticalStackLayout>
 
                         <!-- Mökkien haku button -->
-                        <Button Grid.Row="1" Grid.Column="3"
+                        <controls:ThreeDButton 
+                                Grid.Row="1" Grid.Column="3"
                                 BorderColor="Gray"
                                 BorderWidth="3"
                                 BackgroundColor="LightBlue"
@@ -102,7 +104,8 @@
                             </VerticalStackLayout>
 
                             <!-- Varauksen tallennus button -->
-                            <Button Grid.Column="2"
+                            <controls:ThreeDButton 
+                                    Grid.Column="2"
                                     Text="Lisää varaus"
                                     Clicked="LisaaVaraus_Clicked"
                                     HorizontalOptions="Center"
@@ -146,14 +149,16 @@
                      VerticalOptions="End"
                      Margin="0,20,0,0">
 
-            <Button Text="Etusivu"
+            <controls:ThreeDButton 
+                    Text="Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu"
                     BackgroundColor="LightBlue"
                     BorderColor="DarkGray"
                     BorderWidth="3"/>
 
-            <Button Text="Takaisin varauksiin"
+            <controls:ThreeDButton 
+                    Text="Takaisin varauksiin"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="VarausListaPage"
                     BackgroundColor="LightBlue"

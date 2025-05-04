@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.MokkiListaPage"
              Title="MokkiListaPage">
 
@@ -39,8 +40,8 @@
 
         <!-- Välibuttonit -->
         <VerticalStackLayout Spacing="10" Grid.Column="1" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
-            <Button Text="Tallenna mökki" Clicked="TallennaClicked" HeightRequest="50" />
-            <Button Text="Poista mökki" Clicked="PoistaClicked" HeightRequest="50" />
+            <controls:ThreeDButton Text="Tallenna mökki" Clicked="TallennaClicked" HeightRequest="50" />
+            <controls:ThreeDButton Text="Poista mökki" Clicked="PoistaClicked" HeightRequest="50" />
         </VerticalStackLayout>
 
         <!-- Entryt -->
@@ -62,26 +63,30 @@
              VerticalOptions="End"
              Margin="0,20,0,0">
 
-            <Button Text="Etusivu"
-            Clicked="Navigoi_Clicked"
-            CommandParameter="Etusivu" />
+            <controls:ThreeDButton 
+                Text="Etusivu"
+                Clicked="Navigoi_Clicked"
+                CommandParameter="Etusivu" />
 
-            <Button Text="Takaisin"
-            Clicked="Navigoi_Clicked"
-            CommandParameter="HallintaPage" />
+            <controls:ThreeDButton 
+                Text="Takaisin"
+                Clicked="Navigoi_Clicked"
+                CommandParameter="HallintaPage" />
         </StackLayout>
 
         <!-- Alakulman oikean puolen napit -->
-        <StackLayout Grid.Row="2" Grid.Column="2"
+        <StackLayout 
+             Grid.Row="2" Grid.Column="2"
              Orientation="Horizontal"
              Spacing="15"
              HorizontalOptions="End"
              VerticalOptions="End"
              Margin="0,20,0,0">
 
-            <Button Text="Uusi mökki"
-            Clicked="Navigoi_Clicked"
-            CommandParameter="UusiMokkiPage" />
+            <controls:ThreeDButton 
+                Text="Uusi mökki"
+                Clicked="Navigoi_Clicked"
+                CommandParameter="UusiMokkiPage" />
         </StackLayout>
     </Grid>
 </ContentPage>

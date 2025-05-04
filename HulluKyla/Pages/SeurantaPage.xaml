@@ -1,5 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.SeurantaPage">
 
     <ScrollView>
@@ -35,7 +36,8 @@
                 <VerticalStackLayout Spacing="10">
 
                     <!-- Laskun moodi nappi -->
-                    <Button x:Name="VaihdaNakymaButton"
+                    <controls:ThreeDButton 
+                            x:Name="VaihdaNakymaButton"
                             Text="Maksamattomat Laskut"
                             Clicked="VaihdaNakyma_Clicked"
                             BackgroundColor="DarkGray"
@@ -83,23 +85,25 @@
             <!-- Napit -->
             <HorizontalStackLayout HorizontalOptions="FillAndExpand" Spacing="10">
                 <!-- Etusivu-nappi -->
-                <Button Text="Etusivu"
-            Clicked="Navigoi_Clicked"
-            CommandParameter="Etusivu"
-            HorizontalOptions="Start"
-            BackgroundColor="LightGray"
-            CornerRadius="20"
-            WidthRequest="100"/>
+                <controls:ThreeDButton 
+                    Text="Etusivu"
+                    Clicked="Navigoi_Clicked"
+                    CommandParameter="Etusivu"
+                    HorizontalOptions="Start"
+                    BackgroundColor="LightGray"
+                    CornerRadius="20"
+                    WidthRequest="100"/>
 
                 <!-- Tulosta-nappi -->
-                <Button Text="Tulosta"
-            Clicked="TulostaLasku_Clicked"
-            x:Name="TulostaButton"
-            BackgroundColor="DarkGray"
-            TextColor="White"
-            CornerRadius="20"
-            WidthRequest="100"
-            HorizontalOptions="End"/>
+                <controls:ThreeDButton 
+                    Text="Tulosta"
+                    Clicked="TulostaLasku_Clicked"
+                    x:Name="TulostaButton"
+                    BackgroundColor="DarkGray"
+                    TextColor="White"
+                    CornerRadius="20"
+                    WidthRequest="100"
+                    HorizontalOptions="End"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

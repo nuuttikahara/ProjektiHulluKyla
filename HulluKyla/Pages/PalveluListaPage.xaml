@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.PalveluListaPage"
              Title="PalveluListaPage">
 
@@ -41,8 +42,8 @@
         <!-- Välibuttonit -->
 
         <VerticalStackLayout Spacing="10" Grid.Column="1" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
-            <Button Text="Tallenna palvelu" Clicked="TallennaClicked" HeightRequest="50" />
-            <Button Text="Poista palvelu" Clicked="PoistaClicked" HeightRequest="50" />
+            <controls:ThreeDButton Text="Tallenna palvelu" Clicked="TallennaClicked" HeightRequest="50" />
+            <controls:ThreeDButton Text="Poista palvelu" Clicked="PoistaClicked" HeightRequest="50" />
         </VerticalStackLayout>
 
         <!-- Entryt -->
@@ -62,10 +63,12 @@
                      HorizontalOptions="Start"
                      VerticalOptions="End"
                      Margin="0,20,0,0">
-            <Button Text="Etusivu"
+            <controls:ThreeDButton 
+                    Text="Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
-            <Button Text="Takaisin"
+            <controls:ThreeDButton 
+                    Text="Takaisin"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="HallintaPage" />
         </StackLayout>
@@ -78,7 +81,8 @@
                      VerticalOptions="End"
                      Margin="0,20,0,0">
 
-            <Button Text="Uusi palvelu"
+            <controls:ThreeDButton 
+                    Text="Uusi palvelu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="UusiPalveluPage" />
         </StackLayout>

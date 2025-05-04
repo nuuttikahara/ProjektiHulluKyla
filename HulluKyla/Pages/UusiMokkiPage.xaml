@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.UusiMokkiPage"
              Title="UusiMokkiPage">
 
@@ -41,17 +42,20 @@
                      VerticalOptions="End"
                      Margin="0,20,0,0">
 
-            <Button Text="Etusivu"
+            <controls:ThreeDButton 
+                    Text="Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
 
-            <Button Text="Takaisin mökkeihin"
+            <controls:ThreeDButton 
+                    Text="Takaisin mökkeihin"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="MokkiListaPage" />
         </StackLayout>
 
         <!-- Oikean reunan tallenna-nappi -->
-        <Button Grid.Row="2" Grid.Column="2"
+        <controls:ThreeDButton 
+                Grid.Row="2" Grid.Column="2"
                 Text="Lisää"
                 Clicked="LisaaClicked"
                 HorizontalOptions="End"
