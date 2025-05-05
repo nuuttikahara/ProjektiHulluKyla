@@ -8,6 +8,7 @@ namespace HulluKyla.Pages {
         private List<Asiakas> suodatetutAsiakkaat = new();
         private Dictionary<uint, uint> varausAsiakasMap = new();
         private bool naytaVainMaksamattomat = true;
+        private Lasku valittuLasku;
 
         public SeurantaPage() {
             InitializeComponent();
@@ -18,32 +19,24 @@ namespace HulluKyla.Pages {
             LataaData();
         }
 
-        // Tietokanta kommunikaatio metodit:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         private void LataaData() {
-            // Luo laskut tarvittaessa
             LaskuService.LuoLaskutPaattyneille();
 
-            // Haetaan data
             kaikkiLaskut = LaskuService.HaeKaikki();
             kaikkiAsiakkaat = AsiakasService.HaeKaikki();
             suodatetutAsiakkaat = kaikkiAsiakkaat;
 
-            // Asiakaslista
             AsiakasListaView.ItemsSource = suodatetutAsiakkaat;
 
-            // Varausten asiakas-ID:t
             var varaukset = VarausService.HaeKaikki();
             varausAsiakasMap.Clear();
             foreach (var varaus in varaukset) {
                 varausAsiakasMap[varaus.VarausId] = varaus.Asiakas.AsiakasId;
             }
 
-            // Näytä aluksi maksamattomat
             PaivitaNakyma(null);
         }
 
-
-        //Asiakaslista metodit::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
         private void AsiakasSearchBar_TextChanged(object sender, TextChangedEventArgs e) {
             string haku = AsiakasSearchBar.Text?.Trim().ToLower() ?? "";
 
@@ -74,8 +67,7 @@ namespace HulluKyla.Pages {
                 ? "Maksamattomat laskut"
                 : "Kaikki laskut";
 
-            Asiakas valittu = AsiakasListaView.SelectedItem as Asiakas;
-            PaivitaNakyma(valittu);
+            PaivitaNakyma(AsiakasListaView.SelectedItem as Asiakas);
         }
 
         private void PaivitaNakyma(Asiakas valittuAsiakas) {
@@ -96,19 +88,24 @@ namespace HulluKyla.Pages {
             TyhjaIlmoitus.IsVisible = lista.Count == 0;
         }
 
-
-        //LaskuLista Metodit:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-        private Lasku valittuLasku;
-
         private void LaskuLista_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             valittuLasku = e.CurrentSelection.FirstOrDefault() as Lasku;
         }
 
-
         private async void TulostaLasku_Clicked(object sender, EventArgs e) {
-            if (LaskuLista.SelectedItem is Lasku valittuLasku) {
+            if (valittuLasku != null) {
                 try {
-                    await PdfService.TulostaLasku(valittuLasku);
+                    if (varausAsiakasMap.TryGetValue(valittuLasku.VarausId, out uint asiakasId)) {
+                        var asiakas = kaikkiAsiakkaat.FirstOrDefault(a => a.AsiakasId == asiakasId);
+
+                        if (asiakas != null) {
+                            await PdfService.TulostaLasku(valittuLasku, asiakas);
+                        } else {
+                            await DisplayAlert("Virhe", "Asiakasta ei löytynyt.", "OK");
+                        }
+                    } else {
+                        await DisplayAlert("Virhe", "Varaus-ID ei täsmää.", "OK");
+                    }
                 } catch (Exception ex) {
                     await DisplayAlert("Virhe", $"PDF:n luonti epäonnistui: {ex.Message}", "OK");
                 }
@@ -118,11 +115,6 @@ namespace HulluKyla.Pages {
         }
 
 
-
-
-
-        //Navigointi Metodi:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
         private async void Navigoi_Clicked(object sender, EventArgs e) {
             var reitti = (sender as Button)?.CommandParameter as string;
             if (!string.IsNullOrEmpty(reitti))
@@ -130,4 +122,6 @@ namespace HulluKyla.Pages {
         }
     }
 }
+
+
 
