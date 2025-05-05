@@ -121,7 +121,7 @@
             <ScrollView>
                 <StackLayout Spacing="10">
                     <Label Text="Palveluiden haku" FontAttributes="Bold" />
-                    <Picker x:Name="PalvelunAluePicker" Title="Valitse alue" ItemDisplayBinding="{Binding Nimi}"/>
+                    <Picker x:Name="PalvelunAluePicker" Title="Valitse alue" ItemDisplayBinding="{Binding Nimi}" SelectedIndexChanged="PalvelunAlueSelected"/>
                     <CollectionView x:Name="PalveluTulosLista">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
