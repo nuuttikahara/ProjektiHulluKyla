@@ -23,7 +23,7 @@ namespace HulluKyla.Services {
             double y = margin;
 
             // Yrityksen tiedot (vasen yläkulma)
-            gfx.DrawString("HulluKyla Oy", fontBold, XBrushes.Black, margin, y);
+            gfx.DrawString("Village Newbies Oy", fontBold, XBrushes.Black, margin, y);
             y += 20;
             gfx.DrawString("Hullukyläntie 1", fontRegular, XBrushes.Black, margin, y);
             y += 15;
@@ -78,7 +78,7 @@ namespace HulluKyla.Services {
             y += 15;
             gfx.DrawString("Maksuohjeet:", fontBold, XBrushes.Black, margin, y);
             y += 20;
-            gfx.DrawString("Saaja: HulluKyla Oy", fontRegular, XBrushes.Black, margin, y);
+            gfx.DrawString("Saaja: Village Newbies Oy", fontRegular, XBrushes.Black, margin, y);
             y += 15;
             gfx.DrawString("Tilinumero: FI00 1234 5600 0007 89", fontRegular, XBrushes.Black, margin, y);
             y += 15;
