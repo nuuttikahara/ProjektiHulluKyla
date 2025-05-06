@@ -115,7 +115,7 @@ namespace HulluKyla.Services
 
             var cmd = new MySqlCommand(@"
                 SELECT v.varaus_id FROM varaus v
-                WHERE v.varattu_loppupvm < CURRENT_DATE()
+                WHERE v.varattu_loppupvm < NOW()
                     AND NOT EXISTS (SELECT 1 FROM lasku l WHERE l.varaus_id = v.varaus_id)", conn);
 
             using var reader = cmd.ExecuteReader();
