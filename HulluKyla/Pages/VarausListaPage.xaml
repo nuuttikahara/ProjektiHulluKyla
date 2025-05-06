@@ -12,6 +12,7 @@
 
         <!-- Asiakasvalinta-alue -->
         <Frame BorderColor="Gray"
+               BackgroundColor="Transparent"
                CornerRadius="10"
                Padding="10"
                Grid.ColumnSpan="2">
@@ -61,6 +62,7 @@
             <Frame Grid.Row="0"
                    Grid.Column="0"
                    Margin="5"
+                   BackgroundColor="Transparent"
                    CornerRadius="10"
                    BorderColor="Gray"
                    
@@ -101,6 +103,7 @@
                    Margin="5"
                    CornerRadius="10"
                    BorderColor="Gray"
+                   BackgroundColor="Transparent"
                    
                    Padding="10">
                 <VerticalStackLayout Spacing="5">
@@ -137,6 +140,7 @@
                    Margin="5"
                    CornerRadius="10"
                    BorderColor="Gray"
+                   BackgroundColor="Transparent"
                    
                    Padding="10">
                 <VerticalStackLayout Spacing="5">
