@@ -22,7 +22,6 @@
                            SearchButtonPressed="AsiakasSearchPressed"
                            WidthRequest="300"
                            HorizontalOptions="Center"
-                           TextColor="White"
                            PlaceholderColor="Gray" />
 
                 <CollectionView x:Name="AsiakasListaView"
@@ -37,11 +36,11 @@
                                    CornerRadius="10">
                                     <VerticalStackLayout>
                                         <Label Text="{Binding KokoNimi}"
-                                               TextColor="White" />
+                                               />
                                         <Label Text="{Binding Email}"
-                                               TextColor="White" />
+                                               />
                                         <Label Text="{Binding Puhelinnro}"
-                                               TextColor="White" />
+                                               />
                                     </VerticalStackLayout>
                                 </Frame>
                         </DataTemplate>
@@ -69,8 +68,7 @@
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Varaukset"
                            FontAttributes="Bold"
-                           HorizontalOptions="Center"
-                           TextColor="White" 
+                           HorizontalOptions="Center" 
                            TextDecorations="Underline" />
                         <CollectionView x:Name="AsiakkaanVaraukset"
                                 SelectionChanged="VarausSelected"
@@ -80,15 +78,14 @@
                                 <DataTemplate>
                                     <Frame Padding="10"
                                         Margin="0,5"
-                                        BackgroundColor="Gray"
                                         CornerRadius="10">
                                         <VerticalStackLayout>
                                             <Label Text="{Binding Mokki.MokkiNimi, StringFormat='Mökin nimi: {0}'}"
-                                                   TextColor="White" />
+                                                    />
                                             <Label Text="{Binding VarattuAlkuPvm, StringFormat='Varaus alkaa: {0}'}"
-                                                   TextColor="White" />
+                                                   />
                                             <Label Text="{Binding VarattuLoppuPvm, StringFormat='Varaus loppuu: {0}'}"
-                                                   TextColor="White" />
+                                                   />
                                         </VerticalStackLayout>
                                     </Frame>
                                 </DataTemplate>
@@ -108,8 +105,7 @@
                 <VerticalStackLayout Spacing="5">
                     <Label Text="Varauksen palvelut"
                            FontAttributes="Bold"
-                           HorizontalOptions="Center"
-                           TextColor="White" 
+                           HorizontalOptions="Center" 
                            TextDecorations="Underline" />
                         <CollectionView x:Name="VarauksenPalvelut"
                             SelectionChanged="VarauksenPalveluSelected"
@@ -123,9 +119,9 @@
                                             CornerRadius="10">
                                         <VerticalStackLayout>
                                             <Label Text="{Binding Palvelu.Nimi, StringFormat='Palvelun nimi: {0}'}"
-                                            TextColor="White" />
+                                             />
                                             <Label Text="{Binding Lkm, StringFormat='Määrä: {0}'}"
-                                            TextColor="White" />
+                                            />
                                         </VerticalStackLayout>
                                     </Frame>
                                 </DataTemplate>
@@ -146,7 +142,6 @@
                     <Label Text="Kaikki palvelut"
                            FontAttributes="Bold"
                            HorizontalOptions="Center"
-                           TextColor="White"
                            TextDecorations="Underline" />
                         <CollectionView x:Name="KaikkiPalvelut"
                            SelectionChanged="KaikkiPalvelutSelected"
@@ -160,11 +155,11 @@
                                            CornerRadius="10">
                                         <VerticalStackLayout>
                                             <Label Text="{Binding Nimi }"
-                                                   TextColor="White" />
+                                                    />
                                             <Label Text="{Binding Kuvaus}"
-                                                   TextColor="White" />
+                                                    />
                                             <Label Text="{Binding Hinta }"
-                                                   TextColor="White" />
+                                                    />
                                         </VerticalStackLayout>
                                     </Frame>
                                 </DataTemplate>

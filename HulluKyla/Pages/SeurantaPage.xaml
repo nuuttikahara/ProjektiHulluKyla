@@ -13,9 +13,7 @@
                                Placeholder="Etsi asiakasta..."
                                TextChanged="AsiakasSearchBar_TextChanged"
                                HorizontalOptions="Center"
-                               WidthRequest="300"
-                               TextColor="White"
-                               PlaceholderColor="Gray"/>
+                               WidthRequest="300"/>
                     <CollectionView x:Name="AsiakasListaView"
                                     HeightRequest="200"
                                     SelectionMode="Single"
@@ -23,7 +21,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame Padding="10" Margin="0,5" BackgroundColor="Transparent" CornerRadius="10">
-                                    <Label Text="{Binding KokoNimi}" TextColor="White"/>
+                                    <Label Text="{Binding KokoNimi}"/>
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -58,8 +56,8 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid ColumnDefinitions="*,*,*" Padding="5" Margin="0,5">
-                                    <Label Text="{Binding LaskuId}" TextColor="White" Grid.Column="0" VerticalOptions="Center"/>
-                                    <Label Text="{Binding VarausId}" TextColor="White" Grid.Column="1" VerticalOptions="Center"/>
+                                    <Label Text="{Binding LaskuId}" Grid.Column="0" VerticalOptions="Center"/>
+                                    <Label Text="{Binding VarausId}"  Grid.Column="1" VerticalOptions="Center"/>
                                     <Label Text="{Binding Summa, StringFormat='{0:0.00} euroa'}"
                                            TextColor="White"
                                            HorizontalTextAlignment="End"

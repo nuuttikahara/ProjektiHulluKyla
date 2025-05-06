@@ -13,7 +13,7 @@
             <Grid RowSpacing="10" RowDefinitions="*,*,*">
 
                 <!-- Ylin frame (Mökin suodatuselementit) -->
-                <Frame BorderColor="Gray" CornerRadius="10" Grid.Row="0" BackgroundColor="#1e1e1e">
+                <Frame BorderColor="Gray" CornerRadius="10" Grid.Row="0">
                     <Grid ColumnDefinitions="0.2*,0.3*,0.3*,0.2*" RowDefinitions="*,*">
 
                         <!-- Alue ja henkilömäärä -->
@@ -54,7 +54,7 @@
                 </Frame>
 
                 <!-- Keskimmäinen frame (Mökkilista) -->
-                <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="#1e1e1e">
+                <Frame Grid.Row="1" BorderColor="Gray">
                     <StackLayout Spacing="10">
                         <CollectionView x:Name="MokkiLista"             
                                 SelectionMode="Single" 
@@ -82,7 +82,7 @@
 
 
                 <!-- Alin frame (Asiakastiedot) -->
-                <Frame Grid.Row="2" BorderColor="Gray" CornerRadius="10" BackgroundColor="#1e1e1e">
+                <Frame Grid.Row="2" BorderColor="Gray" CornerRadius="10">
                     <StackLayout Spacing="10" Grid.Row="2">
                         <Grid ColumnDefinitions="*,*,*" ColumnSpacing="5">
 

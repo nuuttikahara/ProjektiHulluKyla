@@ -1,14 +1,115 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              xmlns:local="clr-namespace:HulluKyla"
              x:Class="HulluKyla.App">
     <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+
+        <!-- 🎨 Väriteemat -->
+        <Color x:Key="PageBackgroundLight">#F5F5F5</Color>
+        <Color x:Key="PageBackgroundDark">#121212</Color>
+
+        <Color x:Key="PrimaryButtonLight">#2D9CDB</Color>
+        <Color x:Key="PrimaryButtonDark">#1E88E5</Color>
+
+        <Color x:Key="ButtonTextLight">#FFFFFF</Color>
+        <Color x:Key="ButtonTextDark">#FFFFFF</Color>
+
+        <Color x:Key="TextColorLight">#000000</Color>
+        <Color x:Key="TextColorDark">#FFFFFF</Color>
+
+        <Color x:Key="ControlBackgroundLight">#FFFFFF</Color>
+        <Color x:Key="ControlBackgroundDark">#1E1E1E</Color>
+
+        <!-- 🧱 ContentPage-tausta -->
+        <Style TargetType="ContentPage">
+            <Setter Property="BackgroundColor">
+                <AppThemeBinding Light="{StaticResource PageBackgroundLight}"
+                                 Dark="{StaticResource PageBackgroundDark}" />
+            </Setter>
+        </Style>
+
+        <!-- 🏷️ Label-tekstit (myös CollectionViewin sisällä) -->
+        <Style TargetType="Label">
+            <Setter Property="TextColor">
+                <AppThemeBinding Light="{StaticResource TextColorLight}"
+                                 Dark="{StaticResource TextColorDark}" />
+            </Setter>
+        </Style>
+
+        <!-- 🔍 SearchBar -->
+        <Style TargetType="SearchBar">
+            <Setter Property="TextColor">
+                <AppThemeBinding Light="{StaticResource TextColorLight}"
+                                 Dark="{StaticResource TextColorDark}" />
+            </Setter>
+            <Setter Property="PlaceholderColor">
+                <AppThemeBinding Light="#666666" Dark="#AAAAAA" />
+            </Setter>
+            <Setter Property="BackgroundColor">
+                <AppThemeBinding Light="{StaticResource ControlBackgroundLight}"
+                                 Dark="{StaticResource ControlBackgroundDark}" />
+            </Setter>
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+
+        <!-- 🔽 Picker -->
+        <Style TargetType="Picker">
+            <Setter Property="TextColor">
+                <AppThemeBinding Light="{StaticResource TextColorLight}"
+                                 Dark="{StaticResource TextColorDark}" />
+            </Setter>
+            <Setter Property="BackgroundColor">
+                <AppThemeBinding Light="{StaticResource ControlBackgroundLight}"
+                                 Dark="{StaticResource ControlBackgroundDark}" />
+            </Setter>
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="0,5,0,5" />
+            <Setter Property="HeightRequest" Value="40" />
+        </Style>
+
+        <!-- ✍️ Entry -->
+        <Style TargetType="Entry">
+            <Setter Property="TextColor">
+                <AppThemeBinding Light="{StaticResource TextColorLight}"
+                                 Dark="{StaticResource TextColorDark}" />
+            </Setter>
+            <Setter Property="BackgroundColor">
+                <AppThemeBinding Light="{StaticResource ControlBackgroundLight}"
+                                 Dark="{StaticResource ControlBackgroundDark}" />
+            </Setter>
+        </Style>
+
+        <!-- 📝 Editor -->
+        <Style TargetType="Editor">
+            <Setter Property="TextColor">
+                <AppThemeBinding Light="{StaticResource TextColorLight}"
+                                 Dark="{StaticResource TextColorDark}" />
+            </Setter>
+            <Setter Property="BackgroundColor">
+                <AppThemeBinding Light="{StaticResource ControlBackgroundLight}"
+                                 Dark="{StaticResource ControlBackgroundDark}" />
+            </Setter>
+        </Style>
+
+        <!-- 💎 ThreeDButton - oma kontrolli -->
+        <Style TargetType="controls:ThreeDButton">
+            <Setter Property="BackgroundColor">
+                <AppThemeBinding Light="{StaticResource PrimaryButtonLight}"
+                                 Dark="{StaticResource PrimaryButtonDark}" />
+            </Setter>
+            <Setter Property="TextColor">
+                <AppThemeBinding Light="{StaticResource ButtonTextLight}"
+                                 Dark="{StaticResource ButtonTextDark}" />
+            </Setter>
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="12,8" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Shadow">
+                <Shadow Brush="#000000" Offset="5,5" Radius="10" Opacity="0.3" />
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>
