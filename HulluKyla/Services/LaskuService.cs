@@ -181,6 +181,29 @@ namespace HulluKyla.Services
             return laskut;
         }
 
+        // Maksettujen laskujen haku
+        public static List<Lasku> HaeMaksetutLaskut() {
+            var laskut = new List<Lasku>();
+
+            using var conn = SqlService.GetConnection();
+            conn.Open();
+
+            var cmd = new MySqlCommand("SELECT * FROM lasku WHERE maksettu = 1", conn);
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read()) {
+                laskut.Add(new Lasku(
+                    (uint)reader.GetInt32("lasku_id"),
+                    (uint)reader.GetInt32("varaus_id"),
+                    reader.GetDouble("summa"),
+                    reader.GetDouble("alv"),
+                    reader.GetBoolean("maksettu")
+                ));
+            }
+
+            return laskut;
+        }
+
 
         // Laskun maksetuksi merkitseminen lasku_id:n mukaan
         public static void MerkitseMaksetuksi(int id) 
@@ -193,7 +216,14 @@ namespace HulluKyla.Services
             cmd.ExecuteNonQuery();
         }
 
+        // Laskun poistaminen
+        public static void Poista(uint laskuId) {
+            using var conn = SqlService.GetConnection();
+            conn.Open();
 
-        // Pdf-tiedoston luonti laskusta tehdään todennäköisesti eri serviceen
+            var cmd = new MySqlCommand("DELETE FROM lasku WHERE lasku_id = @id", conn);
+            cmd.Parameters.AddWithValue("@id", laskuId);
+            cmd.ExecuteNonQuery();
+        }
     }
 }

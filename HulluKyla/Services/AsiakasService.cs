@@ -135,6 +135,20 @@ namespace HulluKyla.Services
         }
 
 
+        // Asiakkaiden joilla ei ole varauksia poistaminen
+        public static void PoistaIlmanVarauksia() {
+            using var conn = SqlService.GetConnection();
+            conn.Open();
+
+            var cmd = new MySqlCommand(@"
+                DELETE FROM asiakas
+                WHERE asiakas_id NOT IN (
+                SELECT DISTINCT asiakas_id FROM varaus)", conn);
+
+            cmd.ExecuteNonQuery();
+        }
+
+
 
     }
 }

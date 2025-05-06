@@ -45,6 +45,16 @@ namespace HulluKyla.Services
             cmd.ExecuteNonQuery();
         }
 
+        // Kaikkien palveluiden poisto varaukselta
+        public static void PoistaKaikkiPalvelutVaraukselta(uint varausId) {
+            using var conn = SqlService.GetConnection();
+            conn.Open();
+
+            var cmd = new MySqlCommand("DELETE FROM varauksen_palvelut WHERE varaus_id = @varausId", conn);
+            cmd.Parameters.AddWithValue("@varausId", varausId);
+            cmd.ExecuteNonQuery();
+        }
+
 
         // Palveluiden ja niiden määrän haku annetun varaus_id:n mukaan
         public static List<VarauksenPalvelu> HaeVarauksenPalvelut(uint varausId) 
