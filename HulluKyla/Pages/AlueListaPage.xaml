@@ -9,23 +9,26 @@
           RowDefinitions="0.8*,0.2*"
           ColumnDefinitions="0.4*,0.2*,0.4*">
 
-        <!-- Aluelista -->
+        <!-- Aluelista -->  
         <Grid Grid.Row="0" Grid.Column="0" >
 
-            <CollectionView x:Name="AlueLista"
-                    Grid.Row="1"
-                    SelectionMode="Single" 
-                    SelectionChanged="AlueSelected"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Fill" >
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <VerticalStackLayout Spacing="2">
-                            <Label Text="{Binding Nimi}" FontSize="14" FontAttributes="Bold" HeightRequest="50" />
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+            <Frame BorderColor="Gray" BackgroundColor="Transparent" Grid.Row="1">
+                <CollectionView x:Name="AlueLista"
+                        SelectionMode="Single" 
+                        SelectionChanged="AlueSelected"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Fill" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Spacing="2">
+                                <Frame BackgroundColor="Transparent" >
+                                    <Label Text="{Binding Nimi}" FontSize="14" FontAttributes="Bold" HeightRequest="50" />
+                                </Frame>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
         </Grid>
 
         <!-- Välibuttonit -->

@@ -21,7 +21,10 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame Padding="10" Margin="0,5" BackgroundColor="Transparent" CornerRadius="10">
-                                    <Label Text="{Binding KokoNimi}"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding KokoNimi}"/>
+                                        <Label Text="{Binding Email}" />
+                                    </StackLayout>
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

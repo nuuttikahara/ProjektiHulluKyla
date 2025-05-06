@@ -11,7 +11,7 @@
           ColumnDefinitions="0.4*,0.20*,0.4*">
 
         <!-- Palvelulista -->
-        <Grid RowDefinitions="0.1*,0.9*" Grid.Row="0" Grid.Column="0" >
+        <Grid RowDefinitions="0.2*,0.9*" Grid.Row="0" Grid.Column="0" >
             <Picker x:Name="AluePicker"
                     Grid.Row="0"
                     Title="Valitse alue"
@@ -19,12 +19,12 @@
                     ItemDisplayBinding="{Binding Nimi}"
                     SelectedIndexChanged="AluePicker_SelectedIndexChanged" />
 
-            <CollectionView x:Name="PalveluLista"
-                            Grid.Row="1"
-                            SelectionMode="Single" 
-                            SelectionChanged="PalveluSelected"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Fill" >
+            <Frame BackgroundColor="Transparent" BorderColor="Gray" Grid.Row="1">
+                <CollectionView x:Name="PalveluLista"
+                                SelectionMode="Single" 
+                                SelectionChanged="PalveluSelected"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Fill" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout Spacing="2">
@@ -36,6 +36,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            </Frame>
         </Grid>
         
             
