@@ -92,6 +92,7 @@ namespace HulluKyla.Pages {
             valittuLasku = e.CurrentSelection.FirstOrDefault() as Lasku;
         }
 
+        // Laskun tulostaminen
         private async void TulostaLasku_Clicked(object sender, EventArgs e) {
             if (valittuLasku != null) {
                 try {
@@ -111,6 +112,28 @@ namespace HulluKyla.Pages {
                 }
             } else {
                 await DisplayAlert("Ei laskua", "Valitse lasku ennen tulostamista.", "OK");
+            }
+        }
+
+        // Laskun merkitseminen maksetuksi
+        private async void MerkitseMaksetuksi_Clicked(object sender, EventArgs e) {
+            if (valittuLasku == null) {
+                await DisplayAlert("Virhe", "Valitse ensin lasku.", "OK");
+                return;
+            }
+
+            if (valittuLasku.Maksettu) {
+                await DisplayAlert("Virhe", "Valittu lasku on jo maksettu.", "OK");
+                return;
+            }
+
+            try {
+                LaskuService.MerkitseMaksetuksi((int)valittuLasku.LaskuId);
+                await DisplayAlert("Onnistui", "Lasku merkitty maksetuksi.", "OK");
+                LataaData();
+            } 
+            catch (Exception ex) {
+                await DisplayAlert("Virhe", $"Laskun maksetuksi merkitseminen epäonnistui: {ex.Message}", "OK");
             }
         }
 
