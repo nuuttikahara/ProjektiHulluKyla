@@ -13,14 +13,13 @@
         <CollectionView x:Name="AsiakasLista"
                         Grid.Row="1" Grid.Column="0"
                         SelectionMode="Single"
-                        SelectionChanged="AsiakasSelected"
-                        BackgroundColor="#f9f9f9">
+                        SelectionChanged="AsiakasSelected">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <VerticalStackLayout Spacing="2">
-                        <Label Text="{Binding Etunimi}" FontAttributes="Bold" FontSize="14" TextColor="Black" />
-                        <Label Text="{Binding Sukunimi}" FontSize="14" TextColor="Black" />
-                        <Label Text="{Binding Email}" FontSize="12" TextColor="Black" />
+                        <Label Text="{Binding Etunimi}" FontAttributes="Bold" FontSize="14" />
+                        <Label Text="{Binding Sukunimi}" FontSize="14" />
+                        <Label Text="{Binding Email}" FontSize="12" />
                     </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

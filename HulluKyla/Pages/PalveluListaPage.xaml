@@ -15,6 +15,7 @@
             <Picker x:Name="AluePicker"
                     Grid.Row="0"
                     Title="Valitse alue"
+                    HeightRequest="70"
                     ItemDisplayBinding="{Binding Nimi}"
                     SelectedIndexChanged="AluePicker_SelectedIndexChanged" />
 
