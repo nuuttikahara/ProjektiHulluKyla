@@ -79,7 +79,7 @@ public partial class HakutyokaluPage : ContentPage {
             MokkiTulosLista.ItemsSource = tulokset;
         } 
         catch (Exception ex) {
-            DisplayAlert("Virhe", $"Mökkejä haettaessa tapahtui virhe: {ex.Message}", "OK");
+            await DisplayAlert("Virhe", $"Mökkejä haettaessa tapahtui virhe: {ex.Message}", "OK");
             return;
         }
     }
