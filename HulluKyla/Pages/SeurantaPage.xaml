@@ -22,7 +22,7 @@
                                     SelectionChanged="AsiakasListaView_SelectionChanged">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Frame Padding="10" Margin="0,5" BackgroundColor="Gray" CornerRadius="10">
+                                <Frame Padding="10" Margin="0,5" BackgroundColor="Transparent" CornerRadius="10">
                                     <Label Text="{Binding KokoNimi}" TextColor="White"/>
                                 </Frame>
                             </DataTemplate>
@@ -40,8 +40,6 @@
                             x:Name="VaihdaNakymaButton"
                             Text="Maksamattomat Laskut"
                             Clicked="VaihdaNakyma_Clicked"
-                            BackgroundColor="DarkGray"
-                            TextColor="White"
                             CornerRadius="10"
                             WidthRequest="200"
                             HorizontalOptions="Center"/>
@@ -90,7 +88,6 @@
                         Clicked="Navigoi_Clicked"
                         CommandParameter="Etusivu"
                         HorizontalOptions="Start"
-                        BackgroundColor="LightGray"
                         CornerRadius="20"
                         WidthRequest="100"/>
                 
@@ -100,8 +97,6 @@
                         Text="Tulosta"
                         Clicked="TulostaLasku_Clicked"
                         x:Name="TulostaButton"
-                        BackgroundColor="DarkGray"
-                        TextColor="White"
                         CornerRadius="20"
                         WidthRequest="100"
                         HorizontalOptions="Center"/>
@@ -111,8 +106,6 @@
                         Text="Merkiste maksetuksi"
                         Clicked="MerkitseMaksetuksi_Clicked"
                         x:Name="MerkitseMaksetuksiButton"
-                        BackgroundColor="DarkGray"
-                        TextColor="White"
                         CornerRadius="20"
                         WidthRequest="180"
                         HorizontalOptions="End"/>

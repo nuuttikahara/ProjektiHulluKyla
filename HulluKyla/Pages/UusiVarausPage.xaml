@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.UusiVarausPage"
-             Title="UusiVarausPage"
-             BackgroundColor="Black">
+             Title="UusiVarausPage">
 
 
     <Grid RowDefinitions="*,Auto" Padding="20">
@@ -46,10 +45,7 @@
                         <!-- Mökkien haku button -->
                         <controls:ThreeDButton 
                                 Grid.Row="1" Grid.Column="3"
-                                BorderColor="Gray"
                                 BorderWidth="3"
-                                BackgroundColor="LightBlue"
-                                TextColor="Black"
                                 Text="Hae mökit"
                                 Clicked="MokkiHaku_Clicked"
                                 HeightRequest="30"
@@ -67,7 +63,7 @@
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Frame BackgroundColor="Transparent"
-                                         BorderColor="LightBlue"
+                                         BorderColor="Grey"
                                          Padding="10"
                                          Margin="0,2"
                                          CornerRadius="10">
@@ -111,8 +107,6 @@
                                     HorizontalOptions="Center"
                                     HeightRequest="45"
                                     WidthRequest="130"
-                                    BackgroundColor="LightBlue"
-                                    BorderColor="Gray"
                                     BorderWidth="3"/>   
                         </Grid>
 
@@ -124,7 +118,7 @@
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Frame BackgroundColor="Transparent"
-                                           BorderColor="LightBlue"
+                                           BorderColor="Gray"
                                            Padding="10"
                                            CornerRadius="10">
                                         <StackLayout>
@@ -153,16 +147,12 @@
                     Text="Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu"
-                    BackgroundColor="LightBlue"
-                    BorderColor="DarkGray"
                     BorderWidth="3"/>
 
             <controls:ThreeDButton 
                     Text="Takaisin varauksiin"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="VarausListaPage"
-                    BackgroundColor="LightBlue"
-                    BorderColor="DarkGray"
                     BorderWidth="3"/>
 
         </StackLayout>
