@@ -86,16 +86,21 @@ namespace HulluKyla.Services {
             y += 25;
 
             // Tallennus
-            var tiedostonimi = $"Lasku_{lasku.LaskuId}.pdf";
-            var tiedostopolku = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                tiedostonimi
-            );
+            try {
+                var tiedostonimi = $"Lasku_{lasku.LaskuId}.pdf";
+                var tiedostopolku = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    tiedostonimi
+                );
 
-            using var stream = File.Create(tiedostopolku);
-            document.Save(stream);
+                using var stream = File.Create(tiedostopolku);
+                document.Save(stream);
 
-            await Shell.Current.DisplayAlert("PDF tallennettu", $"Tiedosto tallennettu:\n{tiedostopolku}", "OK");
+                await Shell.Current.DisplayAlert("PDF tallennettu", $"Tiedosto tallennettu:\n{tiedostopolku}", "OK");
+            }
+            catch (Exception ex) {
+                await Shell.Current.DisplayAlert("Virhe", $"Tiedoston tallennuksessa tapahtui virhe: {ex.Message}", "OK");
+            }
         }
     }
 }
