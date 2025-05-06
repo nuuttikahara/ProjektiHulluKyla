@@ -3,24 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.AsiakasListaPage"
-             Title="AsiakasListaPage">
+             Title="Asiakkaiden muokkaus">
 
+    
     <Grid Padding="20"
-          RowDefinitions="Auto,*,Auto"
+          RowDefinitions="*,Auto"
           ColumnDefinitions="*,*">
 
         <!-- Asiakaslista -->
-        <Frame BorderColor="Gray" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0">
+        <Frame BorderColor="Gray" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0">
             <CollectionView x:Name="AsiakasLista"
                         SelectionMode="Single"
                         SelectionChanged="AsiakasSelected">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                            <Frame BackgroundColor="Transparent">
-                                <VerticalStackLayout Spacing="2">
+                            <Frame BackgroundColor="Transparent" BorderColor="Gray">
+                                <VerticalStackLayout>
                                 <Label Text="{Binding Etunimi}" FontAttributes="Bold" FontSize="14" />
                                 <Label Text="{Binding Sukunimi}" FontSize="14" />
-                                <Label Text="{Binding Email}" FontSize="12" />
+                                <Label Text="{Binding Email}" FontSize="14" />
                                 </VerticalStackLayout>
                             </Frame>
                     </DataTemplate>
@@ -29,21 +30,21 @@
         </Frame>
 
         <!-- Asiakastietojen muokkaus -->
-        <VerticalStackLayout Grid.Row="1" Grid.Column="1"
+        <VerticalStackLayout Grid.Row="0" Grid.Column="1"
                              Spacing="10"
                              Padding="10">
-            <Entry x:Name="EtunimiEntry" Placeholder="Etunimi..." />
-            <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi..." />
-            <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." />
-            <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." />
-            <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." />
-            <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." />
+            <Entry x:Name="EtunimiEntry" Placeholder="Etunimi..." HeightRequest="50" />
+            <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi..." HeightRequest="50" />
+            <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." HeightRequest="50"/>
+            <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
+            <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50"/>
+            <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50"/>
             <controls:ThreeDButton Text="Tallenna asiakas" Clicked="TallennaClicked" HeightRequest="50" />
             <controls:ThreeDButton Text="Poista asiakas" Clicked="PoistaClicked" HeightRequest="50" />
         </VerticalStackLayout>
 
         <!-- Vasemman alakulman napit -->
-        <StackLayout Grid.Row="2" Grid.Column="0"
+        <StackLayout Grid.Row="1" Grid.Column="0"
                      Orientation="Horizontal"
                      Spacing="15"
                      HorizontalOptions="Start"
@@ -60,17 +61,14 @@
         </StackLayout>
 
         <!-- Oikean alakulman nappi -->
-        <StackLayout Grid.Row="2" Grid.Column="1"
-                     Orientation="Horizontal"
-                     Spacing="15"
-                     HorizontalOptions="End"
-                     VerticalOptions="End"
-                     Margin="0,20,0,0">
-            <controls:ThreeDButton 
-                    Text="Uusi asiakas"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="UusiAsiakasPage" />
-        </StackLayout>
+        <controls:ThreeDButton 
+                  Text="Uusi asiakas"
+                  Clicked="Navigoi_Clicked"
+                  CommandParameter="UusiAsiakasPage"
+                  HorizontalOptions="End"
+                  Margin="0,20,0,0"
+                  Grid.Column="1"
+                  Grid.Row="1"/>
 
     </Grid>
 </ContentPage>

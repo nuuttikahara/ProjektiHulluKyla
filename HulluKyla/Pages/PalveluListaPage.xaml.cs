@@ -76,7 +76,7 @@ public partial class PalveluListaPage : ContentPage {
     private async void TallennaClicked(object sender, EventArgs e) {
 
         if (valittuPalvelu == null) {
-            await DisplayAlert("Virhe", "Valitse ensin palvelu", "OK");
+            await DisplayAlert("Virhe", "Valitse ensin palvelu.", "OK");
             return;
         }
         valittuPalvelu.Nimi = NimiEntry.Text;
@@ -86,20 +86,20 @@ public partial class PalveluListaPage : ContentPage {
             valittuPalvelu.Hinta = hinta;
         }
         else {
-            await DisplayAlert("Virhe", "Virheellinen hinta-arvo", "OK");
+            await DisplayAlert("Virhe", "Virheellinen hinta-arvo.", "OK");
             return;
         }
         if (double.TryParse(AlvEntry.Text, out double alv)) {
             valittuPalvelu.Alv = alv;
         }
         else {
-            await DisplayAlert("Virhe", "Virheellinen ALV-arvo", "OK");
+            await DisplayAlert("Virhe", "Virheellinen ALV-arvo.", "OK");
             return;
         }
         
         try {
             PalveluService.Paivita(valittuPalvelu);
-            await DisplayAlert("Tallenus", "Tiedot tallennettu onnistuneesti", "OK");
+            await DisplayAlert("Tallenus", "Tiedot tallennettu onnistuneesti.", "OK");
             PaivitaLista();
         } 
         catch (Exception ex) {
@@ -111,13 +111,13 @@ public partial class PalveluListaPage : ContentPage {
     // Poistamis-metodi
     private async void PoistaClicked(object sender, EventArgs e) {
         if (valittuPalvelu == null) {
-            await DisplayAlert("Virhe", "Valitse ensin palvelu", "OK");
+            await DisplayAlert("Virhe", "Valitse ensin palvelu.", "OK");
             return;
         }
 
         try {
             PalveluService.Poista(valittuPalvelu.PalveluId);
-            await DisplayAlert("Poista", "Palvelun poisto onnistui", "OK");
+            await DisplayAlert("Poista", "Palvelun poisto onnistui.", "OK");
             PaivitaLista();
             TyhjennaKentat();
         }

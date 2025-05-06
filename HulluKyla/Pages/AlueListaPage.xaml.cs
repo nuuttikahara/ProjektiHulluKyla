@@ -55,7 +55,7 @@ public partial class AlueListaPage : ContentPage {
     // Tallennus-metodi
     private async void TallennaClicked(object sender, EventArgs e) {
         if (valittuAlue == null) {
-            await DisplayAlert("Virhe", "Valitse ensin alue", "OK");
+            await DisplayAlert("Virhe", "Valitse ensin alue.", "OK");
             return;
         }
 
@@ -63,7 +63,7 @@ public partial class AlueListaPage : ContentPage {
 
         try {
             AlueService.Paivita(valittuAlue);
-            await DisplayAlert("Tallenus", "Tiedot tallennettu onnistuneesti", "OK");
+            await DisplayAlert("Tallenus", "Tiedot tallennettu onnistuneesti.", "OK");
             PaivitaLista();
             TyhjennaKentat();
         }
@@ -75,13 +75,13 @@ public partial class AlueListaPage : ContentPage {
     // Poistamis-metodi
     private async void PoistaClicked(object sender, EventArgs e) {
         if (valittuAlue == null) {
-            await DisplayAlert("Virhe", "Valitse ensin alue", "OK");
+            await DisplayAlert("Virhe", "Valitse ensin alue.", "OK");
             return;
         }
 
         try {
             AlueService.Poista(valittuAlue.AlueId);
-            await DisplayAlert("Poista", "Alueen poisto onnistui", "OK");
+            await DisplayAlert("Poista", "Alueen poisto onnistui.", "OK");
             PaivitaLista();
             TyhjennaKentat();
         }

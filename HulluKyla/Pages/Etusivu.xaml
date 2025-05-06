@@ -6,7 +6,7 @@
              Title="Etusivu">
 
 
-    <Grid RowDefinitions="Auto,*,Auto" Padding="20">
+    <Grid RowDefinitions="Auto,*" Padding="20">
 
 
         <Image WidthRequest="500" HeightRequest="500" Source="logo.png" 
@@ -27,25 +27,29 @@
                     Text="Seuranta"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="SeurantaPage"
-                    Grid.Row="0" Grid.Column="0" />
+                    Grid.Row="0" Grid.Column="0"
+                    WidthRequest="110"/>
 
             <controls:ThreeDButton 
                     Text="Raportointi"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="RaportointiPage"
-                    Grid.Row="0" Grid.Column="1" />
+                    Grid.Row="0" Grid.Column="1"
+                    WidthRequest="110"/>
 
             <controls:ThreeDButton 
                     Text="Hallinta"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="HallintaPage"
-                    Grid.Row="1" Grid.Column="0" />
+                    Grid.Row="1" Grid.Column="0"
+                    WidthRequest="110"/>
 
             <controls:ThreeDButton 
                     Text="Varaukset"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="VarausListaPage"
-                    Grid.Row="1" Grid.Column="1" />
+                    Grid.Row="1" Grid.Column="1"
+                    WidthRequest="110"/>
 
         </Grid>
 

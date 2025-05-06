@@ -28,7 +28,7 @@ public partial class UusiAluePage : ContentPage {
 
             AlueService.Lisaa(uusiAlue);
 
-            await DisplayAlert("Onnistui", "Alue lisätty", "OK");
+            await DisplayAlert("Onnistui", "Alue lisätty.", "OK");
             TyhjennaKentat();
             await NavigointiService.Navigoi("AlueListaPage");
         }

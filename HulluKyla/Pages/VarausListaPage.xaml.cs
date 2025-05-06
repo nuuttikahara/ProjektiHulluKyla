@@ -49,7 +49,7 @@ public partial class VarausListaPage : ContentPage {
                 AsiakasListaView.ItemsSource = kaikkiAsiakkaat;
             }
         } catch (Exception ex) {
-            await DisplayAlert("Virhe", "Asiakkaiden haussa tapahtui virhe" + ex.Message, "OK");
+            await DisplayAlert("Virhe", "Asiakkaiden haussa tapahtui virhe: " + ex.Message, "OK");
         }
 
     }
@@ -73,12 +73,12 @@ public partial class VarausListaPage : ContentPage {
 
     private async void PoistaVaraus_Clicked(object sender, EventArgs e) {
         if (valittuVaraus == null) {
-            await DisplayAlert("Virhe", "Valitse ensin varaus", "OK");
+            await DisplayAlert("Virhe", "Valitse ensin varaus.", "OK");
             return;
         }
         try {
             VarausService.Poista(valittuVaraus.VarausId);
-            await DisplayAlert("Poista", "Varauksen poisto onnistui", "OK");
+            await DisplayAlert("Poista", "Varauksen poisto onnistui.", "OK");
             PaivitaSivu();
 
         } catch (Exception ex) {
@@ -89,12 +89,12 @@ public partial class VarausListaPage : ContentPage {
 
     private async void PoistaPalvelu_Clicked(object sender, EventArgs e) {
         if (valittuVaraus == null || varauksenPalvelu == null) {
-            await DisplayAlert("Virhe", "Valitse ensin varaus ja poistettava palvelu", "OK");
+            await DisplayAlert("Virhe", "Valitse ensin varaus ja poistettava palvelu.", "OK");
             return;
         }
         try {
             VarauksenPalvelutService.PoistaPalveluVarauksesta(valittuVaraus.VarausId, varauksenPalvelu.Palvelu.PalveluId);
-            await DisplayAlert("Poista", "Palvelun poisto varauksesta onnistui", "OK");
+            await DisplayAlert("Poista", "Palvelun poisto varauksesta onnistui.", "OK");
             PaivitaSivu();
 
         } catch (Exception ex) {
@@ -104,18 +104,18 @@ public partial class VarausListaPage : ContentPage {
 
     private async void LisaaPalvelu_Clicked(object sender, EventArgs e) {
         if (valittuVaraus == null || lisattavaPalvelu == null) {
-            await DisplayAlert("Virhe", "Valitse ensin varaus ja lis‰tt‰v‰ palvelu", "OK");
+            await DisplayAlert("Virhe", "Valitse ensin varaus ja lis‰tt‰v‰ palvelu.", "OK");
             return;
         }
         if (int.TryParse(LkmEntry.Text, out int lkm)) {
 
         } else {
-            await DisplayAlert("Virhe", "Virheellinen kappalem‰‰r‰", "OK");
+            await DisplayAlert("Virhe", "Virheellinen kappalem‰‰r‰.", "OK");
             return;
         }
         try {
             VarauksenPalvelutService.LisaaPalveluVaraukseen(valittuVaraus.VarausId, lisattavaPalvelu.PalveluId, lkm);
-            await DisplayAlert("Lis‰‰", "Palvelun lis‰ys varaukseen onnistui", "OK");
+            await DisplayAlert("Lis‰‰", "Palvelun lis‰ys varaukseen onnistui.", "OK");
             PaivitaSivu();
 
         } catch (Exception ex){

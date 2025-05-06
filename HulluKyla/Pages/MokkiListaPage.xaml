@@ -3,59 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.MokkiListaPage"
-             Title="MokkiListaPage">
+             Title="Mökkien muokkaus">
 
 
     <Grid Padding="20"
-          RowDefinitions="0.2*,0.3*,0.2*"
-          ColumnDefinitions="0.4*,0.2*,0.4*">
+          RowDefinitions="*,Auto"
+          ColumnDefinitions="*,*"
+          ColumnSpacing="15">
 
         <!-- Alueen valinta -->
-        <Picker x:Name="AluePicker" 
+        <Frame BackgroundColor="Transparent" BorderColor="Gray" HorizontalOptions="Fill">
+            <StackLayout Spacing="10">
+                <Picker x:Name="AluePicker" 
                 Title="Valitse alue" 
                 SelectedIndexChanged="AluePickerSelected" 
                 ItemDisplayBinding="{Binding Nimi}"
                 HeightRequest="70"/>
 
-        <!-- Mökkilista -->
-            <Grid Grid.Row="1" Grid.Column="0" >
-                <Frame BorderColor="Gray" BackgroundColor="Transparent" Grid.Row="1">
-                    <CollectionView x:Name="MokkiLista"
+                <!-- Mökkilista -->
+                <CollectionView x:Name="MokkiLista"
                             SelectionMode="Single" 
                             SelectionChanged="MokkiSelected"
                             VerticalOptions="Center"
                             HorizontalOptions="Fill" >
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame BackgroundColor="Transparent">
-                                    <VerticalStackLayout Spacing="0">
-                                        <Label Text="{Binding MokkiNimi}" FontAttributes="Bold"/>
-                                        <Label Text="{Binding Katuosoite, StringFormat='Osoite: {0}'}"/>
-                                        <Label Text="{Binding Postinro, StringFormat='Postinumero: {0}'}"/>
-                                        <Label Text="{Binding HenkiloMaara, StringFormat='Henkilömäärä: {0}'}" />
-                                    </VerticalStackLayout>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </Frame>
-            </Grid>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="Transparent" BorderColor="Gray">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding MokkiNimi}" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Katuosoite, StringFormat='Osoite: {0}'}"/>
+                                    <Label Text="{Binding Postinro, StringFormat='Postinumero: {0}'}"/>
+                                    <Label Text="{Binding HenkiloMaara, StringFormat='Henkilömäärä: {0}'}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Frame>
 
-        <!-- Välibuttonit -->
-        <VerticalStackLayout Spacing="10" Grid.Column="1" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
-            <controls:ThreeDButton Text="Tallenna mökki" Clicked="TallennaClicked" HeightRequest="50" />
-            <controls:ThreeDButton Text="Poista mökki" Clicked="PoistaClicked" HeightRequest="50" />
-        </VerticalStackLayout>
-
-        <!-- Entryt -->
-        <VerticalStackLayout Spacing="10" Grid.Column="2" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Fill">
-            <Entry x:Name="MokkiNimiEntry" Placeholder="Mökin nimi..." />
-            <Entry x:Name="KatuosoiteEntry" Placeholder="Katuosoite..." />
-            <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." />
-            <Entry x:Name="HintaEntry" Placeholder="Hinta..." />
-            <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." />
-            <Entry x:Name="HenkiloMaaraEntry" Placeholder="Henkilömäärä..." />
-            <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." />
+        <!-- Entryt ja buttonit -->
+        <VerticalStackLayout Spacing="10" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Fill">
+            <Entry x:Name="MokkiNimiEntry" Placeholder="Mökin nimi..." HeightRequest="50"/>
+            <Entry x:Name="KatuosoiteEntry" Placeholder="Katuosoite..." HeightRequest="50"/>
+            <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
+            <Entry x:Name="HintaEntry" Placeholder="Hinta..." HeightRequest="50"/>
+            <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." HeightRequest="50"/>
+            <Entry x:Name="HenkiloMaaraEntry" Placeholder="Henkilömäärä..." HeightRequest="50"/>
+            <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." HeightRequest="50"/>
+            <controls:ThreeDButton Text="Tallenna mökki" Clicked="TallennaClicked" HeightRequest="50"/>
+            <controls:ThreeDButton Text="Poista mökki" Clicked="PoistaClicked" HeightRequest="50"/>
         </VerticalStackLayout>
 
         <!-- Alakulman vasemman puolen napit -->
@@ -77,19 +74,14 @@
                 CommandParameter="HallintaPage" />
         </StackLayout>
 
-        <!-- Alakulman oikean puolen napit -->
-        <StackLayout 
-             Grid.Row="2" Grid.Column="2"
-             Orientation="Horizontal"
-             Spacing="15"
-             HorizontalOptions="End"
-             VerticalOptions="End"
-             Margin="0,20,0,0">
-
+        <!-- Oikean alakulman nappi -->
             <controls:ThreeDButton 
                 Text="Uusi mökki"
                 Clicked="Navigoi_Clicked"
-                CommandParameter="UusiMokkiPage" />
-        </StackLayout>
+                CommandParameter="UusiMokkiPage"
+                Margin="0,20,0,0"
+                HorizontalOptions="End"
+                Grid.Row="1"
+                Grid.Column="1"/>
     </Grid>
 </ContentPage>

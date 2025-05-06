@@ -41,7 +41,7 @@ public partial class UusiAsiakasPage : ContentPage {
 
             AsiakasService.Lisaa(uusiAsiakas);
 
-            await DisplayAlert("Onnistui", "Uusi asiakas lisätty onnistuneesti", "OK");
+            await DisplayAlert("Onnistui", "Uusi asiakas lisätty onnistuneesti.", "OK");
 
             await NavigointiService.Navigoi("AsiakasListaPage");
         } catch (Exception ex) {

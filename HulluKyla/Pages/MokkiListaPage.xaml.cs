@@ -6,7 +6,7 @@ using MySql.Data.MySqlClient;
 namespace HulluKyla.Pages;
 
 public partial class MokkiListaPage : ContentPage {
-    
+
     private Mokki? valittuMokki;
     private List<Alue> kaikkiAlueet = new List<Alue>();
     private List<Mokki> kaikkiMokit = new List<Mokki>();
@@ -53,7 +53,7 @@ public partial class MokkiListaPage : ContentPage {
             MokkiLista.ItemsSource = mokit;
         } 
         else {
-            MokkiLista.ItemsSource = null;
+            MokkiLista.ItemsSource = kaikkiMokit;
         }
     }
 
@@ -89,7 +89,7 @@ public partial class MokkiListaPage : ContentPage {
     // Mökin tietojen päivittäminen/-ja tallennus 
     private async void TallennaClicked(object sender, EventArgs e) {
         if (valittuMokki == null) {
-            await DisplayAlert("Virhe", "Valitse ensin mökki", "OK");
+            await DisplayAlert("Virhe", "Valitse ensin mökki.", "OK");
             return;
         }
 
@@ -104,35 +104,35 @@ public partial class MokkiListaPage : ContentPage {
 
             MokkiService.Paivita(valittuMokki);
 
-            await DisplayAlert("Tallennus", "Tiedot tallennettu onnistuneesti", "OK");
+            await DisplayAlert("Tallennus", "Tiedot tallennettu onnistuneesti.", "OK");
             PaivitaLista();
             TyhjennaKentat();
         } 
         catch (Exception ex) {
-            await DisplayAlert("Virhe", "Mökin tallennuksessa tapahtui virhe" + ex.Message, "OK");
+            await DisplayAlert("Virhe", "Mökin tallennuksessa tapahtui virhe: " + ex.Message, "OK");
         }
     }
 
     // Mökin poistaminen
     private async void PoistaClicked(object sender, EventArgs e) {
         if (valittuMokki == null) {
-            await DisplayAlert("Virhe", "Valitse ensin mökki", "OK");
+            await DisplayAlert("Virhe", "Valitse ensin mökki.", "OK");
             return;
         }
 
         try {
             MokkiService.Poista(valittuMokki.MokkiId);
-            await DisplayAlert("Poista", "Mökin poisto onnistui", "OK");
+            await DisplayAlert("Poista", "Mökin poisto onnistui.", "OK");
             PaivitaLista();
             TyhjennaKentat();
         } 
         catch (MySqlException sqlEx) {
             if (sqlEx.Number == 1451) {
-                await DisplayAlert("Tietokantavirhe", "Mökkiä ei voi poistaa, koska se viittaa muihin tauluihin", "OK");
+                await DisplayAlert("Tietokantavirhe", "Mökkiä ei voida poistaa, koska se viittaa muihin tauluihin.", "OK");
             }
         } 
         catch (Exception ex) {
-            await DisplayAlert("Virhe", "Mökkiä poistaessa tapahtui virhe" + ex.Message, "OK");
+            await DisplayAlert("Virhe", "Mökkiä poistaessa tapahtui virhe: " + ex.Message, "OK");
         }
     }
 }

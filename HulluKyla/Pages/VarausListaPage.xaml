@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.VarausListaPage"
-             Title="VarausListaPage">
+             Title="Varaukset">
 
     <ScrollView>
-        <Grid RowDefinitions="Auto, *, Auto"
-          ColumnDefinitions="*, Auto"
+        <Grid RowDefinitions="Auto,*,Auto"
+          ColumnDefinitions="*,Auto"
           Padding="10">
 
         <!-- Asiakasvalinta-alue -->
@@ -31,9 +31,8 @@
                                 SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame Padding="10"
-                                   Margin="0,5"
-                                   BackgroundColor="Transparent"
+                            <Frame BackgroundColor="Transparent"
+                                   BorderColor="Gray"
                                    CornerRadius="10">
                                     <VerticalStackLayout>
                                         <Label Text="{Binding KokoNimi}"
@@ -80,6 +79,7 @@
                                 <DataTemplate>
                                     <Frame Padding="10"
                                         Margin="0,5"
+                                        BorderColor="Gray"
                                         BackgroundColor="Transparent"
                                         CornerRadius="10">
                                         <VerticalStackLayout>
@@ -117,10 +117,9 @@
                             SelectionMode="Single">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <Frame Padding="10"
-                                            Margin="0,5"
-                                            BackgroundColor="Transparent"
-                                            CornerRadius="10">
+                                    <Frame BorderColor="Gray"
+                                           BackgroundColor="Transparent"
+                                           CornerRadius="10">
                                         <VerticalStackLayout>
                                             <Label Text="{Binding Palvelu.Nimi, StringFormat='Palvelun nimi: {0}'}"
                                              />
@@ -156,6 +155,7 @@
                                 <DataTemplate>
                                     <Frame Padding="10"
                                            Margin="0,5"
+                                           BorderColor="Gray"
                                            BackgroundColor="Transparent"
                                            CornerRadius="10">
                                         <VerticalStackLayout>
@@ -198,7 +198,8 @@
                     Spacing="10">
 
                     <Entry x:Name="LkmEntry"
-                           Placeholder="Kappalemäärä">
+                           Placeholder="Kappalemäärä"
+                           HeightRequest="40">
                         
                     </Entry>
                     <controls:ThreeDButton 

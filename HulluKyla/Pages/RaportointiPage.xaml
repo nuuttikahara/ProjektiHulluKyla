@@ -3,76 +3,80 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.RaportointiPage"
-             Title="RaportointiPage">
+             Title="Raportointi">
 
-    <Grid Padding="20" ColumnSpacing="10"
+    <Grid Padding="20" ColumnSpacing="15"
           RowDefinitions="*,Auto"
           ColumnDefinitions="*,*">
+        
         <Frame BorderColor="Gray"
                BackgroundColor="Transparent"
                CornerRadius="10"
                Padding="20"
-               HorizontalOptions="Fill"
-               VerticalOptions="Start">
+               VerticalOptions="Start" 
+               HeightRequest="530">
             <ScrollView>
-                <VerticalStackLayout Spacing="30">
+                <VerticalStackLayout Spacing="20">
 
-                <!-- Otsikko -->
-                <Label  Text="Aluekohtainen mökkien ja palveluiden tuotto"
+                    <!-- Otsikko -->
+                    <Label  Text="Aluekohtainen mökkien ja palveluiden tuotto"
                         FontAttributes="Bold"
                         FontSize="22"
                         HorizontalOptions="Center" />
 
-                <BoxView HeightRequest="2" Color="Gray" />
+                    <BoxView HeightRequest="2" Color="Gray" />
 
-                <!-- Aluevalinta -->
-                <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
-                    <VerticalStackLayout>
-                        <Label Text="Valitse alue" FontAttributes="Bold" FontSize="16"/>
-                        <Picker x:Name="AluePicker" ItemDisplayBinding="{Binding Nimi}" />
-                    </VerticalStackLayout>
-                </Frame>
+                    <!-- Aluevalinta -->
+                    <Frame BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
+                        <VerticalStackLayout>
+                            <Label Text="Valitse alue" FontAttributes="Bold" FontSize="16"/>
+                            <Picker x:Name="AluePicker" ItemDisplayBinding="{Binding Nimi}"/>
+                        </VerticalStackLayout>
+                    </Frame>
 
-                <!-- Aikavälin valinta -->
-                <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
-                    <VerticalStackLayout>
-                        <Label Text="Valitse aikaväli (mökki- ja palvelutuotot)" FontAttributes="Bold" FontSize="16"/>
-                        <HorizontalStackLayout Spacing="10">
-                            <DatePicker x:Name="AlkuPvmPicker" WidthRequest="150"/>
-                            <DatePicker x:Name="LoppuPvmPicker" WidthRequest="150"/>
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
-                </Frame>
+                    <!-- Aikavälin valinta -->
+                    <Frame BorderColor="Gray" BackgroundColor="Transparent" Padding="10" CornerRadius="10">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Valitse aikaväli (mökki- ja palvelutuotot)" FontAttributes="Bold" FontSize="16"/>
+                            <HorizontalStackLayout Spacing="10">
+                                <DatePicker x:Name="AlkuPvmPicker" WidthRequest="150"/>
+                                <DatePicker x:Name="LoppuPvmPicker" WidthRequest="150"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
 
-                <!-- Laske-nappi -->
-                <controls:ThreeDButton Text="Laske tuotto"
+                    <!-- Laske-nappi -->
+                    <controls:ThreeDButton Text="Laske tuotto"
                                Clicked="LaskeTuottoClicked"
                                HeightRequest="45"
-                               WidthRequest="200"
-                               HorizontalOptions="Center" />
+                               WidthRequest="150"
+                               HorizontalOptions="Center"/>
 
-                <!-- Tulokset -->
-                <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
-                    <VerticalStackLayout Spacing="5">
-                        <Label x:Name="MokkienTuottoLabel"
-                       Text="Mökkien tuotto: "
-                       FontAttributes="Bold"
-                       FontSize="18"
-                       TextColor="White" />
-                        <Label x:Name="PalveluidenTuottoLabel"
-                       Text="Palveluiden tuotto: "
-                       FontAttributes="Bold"
-                       FontSize="18"
-                       TextColor="White" />
-                        <Label x:Name="TuototYhteensaLabel"
-                       Text="Yhteensä: "
-                       FontAttributes="Bold"
-                       FontSize="20"
-                       TextColor="LimeGreen" />
-                    </VerticalStackLayout>
-                </Frame>
 
-            </VerticalStackLayout>
+                    <!-- Tulokset -->
+                    <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
+                        <VerticalStackLayout Spacing="5">
+                            <Label x:Name="MokkienTuottoLabel"
+                            Text="Mökkien tuotto: "
+                            FontAttributes="Bold"
+                            FontSize="18"/>
+                            
+                            <Label x:Name="PalveluidenTuottoLabel"
+                            Text="Palveluiden tuotto: "
+                            FontAttributes="Bold"
+                            FontSize="18"/>
+                            
+                            <Label x:Name="TuototYhteensaLabel"
+                            Text="Yhteensä: "
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            TextColor="LimeGreen"/>
+
+                            <BoxView HeightRequest="2" Color="Gray" />
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </VerticalStackLayout>
             </ScrollView>
         </Frame>
 
@@ -83,61 +87,62 @@
                 CornerRadius="10"
                 Padding="20"
                 HorizontalOptions="Fill"
-                VerticalOptions="Start">
+                VerticalOptions="Start"
+                HeightRequest="650">
 
             <ScrollView>
                 <VerticalStackLayout Spacing="20">
 
-                <!-- Otsikko -->
-                <Label Text="Vuosikohtainen kokonaistuotto"
+                    <!-- Otsikko -->
+                    <Label Text="Vuosikohtainen kokonaistuotto"
                FontAttributes="Bold"
                FontSize="22"
                HorizontalOptions="Center" />
-                <BoxView HeightRequest="2" Color="Gray" />
+                    <BoxView HeightRequest="2" Color="Gray" />
 
-                <!-- Vuoden valinta -->
-                <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
-                    <VerticalStackLayout>
-                        <Label Text="Valitse vuosi" FontAttributes="Bold" FontSize="16"/>
-                        <Picker x:Name="VuosiPicker" SelectedIndexChanged="VuosiSelected" />
-                    </VerticalStackLayout>
-                </Frame>
+                    <!-- Vuoden valinta -->
+                    <Frame BorderColor="Gray" BackgroundColor="Transparent" Padding="10" CornerRadius="10">
+                        <VerticalStackLayout>
+                            <Label Text="Valitse vuosi" FontAttributes="Bold" FontSize="16"/>
+                            <Picker x:Name="VuosiPicker" SelectedIndexChanged="VuosiSelected" />
+                        </VerticalStackLayout>
+                    </Frame>
 
-                <!-- Kuukausittaiset tuotot -->
-                <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
-                    <VerticalStackLayout>
-                        <Label Text="Kuukausittaiset tuotot" FontAttributes="Bold" FontSize="16"/>
-                        <CollectionView x:Name="TuottoLista"
+                    <!-- Kuukausittaiset tuotot -->
+                    <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Kuukausittaiset tuotot" FontAttributes="Bold" FontSize="16"/>
+                            <CollectionView x:Name="TuottoLista"
                                 HeightRequest="300"
                                 BackgroundColor="Transparent">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame Padding="10"
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame Padding="10"
                                    Margin="0,5"
                                    BackgroundColor="Transparent"
-                                   BorderColor="LightBlue"
+                                   BorderColor="Gray"
                                    CornerRadius="10">
-                                        <HorizontalStackLayout Spacing="15">
-                                            <Label Text="{Binding Kuukausi}" WidthRequest="100" TextColor="White"/>
-                                            <Label Text="{Binding Tuotto, StringFormat='{}{0:F2} €'}" TextColor="White"/>
-                                        </HorizontalStackLayout>
-                                    </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
-                </Frame>
+                                            <HorizontalStackLayout Spacing="15">
+                                                <Label Text="{Binding Kuukausi}" WidthRequest="100"/>
+                                                <Label Text="{Binding Tuotto, StringFormat='{}{0:F2} €'}" HorizontalOptions="End"/>
+                                            </HorizontalStackLayout>
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </Frame>
 
-                <!-- Vuoden kokonaistuotto -->
-                <Label x:Name="VuosiYhteensaLabel"
+                    <!-- Vuoden kokonaistuotto -->
+                    <Label x:Name="VuosiYhteensaLabel"
                Text="Yhteensä: "
                FontAttributes="Bold"
                FontSize="20"
                TextColor="LimeGreen"
-               HorizontalOptions="Center" />
+               HorizontalOptions="Start" />
 
-                <BoxView HeightRequest="2" Color="Gray" />
-            </VerticalStackLayout>
+                    <BoxView HeightRequest="2" Color="Gray" />
+                </VerticalStackLayout>
             </ScrollView>
         </Frame>
 

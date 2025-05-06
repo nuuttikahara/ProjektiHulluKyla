@@ -52,7 +52,7 @@ public partial class HakutyokaluPage : ContentPage {
     // Mˆkkien haku
     private async void HaeMokitClicked(object sender, EventArgs e) {
         if (MokinAluePicker.SelectedItem is not Alue valittuAlue) {
-            await DisplayAlert("Virhe", "Valitse ensin alue", "OK");
+            await DisplayAlert("Virhe", "Valitse ensin alue.", "OK");
             return;
         }
 
@@ -60,7 +60,7 @@ public partial class HakutyokaluPage : ContentPage {
         hakuLoppuu = YhdistaPaivaJaAika(LoppuPvmPicker, LoppuAikaPicker);
 
         if (hakuAlkaa >= hakuLoppuu) {
-            await DisplayAlert("Virhe", "Haku ei voi p‰‰tty‰ ennen alkamista", "OK");
+            await DisplayAlert("Virhe", "Haku ei voi p‰‰tty‰ ennen alkamista.", "OK");
             return;
         }
 

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.HakutyokaluPage"
-             Title="HakutyokaluPage">
+             Title="Hakutyökalu">
 
 
     <Grid Padding="20" RowSpacing="10"
@@ -15,7 +15,8 @@
                 SelectedIndexChanged="HakuSelected"
                 HeightRequest="70"
                 Grid.ColumnSpan="2" 
-                Grid.Row="0">
+                Grid.Row="0"
+                FontFamily="Bold">
             <Picker.Items>
                 <x:String>Mökit</x:String>
                 <x:String>Asiakkaat</x:String>
@@ -27,7 +28,7 @@
         <Frame x:Name="MokkiHakuNakyma" IsVisible="False"
                Grid.Row="1" Grid.ColumnSpan="2"
                BorderColor="Gray" 
-               BackgroundColor="#1e1e1e"
+               BackgroundColor="Transparent"
                Padding="20"
                CornerRadius="10"
                HorizontalOptions="Fill"
@@ -35,8 +36,8 @@
             <ScrollView>
             <StackLayout Spacing="10">
                 <Label Text="Vapaiden mökkien haku" FontAttributes="Bold"/>
-                <Picker x:Name="MokinAluePicker" Title="Valitse alue" ItemDisplayBinding="{Binding Nimi}"/>
-                <HorizontalStackLayout HorizontalOptions="Center">
+                <Picker x:Name="MokinAluePicker" Title="Valitse alue" HeightRequest="70" ItemDisplayBinding="{Binding Nimi}"/>
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="35">
                     <VerticalStackLayout Spacing="7" VerticalOptions="Center">
                         <Label Text="Haku alkaa..." TextColor="Green" HorizontalOptions="Center" FontAttributes="Bold"/>
                         <DatePicker x:Name="AlkuPvmPicker" WidthRequest="300"/>
@@ -49,13 +50,13 @@
                         <TimePicker x:Name="LoppuAikaPicker" Format="HH:mm" WidthRequest="300"/>
                     </VerticalStackLayout>
                 </HorizontalStackLayout>
-                <Entry x:Name="HenkilomaaraEntry" Placeholder="Henkilömäärä (vapaaehtoinen)" />
-                <Button Text="Hae mökit" Clicked="HaeMokitClicked" />
+                <Entry x:Name="HenkilomaaraEntry" Placeholder="Henkilömäärä (vapaaehtoinen)" HeightRequest="40" />
+                <controls:ThreeDButton Text="Hae mökit" Clicked="HaeMokitClicked" WidthRequest="150" />
                 <CollectionView x:Name="MokkiTulosLista">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame BackgroundColor="Transparent"
-                                   BorderColor="LightBlue"
+                                   BorderColor="Gray"
                                    Padding="10"
                                    Margin="0,2"
                                    CornerRadius="10">
@@ -78,7 +79,7 @@
         <Frame x:Name="AsiakasHakuNakyma" IsVisible="False"
                Grid.Row="1" Grid.ColumnSpan="2"
                BorderColor="Gray" 
-               BackgroundColor="#1e1e1e"
+               BackgroundColor="Transparent"
                Padding="20"
                CornerRadius="10"
                HorizontalOptions="Fill"
@@ -91,7 +92,7 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame  BackgroundColor="Transparent"
-                                        BorderColor="LightBlue"
+                                        BorderColor="Gray"
                                         Padding="10"
                                         Margin="0,2"
                                         CornerRadius="10">
@@ -114,7 +115,7 @@
         <Frame x:Name="PalveluHakuNakyma" IsVisible="False"
                Grid.Row="1" Grid.ColumnSpan="2"
                BorderColor="Gray" 
-               BackgroundColor="#1e1e1e"
+               BackgroundColor="Transparent"
                Padding="20"
                CornerRadius="10"
                HorizontalOptions="Fill"
@@ -122,12 +123,12 @@
             <ScrollView>
                 <StackLayout Spacing="10">
                     <Label Text="Palveluiden haku" FontAttributes="Bold" />
-                    <Picker x:Name="PalvelunAluePicker" Title="Valitse alue" ItemDisplayBinding="{Binding Nimi}" SelectedIndexChanged="PalvelunAlueSelected"/>
+                    <Picker x:Name="PalvelunAluePicker" HeightRequest="70" Title="Valitse alue" ItemDisplayBinding="{Binding Nimi}" SelectedIndexChanged="PalvelunAlueSelected"/>
                     <CollectionView x:Name="PalveluTulosLista">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame BackgroundColor="Transparent"
-                                       BorderColor="LightBlue"
+                                       BorderColor="Gray"
                                        Padding="10"
                                        Margin="0,2"
                                        CornerRadius="10">

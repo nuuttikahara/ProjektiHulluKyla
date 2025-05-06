@@ -42,7 +42,7 @@ public partial class UusiMokkiPage : ContentPage {
         try {
             var valittuAlue = (Alue)AluePicker.SelectedItem;
             if (valittuAlue == null) {
-                await DisplayAlert("Virhe", "Valitse alue", "OK");
+                await DisplayAlert("Virhe", "Valitse alue.", "OK");
                 return;
             }
 
@@ -63,7 +63,7 @@ public partial class UusiMokkiPage : ContentPage {
 
             MokkiService.Lisaa(uusiMokki);
 
-            await DisplayAlert("Onnistui", "Mökki lisätty", "OK");
+            await DisplayAlert("Onnistui", "Mökki lisätty.", "OK");
             TyhjennaKentat();
             await NavigointiService.Navigoi("MokkiListaPage");
         } 

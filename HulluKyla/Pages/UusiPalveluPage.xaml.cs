@@ -34,13 +34,13 @@ public partial class UusiPalveluPage : ContentPage {
             if (double.TryParse(HintaEntry.Text, out double hinta)) {
                 
             } else {
-                await DisplayAlert("Virhe", "Virheellinen hinta-arvo", "OK");
+                await DisplayAlert("Virhe", "Virheellinen hinta-arvo.", "OK");
                 return;
             }
             if (double.TryParse(AlvEntry.Text, out double alv)) {
 
             } else {
-                await DisplayAlert("Virhe", "Virheellinen ALV-arvo", "OK");
+                await DisplayAlert("Virhe", "Virheellinen ALV-arvo.", "OK");
                 return;
             }
 
@@ -54,7 +54,7 @@ public partial class UusiPalveluPage : ContentPage {
 
             PalveluService.Lisaa(uusiPalvelu);
 
-            await DisplayAlert("Onnistui", "Palvelu lisätty", "OK");
+            await DisplayAlert("Onnistui", "Palvelu lisätty.", "OK");
             TyhjennaKentat();
             await NavigointiService.Navigoi("PalveluListaPage");
 

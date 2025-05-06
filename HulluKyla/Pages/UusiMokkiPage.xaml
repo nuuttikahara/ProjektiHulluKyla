@@ -3,39 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.UusiMokkiPage"
-             Title="UusiMokkiPage">
+             Title="Mökin luonti">
 
     <Grid Padding="20"
-          RowDefinitions="0.2*,0.8*,0.2*"
-          ColumnDefinitions="0.3*,0.4*,0.3*">
+          RowDefinitions="*,Auto" >
 
         <!-- Alueen valinta -->
-        <Picker Grid.Column="1"
+            <StackLayout Grid.Row="0"
+             HorizontalOptions="Fill"
+             VerticalOptions="Center" 
+             Spacing="10" >
+            <Picker Grid.Column="1"
                 x:Name="AluePicker" 
                 Title="Valitse alue" 
                 SelectedIndexChanged="AluePickerSelected" 
                 ItemDisplayBinding="{Binding Nimi}"
                 HeightRequest="70"/>
 
-        <!-- Uuden mökin entryt -->
-        <StackLayout Grid.Row="1"
-                     Grid.Column="1"
-                     HorizontalOptions="Fill"
-                     VerticalOptions="Center" 
-                     Spacing="10" >
-                    
-                    <Entry x:Name="NimiEntry" Placeholder="Mökin nimi..." />
-                    <Entry x:Name="OsoiteEntry" Placeholder="Katuosoite..." />
-                    <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." />
-                    <Entry x:Name="HintaEntry" Placeholder="Hinta..." />
-                    <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." />
-                    <Entry x:Name="HloMaaraEntry" Placeholder="Henkilömäärä..." />
-                    <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." />
+            <Entry x:Name="NimiEntry" Placeholder="Mökin nimi..." HeightRequest="50" />
+                    <Entry x:Name="OsoiteEntry" Placeholder="Katuosoite..." HeightRequest="50" />
+                    <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
+                    <Entry x:Name="HintaEntry" Placeholder="Hinta..." HeightRequest="50"/>
+                    <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." HeightRequest="50"/>
+                    <Entry x:Name="HloMaaraEntry" Placeholder="Henkilömäärä..." HeightRequest="50"/>
+                    <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." HeightRequest="50"/>
             
+            <controls:ThreeDButton 
+                        Grid.Row="2" Grid.Column="2"
+                        Text="Lisää mökki"
+                        Clicked="LisaaClicked"
+                        HorizontalOptions="Fill"
+                        HeightRequest="50"/>
         </StackLayout>
 
         <!-- Vasemman reunan napit -->
-        <StackLayout Grid.Row="2" Grid.Column="0"
+        <StackLayout Grid.Row="1"
                      Orientation="Horizontal"
                      Spacing="15"
                      HorizontalOptions="Start"
@@ -48,19 +50,9 @@
                     CommandParameter="Etusivu" />
 
             <controls:ThreeDButton 
-                    Text="Takaisin mökkeihin"
+                    Text="Takaisin muokkaukseen"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="MokkiListaPage" />
         </StackLayout>
-
-        <!-- Oikean reunan tallenna-nappi -->
-        <controls:ThreeDButton 
-                Grid.Row="2" Grid.Column="2"
-                Text="Lisää"
-                Clicked="LisaaClicked"
-                HorizontalOptions="End"
-                VerticalOptions="End"
-                Margin="0,20,0,0" />
-
     </Grid>
 </ContentPage>

@@ -3,24 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.UusiAsiakasPage"
-             Title="UusiAsiakasPage">
+             Title="Asiakkaan luonti">
 
     <Grid Padding="20"
-          RowDefinitions="*,Auto"
-          ColumnDefinitions="*,*">
+          RowDefinitions="*,Auto">
 
         <!-- Asiakasentryt -->
-        <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2"
+            <VerticalStackLayout 
                              Spacing="10"
-                             Padding="20"
-                             HorizontalOptions="Center"
+                             HorizontalOptions="Fill"
                              VerticalOptions="Center">
-            <Entry x:Name="EtunimiEntry" Placeholder="Etunimi..." />
-            <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi..." />
-            <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." />
-            <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." />
-            <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." />
-            <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." />
+                <Entry x:Name="EtunimiEntry" Placeholder="Etunimi..." HeightRequest="50"/>
+                <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi..." HeightRequest="50"/>
+                <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." HeightRequest="50"/>
+                <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
+                <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50"/>
+                <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50" />
+            <controls:ThreeDButton 
+                Text="Lisää asiakas"
+                Clicked="Tallenna_Clicked"
+                HorizontalOptions="Fill"
+                HeightRequest="50"/>
         </VerticalStackLayout>
 
         <!-- Vasemman reunan napit -->
@@ -36,19 +39,9 @@
                     CommandParameter="Etusivu" />
 
             <controls:ThreeDButton 
-                    Text="Takaisin Asiakaslistaan"
+                    Text="Takaisin muokkaukseen"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="AsiakasListaPage" />
         </StackLayout>
-
-        <!-- Oikean reunan tallenna-nappi -->
-        <controls:ThreeDButton 
-                Grid.Row="1" Grid.Column="1"
-                Text="Tallenna"
-                Clicked="Tallenna_Clicked"
-                HorizontalOptions="End"
-                VerticalOptions="End"
-                Margin="0,20,0,0" />
-
     </Grid>
 </ContentPage>

@@ -3,26 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
              x:Class="HulluKyla.Pages.UusiAluePage"
-             Title="UusiAluePage">
+             Title="Alueen luonti">
 
 
     <Grid Padding="20"
-          RowDefinitions="0.8*,0.2*"
-          ColumnDefinitions="0.3*,0.4*,0.3*">
+          RowDefinitions="*,Auto">
 
-        <!-- Uuden palvelun entryt -->
-        <StackLayout Grid.Row="0"
-             Grid.Column="1"
+        <!-- Uuden alueen entry ja button -->
+        <StackLayout Grid.Column="1"
              HorizontalOptions="Fill"
              VerticalOptions="Center" 
-             Spacing="10" >
+             Spacing="10">
             
-            <Entry x:Name="NimiEntry" Placeholder="Alueen nimi..." />
-            
+            <Entry x:Name="NimiEntry" Placeholder="Alueen nimi..." HeightRequest="50" />
+            <controls:ThreeDButton
+                Text="Lisää alue"
+                Clicked="LisaaClicked"
+                HorizontalOptions="Fill"
+                HeightRequest="50"/>
+        
         </StackLayout>
 
         <!-- Vasemman reunan napit -->
-        <StackLayout Grid.Row="1" Grid.Column="0"
+        <StackLayout Grid.Row="1"
                      Orientation="Horizontal"
                      Spacing="15"
                      HorizontalOptions="Start"
@@ -39,15 +42,5 @@
                     Clicked="Navigoi_Clicked"
                     CommandParameter="AlueListaPage" />
         </StackLayout>
-
-        <!-- Oikean reunan tallenna-nappi -->
-        <controls:ThreeDButton 
-                Grid.Row="1" Grid.Column="2"
-                Text="Lisää"
-                Clicked="LisaaClicked"
-                HorizontalOptions="End"
-                VerticalOptions="End"
-                Margin="0,20,0,0" />
-
     </Grid>
 </ContentPage>

@@ -68,7 +68,7 @@ public partial class UusiVarausPage : ContentPage {
     private async void MokkiHaku_Clicked(object sender, EventArgs e) {
         try {
             if (AluePicker.SelectedItem == null) {
-                await DisplayAlert("Virhe", "Valitse alue", "OK");
+                await DisplayAlert("Virhe", "Valitse alue.", "OK");
                 return;
             }
 
@@ -119,12 +119,12 @@ public partial class UusiVarausPage : ContentPage {
         }
 
         if (valittuAsiakas == null) {
-            await DisplayAlert("Virhe", "Valitse asiakas", "OK");
+            await DisplayAlert("Virhe", "Valitse asiakas.", "OK");
             return;
         }
 
         if (valittuMokki == null) {
-            await DisplayAlert("Virhe", "Valitse mökki", "OK");
+            await DisplayAlert("Virhe", "Valitse mökki.", "OK");
             return;
         }
 
@@ -146,7 +146,7 @@ public partial class UusiVarausPage : ContentPage {
 
             VarausService.Lisaa(uusiVaraus);
 
-            await DisplayAlert("Onnistui", "Varaus lisätty", "OK");
+            await DisplayAlert("Onnistui", "Varaus lisätty.", "OK");
             await NavigointiService.Navigoi("VarausListaPage");
         }
         catch (Exception ex) {
@@ -170,7 +170,7 @@ public partial class UusiVarausPage : ContentPage {
             }
         } 
         catch (Exception ex) {
-            await DisplayAlert("Virhe", "Asiakkaiden haussa tapahtui virhe" + ex.Message, "OK");
+            await DisplayAlert("Virhe", "Asiakkaiden haussa tapahtui virhe: " + ex.Message, "OK");
         } 
     }
 
