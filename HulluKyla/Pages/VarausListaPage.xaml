@@ -78,6 +78,7 @@
                                 <DataTemplate>
                                     <Frame Padding="10"
                                         Margin="0,5"
+                                        BackgroundColor="Transparent"
                                         CornerRadius="10">
                                         <VerticalStackLayout>
                                             <Label Text="{Binding Mokki.MokkiNimi, StringFormat='Mökin nimi: {0}'}"
