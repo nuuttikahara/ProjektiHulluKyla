@@ -12,7 +12,8 @@
 
         <Picker x:Name="HakuPicker"
                 Title="Valitse hakukategoria"
-                SelectedIndexChanged="HakuSelected" 
+                SelectedIndexChanged="HakuSelected"
+                HeightRequest="70"
                 Grid.ColumnSpan="2" 
                 Grid.Row="0">
             <Picker.Items>

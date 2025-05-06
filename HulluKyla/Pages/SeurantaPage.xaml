@@ -86,7 +86,7 @@
                         Clicked="Navigoi_Clicked"
                         CommandParameter="Etusivu"
                         HorizontalOptions="Start"
-                        CornerRadius="20"
+                        CornerRadius="10"
                         WidthRequest="100"/>
                 
                 <HorizontalStackLayout HorizontalOptions="End" Spacing="10" Grid.Column="1">
@@ -95,7 +95,7 @@
                         Text="Tulosta"
                         Clicked="TulostaLasku_Clicked"
                         x:Name="TulostaButton"
-                        CornerRadius="20"
+                        CornerRadius="10"
                         WidthRequest="100"
                         HorizontalOptions="Center"/>
 
@@ -104,7 +104,7 @@
                         Text="Merkiste maksetuksi"
                         Clicked="MerkitseMaksetuksi_Clicked"
                         x:Name="MerkitseMaksetuksiButton"
-                        CornerRadius="20"
+                        CornerRadius="10"
                         WidthRequest="180"
                         HorizontalOptions="End"/>
                 </HorizontalStackLayout>

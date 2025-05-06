@@ -42,7 +42,7 @@
 
         <!-- Välibuttonit -->
 
-        <VerticalStackLayout Spacing="10" Grid.Column="1" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
+        <VerticalStackLayout Spacing="10" Grid.Column="1" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="150">
             <controls:ThreeDButton Text="Tallenna palvelu" Clicked="TallennaClicked" HeightRequest="50" />
             <controls:ThreeDButton Text="Poista palvelu" Clicked="PoistaClicked" HeightRequest="50" />
         </VerticalStackLayout>

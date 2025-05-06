@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace HulluKyla.Services {
     public static class NavigointiService {
         public static async Task Navigoi(string reitti) {
+            await Task.Delay(100);
             if (string.IsNullOrWhiteSpace(reitti)) {
                 Console.WriteLine("Navigointivirhe: reitti ei saa olla tyhjä.");
                 return;

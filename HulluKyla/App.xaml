@@ -107,7 +107,7 @@
             <Setter Property="Padding" Value="12,8" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="Shadow">
-                <Shadow Brush="#000000" Offset="5,5" Radius="10" Opacity="0.3" />
+                <Shadow Brush="#000000" Offset="3,5" Radius="3" Opacity="0.3" />
             </Setter>
         </Style>
 

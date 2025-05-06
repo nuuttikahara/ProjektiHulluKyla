@@ -17,6 +17,7 @@
                      Spacing="10" >
             <Picker x:Name="AluePicker" 
                     Title="Valitse palvelun alue" 
+                    HeightRequest="70"
                     ItemDisplayBinding="{Binding Nimi}" />
             <Entry x:Name="NimiEntry" Placeholder="Palvelun nimi..." />
             <Entry x:Name="KuvausEntry" Placeholder="Palvelun kuvaus..." HeightRequest="100" />
