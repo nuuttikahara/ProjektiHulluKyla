@@ -48,7 +48,7 @@
                                 BorderWidth="3"
                                 Text="Hae mökit"
                                 Clicked="MokkiHaku_Clicked"
-                                HeightRequest="30"
+                                HeightRequest="45"
                                 WidthRequest="130"/>
                     </Grid>
                 </Frame>
