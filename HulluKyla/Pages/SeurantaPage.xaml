@@ -7,7 +7,7 @@
         <VerticalStackLayout Padding="10" Spacing="15">
 
             <!-- Asiakasvalinta-alue -->
-            <Frame BorderColor="Gray" CornerRadius="10" Padding="10">
+            <Frame BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10" Padding="10">
                 <VerticalStackLayout Spacing="10">
                     <SearchBar x:Name="AsiakasSearchBar"
                                Placeholder="Etsi asiakasta..."
@@ -33,7 +33,7 @@
             </Frame>
 
             <!-- Laskut-alue -->
-            <Frame BorderColor="Gray" CornerRadius="10" Padding="10">
+            <Frame BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10" Padding="10">
                 <VerticalStackLayout Spacing="10">
 
                     <!-- Laskun moodi nappi -->

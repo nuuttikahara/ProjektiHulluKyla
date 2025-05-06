@@ -8,7 +8,8 @@
     <Grid Padding="20" ColumnSpacing="10"
           RowDefinitions="*,Auto"
           ColumnDefinitions="*,*">
-        <Frame BorderColor="Gray" 
+        <Frame BorderColor="Gray"
+               BackgroundColor="Transparent"
                CornerRadius="10"
                Padding="20"
                HorizontalOptions="Fill"
@@ -25,7 +26,7 @@
                 <BoxView HeightRequest="2" Color="Gray" />
 
                 <!-- Aluevalinta -->
-                <Frame  Padding="10" CornerRadius="10">
+                <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
                     <VerticalStackLayout>
                         <Label Text="Valitse alue" FontAttributes="Bold" FontSize="16"/>
                         <Picker x:Name="AluePicker" ItemDisplayBinding="{Binding Nimi}" />
@@ -33,7 +34,7 @@
                 </Frame>
 
                 <!-- Aikavälin valinta -->
-                <Frame  Padding="10" CornerRadius="10">
+                <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
                     <VerticalStackLayout>
                         <Label Text="Valitse aikaväli (mökki- ja palvelutuotot)" FontAttributes="Bold" FontSize="16"/>
                         <HorizontalStackLayout Spacing="10">
@@ -51,7 +52,7 @@
                                HorizontalOptions="Center" />
 
                 <!-- Tulokset -->
-                <Frame  Padding="10" CornerRadius="10">
+                <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
                     <VerticalStackLayout Spacing="5">
                         <Label x:Name="MokkienTuottoLabel"
                        Text="Mökkien tuotto: "
@@ -77,7 +78,8 @@
 
 
         <Frame  Grid.Column="1" Grid.Row="0"
-                BorderColor="Gray" 
+                BorderColor="Gray"
+                BackgroundColor="Transparent"
                 CornerRadius="10"
                 Padding="20"
                 HorizontalOptions="Fill"
@@ -94,7 +96,7 @@
                 <BoxView HeightRequest="2" Color="Gray" />
 
                 <!-- Vuoden valinta -->
-                <Frame  Padding="10" CornerRadius="10">
+                <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
                     <VerticalStackLayout>
                         <Label Text="Valitse vuosi" FontAttributes="Bold" FontSize="16"/>
                         <Picker x:Name="VuosiPicker" SelectedIndexChanged="VuosiSelected" />
@@ -102,7 +104,7 @@
                 </Frame>
 
                 <!-- Kuukausittaiset tuotot -->
-                <Frame  Padding="10" CornerRadius="10">
+                <Frame BackgroundColor="Transparent" Padding="10" CornerRadius="10">
                     <VerticalStackLayout>
                         <Label Text="Kuukausittaiset tuotot" FontAttributes="Bold" FontSize="16"/>
                         <CollectionView x:Name="TuottoLista"
