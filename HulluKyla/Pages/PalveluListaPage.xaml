@@ -1,85 +1,115 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
-             x:Class="HulluKyla.Pages.PalveluListaPage"
-             Title="Palveluiden muokkaus">
+<ContentPage
+    x:Class="HulluKyla.Pages.PalveluListaPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
+    Title="Palveluiden muokkaus">
 
 
-    <Grid Padding="20"
-          RowDefinitions="*,Auto"
-          ColumnDefinitions="*,*"
-          ColumnSpacing="15">
+    <Grid
+        Padding="20"
+        ColumnDefinitions="*,*"
+        ColumnSpacing="15"
+        RowDefinitions="*,Auto">
 
-        <!-- Palvelulista -->
-        <ScrollView>
-            <Frame BorderColor="Gray" BackgroundColor="Transparent">
-                <StackLayout Spacing="15">
-                    <Picker x:Name="AluePicker"
-                            Grid.Row="0"
-                            Title="Valitse alue"
-                            HeightRequest="70"
-                            ItemDisplayBinding="{Binding Nimi}"
-                            SelectedIndexChanged="AluePicker_SelectedIndexChanged" />
+        <!--  Palvelulista  -->
+        <Frame BackgroundColor="Transparent" BorderColor="Gray">
+            <Grid
+                ColumnDefinitions="*"
+                RowDefinitions="Auto, *"
+                RowSpacing="15">
+                <Picker
+                    x:Name="AluePicker"
+                    Title="Valitse alue"
+                    Grid.Row="0"
+                    HeightRequest="70"
+                    ItemDisplayBinding="{Binding Nimi}"
+                    SelectedIndexChanged="AluePicker_SelectedIndexChanged" />
 
-                        <CollectionView x:Name="PalveluLista"
-                                    SelectionMode="Single" 
-                                    SelectionChanged="PalveluSelected"
-                                    VerticalOptions="Center"
-                                    HorizontalOptions="Fill" >
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame BackgroundColor="Transparent" BorderColor="Gray">
-                                        <VerticalStackLayout>
-                                            <Label Text="{Binding Nimi}" FontAttributes="Bold" />
-                                            <Label Text="{Binding Kuvaus}" FontSize="12" />
-                                            <Label Text="{Binding Hinta}" />
-                                            <Label Text="{Binding Alv}" />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                </StackLayout>
-            </Frame>
-        </ScrollView>
+                <CollectionView
+                    x:Name="PalveluLista"
+                    Grid.Row="1"
+                    HorizontalOptions="Fill"
+                    SelectionChanged="PalveluSelected"
+                    SelectionMode="Single"
+                    VerticalOptions="Fill">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="Transparent" BorderColor="Gray">
+                                <VerticalStackLayout>
+                                    <Label FontAttributes="Bold" Text="{Binding Nimi}" />
+                                    <Label FontSize="12" Text="{Binding Kuvaus}" />
+                                    <Label Text="{Binding Hinta}" />
+                                    <Label Text="{Binding Alv}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </Frame>
 
-        <!-- Entryt ja buttonit -->
-        <VerticalStackLayout Spacing="10" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Fill">
-            <Entry x:Name="NimiEntry" Placeholder="Palvelun nimi..." HeightRequest="50"/>
-            <Entry x:Name="KuvausEntry" Placeholder="Palvelun kuvaus..." HeightRequest="50"/>
-            <Entry x:Name="HintaEntry" Placeholder="Palvelun hinta..." HeightRequest="50"/>
-            <Entry x:Name="AlvEntry" Placeholder="Palvelun arvonlisävero..." HeightRequest="50"/>
-            <controls:ThreeDButton Text="✅ Tallenna palvelu" Clicked="TallennaClicked" HeightRequest="50"/>
-            <controls:ThreeDButton Text="❌ Poista palvelu" Clicked="PoistaClicked" HeightRequest="50"/>
+        <!--  Entryt ja buttonit  -->
+        <VerticalStackLayout
+            Grid.Column="1"
+            HorizontalOptions="Fill"
+            Spacing="10"
+            VerticalOptions="Start">
+            <Entry
+                x:Name="NimiEntry"
+                HeightRequest="50"
+                Placeholder="Palvelun nimi..." />
+            <Entry
+                x:Name="KuvausEntry"
+                HeightRequest="50"
+                Placeholder="Palvelun kuvaus..." />
+            <Entry
+                x:Name="HintaEntry"
+                HeightRequest="50"
+                Placeholder="Palvelun hinta..." />
+            <Entry
+                x:Name="AlvEntry"
+                HeightRequest="50"
+                Placeholder="Palvelun arvonlisävero..." />
+            <controls:ThreeDButton
+                Clicked="TallennaClicked"
+                HeightRequest="50"
+                Text="✅ Tallenna palvelu" />
+            <controls:ThreeDButton
+                Clicked="PoistaClicked"
+                HeightRequest="50"
+                Text="❌ Poista palvelu" />
         </VerticalStackLayout>
 
-        <!-- Vasemman alakulman napit -->
-        <StackLayout Grid.Row="1" Grid.Column="0"
-                     Orientation="Horizontal"
-                     Spacing="15"
-                     HorizontalOptions="Start"
-                     VerticalOptions="End"
-                     Margin="0,20,0,0">
-            <controls:ThreeDButton 
-                    Text="🏠 Etusivu"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="Etusivu" />
-            <controls:ThreeDButton 
-                    Text="🡸 Takaisin"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="HallintaPage" />
+        <!--  Vasemman alakulman napit  -->
+        <StackLayout
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="0,20,0,0"
+            HorizontalOptions="Start"
+            Orientation="Horizontal"
+            Spacing="15"
+            VerticalOptions="End">
+            <controls:ThreeDButton
+                Clicked="Navigoi_Clicked"
+                CommandParameter="Etusivu"
+                Text="🏠 Etusivu" />
+            <controls:ThreeDButton
+                Clicked="Navigoi_Clicked"
+                CommandParameter="HallintaPage"
+                Text="🡸 Takaisin" />
         </StackLayout>
 
-        <!-- Oikean alakulman nappi -->
-            <controls:ThreeDButton 
-                    Text="Uusi palvelu 🡺"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="UusiPalveluPage" 
-                    HorizontalOptions="End" 
-                    Margin="0,20,0,0"
-                    Grid.Column="1"
-                    Grid.Row="1"/>
+        <!--  Oikean alakulman nappi  -->
+        <controls:ThreeDButton
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="0,20,0,0"
+            Clicked="Navigoi_Clicked"
+            CommandParameter="UusiPalveluPage"
+            HorizontalOptions="End"
+            Text="Uusi palvelu 🡺" />
 
     </Grid>
 </ContentPage>

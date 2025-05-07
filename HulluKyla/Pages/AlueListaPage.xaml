@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
-             x:Class="HulluKyla.Pages.AlueListaPage"
-             Title="Alueiden muokkaus">
+<ContentPage
+    x:Class="HulluKyla.Pages.AlueListaPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
+    Title="Alueiden muokkaus">
 
-    <Grid Padding="20"
-          RowDefinitions="*,Auto"
-          ColumnDefinitions="*,*"
-          ColumnSpacing="15">
+    <Grid
+        Padding="20"
+        ColumnDefinitions="*,*"
+        ColumnSpacing="15"
+        RowDefinitions="*,Auto">
 
-        <!-- Aluelista -->
+        <!--  Aluelista  -->
         <Grid Grid.Row="0" Grid.Column="0">
-            <Frame BorderColor="Gray" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0">
-                <CollectionView x:Name="AlueLista"
-                            SelectionMode="Single" 
-                            SelectionChanged="AlueSelected" >
+            <Frame
+                Grid.Row="0"
+                Grid.Column="0"
+                BackgroundColor="Transparent"
+                BorderColor="Gray">
+                <CollectionView
+                    x:Name="AlueLista"
+                    SelectionChanged="AlueSelected"
+                    SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <VerticalStackLayout>
-                                <Frame BackgroundColor="Transparent" BorderColor="Gray">
-                                    <Label Text="{Binding Nimi}" HeightRequest="20" />
+                                <Frame
+                                    Margin="5"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Gray">
+                                    <Label HeightRequest="20" Text="{Binding Nimi}" />
                                 </Frame>
                             </VerticalStackLayout>
                         </DataTemplate>
@@ -29,40 +39,55 @@
             </Frame>
         </Grid>
 
-        <!-- Oikea reuna (muokkauslohko) -->
-        <VerticalStackLayout Spacing="10" Grid.Column="1" Grid.Row="0" VerticalOptions="Start" HorizontalOptions="Fill">
-            <Entry x:Name="NimiEntry" Placeholder="Alueen nimi..." HeightRequest="50"/>
-            <controls:ThreeDButton Text="✅ Tallenna alue" Clicked="TallennaClicked" HeightRequest="50" />
-            <controls:ThreeDButton Text="❌ Poista alue" Clicked="PoistaClicked" HeightRequest="50" />
+        <!--  Oikea reuna (muokkauslohko)  -->
+        <VerticalStackLayout
+            Grid.Row="0"
+            Grid.Column="1"
+            HorizontalOptions="Fill"
+            Spacing="10"
+            VerticalOptions="Start">
+            <Entry
+                x:Name="NimiEntry"
+                HeightRequest="50"
+                Placeholder="Alueen nimi..." />
+            <controls:ThreeDButton
+                Clicked="TallennaClicked"
+                HeightRequest="50"
+                Text="✅ Tallenna alue" />
+            <controls:ThreeDButton
+                Clicked="PoistaClicked"
+                HeightRequest="50"
+                Text="❌ Poista alue" />
         </VerticalStackLayout>
 
-        <!-- Alakulman vasemman puolen napit -->
-        <StackLayout Grid.Row="1"
-                     Orientation="Horizontal"
-                     Spacing="15"
-                     HorizontalOptions="Start"
-                     VerticalOptions="End"
-                     Margin="0,20,0,0">
+        <!--  Alakulman vasemman puolen napit  -->
+        <StackLayout
+            Grid.Row="1"
+            Margin="0,20,0,0"
+            HorizontalOptions="Start"
+            Orientation="Horizontal"
+            Spacing="15"
+            VerticalOptions="End">
 
-            <controls:ThreeDButton 
-                    Text="🏠 Etusivu"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="Etusivu" />
+            <controls:ThreeDButton
+                Clicked="Navigoi_Clicked"
+                CommandParameter="Etusivu"
+                Text="🏠 Etusivu" />
 
-            <controls:ThreeDButton 
-                    Text="🡸 Takaisin"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="HallintaPage" />
+            <controls:ThreeDButton
+                Clicked="Navigoi_Clicked"
+                CommandParameter="HallintaPage"
+                Text="🡸 Takaisin" />
         </StackLayout>
 
-        <!-- Oikean alakulma nappi-->
-        <controls:ThreeDButton 
-                    Text="Uusi alue 🡺"
-                    Grid.Column="1"
-                    Grid.Row="1"
-                    HorizontalOptions="End"
-                    Margin="0,20,0,0"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="UusiAluePage" />
+        <!--  Oikean alakulma nappi  -->
+        <controls:ThreeDButton
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="0,20,0,0"
+            Clicked="Navigoi_Clicked"
+            CommandParameter="UusiAluePage"
+            HorizontalOptions="End"
+            Text="Uusi alue 🡺" />
     </Grid>
 </ContentPage>

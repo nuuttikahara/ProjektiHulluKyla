@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
-             x:Class="HulluKyla.Pages.HakutyokaluPage"
-             Title="Hakutyökalu">
+<ContentPage
+    x:Class="HulluKyla.Pages.HakutyokaluPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
+    Title="Hakutyökalu">
 
 
-    <Grid Padding="20" RowSpacing="10"
-          RowDefinitions="0.1*,0.8*,0.1*"
-          ColumnDefinitions="*,*">
+    <Grid
+        Padding="20"
+        ColumnDefinitions="*,*"
+        RowDefinitions="0.1*,0.8*,0.1*"
+        RowSpacing="10">
 
-        <Picker x:Name="HakuPicker"
-                Title="Valitse hakukategoria"
-                SelectedIndexChanged="HakuSelected"
-                HeightRequest="70"
-                Grid.ColumnSpan="2" 
-                Grid.Row="0"
-                FontFamily="Bold">
+        <Picker
+            x:Name="HakuPicker"
+            Title="Valitse hakukategoria"
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            FontFamily="Bold"
+            HeightRequest="70"
+            SelectedIndexChanged="HakuSelected">
             <Picker.Items>
                 <x:String>Mökit</x:String>
                 <x:String>Asiakkaat</x:String>
@@ -24,118 +28,94 @@
             </Picker.Items>
         </Picker>
 
-        <!-- Mökit -->
-        <Frame x:Name="MokkiHakuNakyma" IsVisible="False"
-               Grid.Row="1" Grid.ColumnSpan="2"
-               BorderColor="Gray" 
-               BackgroundColor="Transparent"
-               Padding="20"
-               CornerRadius="10"
-               HorizontalOptions="Fill"
-               VerticalOptions="Fill">
+        <!--  Mökit  -->
+        <Frame
+            x:Name="MokkiHakuNakyma"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Padding="20"
+            BackgroundColor="Transparent"
+            BorderColor="Gray"
+            CornerRadius="10"
+            HorizontalOptions="Fill"
+            IsVisible="False"
+            VerticalOptions="Fill">
             <ScrollView>
-            <StackLayout Spacing="15">
-                <Label Text="Vapaiden mökkien haku" FontAttributes="Bold"/>
-                <Picker x:Name="MokinAluePicker" Title="Valitse alue" HeightRequest="70" ItemDisplayBinding="{Binding Nimi}"/>
-                <HorizontalStackLayout HorizontalOptions="Center" Spacing="35">
-                    <VerticalStackLayout Spacing="7" VerticalOptions="Center">
-                        <Label Text="Haku alkaa" TextColor="Green" HorizontalOptions="Center" FontAttributes="Bold"/>
-                        <DatePicker x:Name="AlkuPvmPicker" WidthRequest="300"/>
-                        <TimePicker x:Name="AlkuAikaPicker" Format="HH:mm" WidthRequest="300"/>
-                    </VerticalStackLayout>
+                <StackLayout Spacing="15">
+                    <Label FontAttributes="Bold" Text="Vapaiden mökkien haku" />
+                    <Picker
+                        x:Name="MokinAluePicker"
+                        Title="Valitse alue"
+                        HeightRequest="70"
+                        ItemDisplayBinding="{Binding Nimi}" />
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="35">
+                        <VerticalStackLayout Spacing="7" VerticalOptions="Center">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                Text="Haku alkaa"
+                                TextColor="Green" />
+                            <DatePicker x:Name="AlkuPvmPicker" WidthRequest="300" />
+                            <TimePicker
+                                x:Name="AlkuAikaPicker"
+                                Format="HH:mm"
+                                WidthRequest="300" />
+                        </VerticalStackLayout>
 
-                    <VerticalStackLayout Spacing="7" VerticalOptions="Center">
-                        <Label Text="Haku loppuu" TextColor="Red" HorizontalOptions="Center" FontAttributes="Bold"/>
-                        <DatePicker x:Name="LoppuPvmPicker" WidthRequest="300"/>
-                        <TimePicker x:Name="LoppuAikaPicker" Format="HH:mm" WidthRequest="300"/>
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
-                <Entry x:Name="HenkilomaaraEntry" Placeholder="Henkilömäärä (vapaaehtoinen)..." HeightRequest="40" />
-                    <controls:ThreeDButton Text="🔍 Hae mökit" Clicked="HaeMokitClicked" WidthRequest="150" />
-                <CollectionView x:Name="MokkiTulosLista">
+                        <VerticalStackLayout Spacing="7" VerticalOptions="Center">
+                            <Label
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                Text="Haku loppuu"
+                                TextColor="Red" />
+                            <DatePicker x:Name="LoppuPvmPicker" WidthRequest="300" />
+                            <TimePicker
+                                x:Name="LoppuAikaPicker"
+                                Format="HH:mm"
+                                WidthRequest="300" />
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                    <Entry
+                        x:Name="HenkilomaaraEntry"
+                        HeightRequest="40"
+                        Placeholder="Henkilömäärä (vapaaehtoinen)..." />
+                    <controls:ThreeDButton
+                        Clicked="HaeMokitClicked"
+                        Text="🔍 Hae mökit"
+                        WidthRequest="150" />
+                    <CollectionView x:Name="MokkiTulosLista">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Frame BackgroundColor="Transparent"
-                                   BorderColor="Gray"
-                                   Padding="10"
-                                   Margin="0,2"
-                                   CornerRadius="10">
+                                <Frame
+                                    Margin="0,2"
+                                    Padding="10"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Gray"
+                                    CornerRadius="10">
                                     <VerticalStackLayout>
-                                        <Label Text="{Binding MokkiNimi}" FontSize="14" FontAttributes="Bold" HeightRequest="24" HorizontalOptions="Center" />
-                                        <Label Text="{Binding Katuosoite, StringFormat='Osoite: {0}'}" FontSize="14" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding Postinro, StringFormat='Postinumero: {0}'}" FontSize="14" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding HenkiloMaara, StringFormat='Henkilömäärä: {0}'}" FontSize="14" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding Hinta, StringFormat='Hinta: {0} €'}" FontSize="14" HeightRequest="30" HorizontalOptions="Center"/>
-                                    </VerticalStackLayout>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-            </StackLayout>
-            </ScrollView>
-        </Frame>
-
-        <!-- Asiakkaat -->
-        <Frame x:Name="AsiakasHakuNakyma" IsVisible="False"
-               Grid.Row="1" Grid.ColumnSpan="2"
-               BorderColor="Gray" 
-               BackgroundColor="Transparent"
-               Padding="20"
-               CornerRadius="10"
-               HorizontalOptions="Fill"
-               VerticalOptions="Fill">
-            <ScrollView>
-            <StackLayout Spacing="10">
-                <Label Text="Asiakkaiden haku" FontAttributes="Bold" />
-                <SearchBar x:Name="AsiakasSearchBar" SearchButtonPressed="HaeAsiakkaatClicked" Placeholder="Hae hakusanalla..."/>
-                <CollectionView x:Name="AsiakasTulosLista">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame  BackgroundColor="Transparent"
-                                        BorderColor="Gray"
-                                        Padding="10"
-                                        Margin="0,2"
-                                        CornerRadius="10">
-                                    <VerticalStackLayout>
-                                        <Label Text="{Binding KokoNimi}" FontSize="14" FontAttributes="Bold" HeightRequest="24" HorizontalOptions="Center" />
-                                        <Label Text="{Binding Email, StringFormat='Email: {0}'}" FontSize="14" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding Puhelinnro, StringFormat='Puhelin: {0}'}" FontSize="14" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding Lahiosoite, StringFormat='Osoite: {0}'}" FontSize="14" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding Postinro, StringFormat='Postinumero: {0}'}" FontSize="14" HeightRequest="30" HorizontalOptions="Center"/>
-                                    </VerticalStackLayout>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-            </StackLayout>
-            </ScrollView>
-        </Frame>
-
-        <!-- Palvelut -->
-        <Frame x:Name="PalveluHakuNakyma" IsVisible="False"
-               Grid.Row="1" Grid.ColumnSpan="2"
-               BorderColor="Gray" 
-               BackgroundColor="Transparent"
-               Padding="20"
-               CornerRadius="10"
-               HorizontalOptions="Fill"
-               VerticalOptions="Fill">
-            <ScrollView>
-                <StackLayout Spacing="10">
-                    <Label Text="Palveluiden haku" FontAttributes="Bold" />
-                    <Picker x:Name="PalvelunAluePicker" HeightRequest="70" Title="Valitse alue" ItemDisplayBinding="{Binding Nimi}" SelectedIndexChanged="PalvelunAlueSelected"/>
-                    <CollectionView x:Name="PalveluTulosLista">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Frame BackgroundColor="Transparent"
-                                       BorderColor="Gray"
-                                       Padding="10"
-                                       Margin="0,2"
-                                       CornerRadius="10">
-                                    <VerticalStackLayout>
-                                        <Label Text="{Binding Nimi}" FontSize="14" FontAttributes="Bold" HeightRequest="24" HorizontalOptions="Center" />
-                                        <Label Text="{Binding Kuvaus, StringFormat='Kuvaus: {0}'}" FontSize="14" HorizontalOptions="Center"/>
-                                        <Label Text="{Binding Hinta, StringFormat='Hinta: {0} €'}" FontSize="14" HeightRequest="30" HorizontalOptions="Center"/>
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            HeightRequest="24"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding MokkiNimi}" />
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Katuosoite, StringFormat='Osoite: {0}'}" />
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Postinro, StringFormat='Postinumero: {0}'}" />
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding HenkiloMaara, StringFormat='Henkilömäärä: {0}'}" />
+                                        <Label
+                                            FontSize="14"
+                                            HeightRequest="30"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Hinta, StringFormat='Hinta: {0} €'}" />
                                     </VerticalStackLayout>
                                 </Frame>
                             </DataTemplate>
@@ -145,23 +125,141 @@
             </ScrollView>
         </Frame>
 
-        <!-- Napit -->
-        <StackLayout Grid.Row="2" Grid.Column="0"
-                     Orientation="Horizontal"
-                     Spacing="15"
-                     VerticalOptions="End"
-                     HorizontalOptions="Start"
-                     Margin="0,20,0,0">
+        <!--  Asiakkaat  -->
+        <Frame
+            x:Name="AsiakasHakuNakyma"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Padding="20"
+            BackgroundColor="Transparent"
+            BorderColor="Gray"
+            CornerRadius="10"
+            HorizontalOptions="Fill"
+            IsVisible="False"
+            VerticalOptions="Fill">
+            <ScrollView>
+                <StackLayout Spacing="10">
+                    <Label FontAttributes="Bold" Text="Asiakkaiden haku" />
+                    <SearchBar
+                        x:Name="AsiakasSearchBar"
+                        Placeholder="Hae hakusanalla..."
+                        SearchButtonPressed="HaeAsiakkaatClicked" />
+                    <CollectionView x:Name="AsiakasTulosLista">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="0,2"
+                                    Padding="10"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Gray"
+                                    CornerRadius="10">
+                                    <VerticalStackLayout>
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            HeightRequest="24"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding KokoNimi}" />
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Email, StringFormat='Email: {0}'}" />
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Puhelinnro, StringFormat='Puhelin: {0}'}" />
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Lahiosoite, StringFormat='Osoite: {0}'}" />
+                                        <Label
+                                            FontSize="14"
+                                            HeightRequest="30"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Postinro, StringFormat='Postinumero: {0}'}" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+        </Frame>
 
-            <controls:ThreeDButton 
-                    Text="🏠 Etusivu"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="Etusivu" />
+        <!--  Palvelut  -->
+        <Frame
+            x:Name="PalveluHakuNakyma"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Padding="20"
+            BackgroundColor="Transparent"
+            BorderColor="Gray"
+            CornerRadius="10"
+            HorizontalOptions="Fill"
+            IsVisible="False"
+            VerticalOptions="Fill">
+            <ScrollView>
+                <StackLayout Spacing="10">
+                    <Label FontAttributes="Bold" Text="Palveluiden haku" />
+                    <Picker
+                        x:Name="PalvelunAluePicker"
+                        Title="Valitse alue"
+                        HeightRequest="70"
+                        ItemDisplayBinding="{Binding Nimi}"
+                        SelectedIndexChanged="PalvelunAlueSelected" />
+                    <CollectionView x:Name="PalveluTulosLista">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="0,2"
+                                    Padding="10"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Gray"
+                                    CornerRadius="10">
+                                    <VerticalStackLayout>
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="14"
+                                            HeightRequest="24"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Nimi}" />
+                                        <Label
+                                            FontSize="14"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Kuvaus, StringFormat='Kuvaus: {0}'}" />
+                                        <Label
+                                            FontSize="14"
+                                            HeightRequest="30"
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Hinta, StringFormat='Hinta: {0} €'}" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+        </Frame>
 
-            <controls:ThreeDButton 
-                    Text="🡸 Takaisin raportointiin"
-                    Clicked="Navigoi_Clicked"
-                    CommandParameter="RaportointiPage" />
+        <!--  Napit  -->
+        <StackLayout
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="0,20,0,0"
+            HorizontalOptions="Start"
+            Orientation="Horizontal"
+            Spacing="15"
+            VerticalOptions="End">
+
+            <controls:ThreeDButton
+                Clicked="Navigoi_Clicked"
+                CommandParameter="Etusivu"
+                Text="🏠 Etusivu" />
+
+            <controls:ThreeDButton
+                Clicked="Navigoi_Clicked"
+                CommandParameter="RaportointiPage"
+                Text="🡸 Takaisin raportointiin" />
 
         </StackLayout>
 
