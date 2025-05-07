@@ -21,7 +21,7 @@
             <Entry x:Name="HintaEntry" Placeholder="Palvelun hinta..." HeightRequest="50"/>
             <Entry x:Name="AlvEntry" Placeholder="Palvelun arvonlisävero..." HeightRequest="50"/>
             <controls:ThreeDButton 
-                    Text="Lisää palvelu"
+                    Text="✅ Lisää palvelu"
                     Clicked="LisaaClicked"
                     HorizontalOptions="Fill"
                     HeightRequest="50"/>
@@ -36,12 +36,12 @@
                      Margin="0,20,0,0">
 
             <controls:ThreeDButton 
-                    Text="Etusivu"
+                    Text="🏠 Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
 
             <controls:ThreeDButton 
-                    Text="Takaisin muokkaukseen"
+                    Text="🡸 Takaisin muokkaukseen"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="PalveluListaPage" />
 

@@ -17,7 +17,7 @@
             
             <Entry x:Name="NimiEntry" Placeholder="Alueen nimi..." HeightRequest="50" />
             <controls:ThreeDButton
-                Text="Lisää alue"
+                Text="✅ Lisää alue"
                 Clicked="LisaaClicked"
                 HorizontalOptions="Fill"
                 HeightRequest="50"/>
@@ -33,12 +33,12 @@
                      Margin="0,20,0,0">
 
             <controls:ThreeDButton 
-                    Text="Etusivu"
+                    Text="🏠 Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
 
             <controls:ThreeDButton 
-                    Text="Takaisin alueisiin"
+                    Text="🡸 Takaisin muokkaukseen"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="AlueListaPage" />
         </StackLayout>

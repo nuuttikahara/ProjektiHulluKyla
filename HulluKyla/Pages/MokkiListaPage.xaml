@@ -30,9 +30,9 @@
                         <DataTemplate>
                             <Frame BackgroundColor="Transparent" BorderColor="Gray">
                                 <VerticalStackLayout>
-                                    <Label Text="{Binding MokkiNimi}" FontAttributes="Bold"/>
-                                    <Label Text="{Binding Katuosoite, StringFormat='Osoite: {0}'}"/>
-                                    <Label Text="{Binding Postinro, StringFormat='Postinumero: {0}'}"/>
+                                    <Label Text="{Binding MokkiNimi}" FontAttributes="Bold" />
+                                    <Label Text="{Binding Katuosoite, StringFormat='Osoite: {0}'}" />
+                                    <Label Text="{Binding Postinro, StringFormat='Postinumero: {0}'}" />
                                     <Label Text="{Binding HenkiloMaara, StringFormat='Henkilömäärä: {0}'}" />
                                 </VerticalStackLayout>
                             </Frame>
@@ -44,15 +44,15 @@
 
         <!-- Entryt ja buttonit -->
         <VerticalStackLayout Spacing="10" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Fill">
-            <Entry x:Name="MokkiNimiEntry" Placeholder="Mökin nimi..." HeightRequest="50"/>
-            <Entry x:Name="KatuosoiteEntry" Placeholder="Katuosoite..." HeightRequest="50"/>
-            <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
-            <Entry x:Name="HintaEntry" Placeholder="Hinta..." HeightRequest="50"/>
-            <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." HeightRequest="50"/>
-            <Entry x:Name="HenkiloMaaraEntry" Placeholder="Henkilömäärä..." HeightRequest="50"/>
-            <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." HeightRequest="50"/>
-            <controls:ThreeDButton Text="Tallenna mökki" Clicked="TallennaClicked" HeightRequest="50"/>
-            <controls:ThreeDButton Text="Poista mökki" Clicked="PoistaClicked" HeightRequest="50"/>
+            <Entry x:Name="MokkiNimiEntry" Placeholder="Mökin nimi..." HeightRequest="50" />
+            <Entry x:Name="KatuosoiteEntry" Placeholder="Katuosoite..." HeightRequest="50" />
+            <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." HeightRequest="50" />
+            <Entry x:Name="HintaEntry" Placeholder="Hinta..." HeightRequest="50" />
+            <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." HeightRequest="50" />
+            <Entry x:Name="HenkiloMaaraEntry" Placeholder="Henkilömäärä..." HeightRequest="50" />
+            <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." HeightRequest="50" />
+            <controls:ThreeDButton Text="✅ Tallenna mökki" Clicked="TallennaClicked" HeightRequest="50" />
+            <controls:ThreeDButton Text="❌ Poista mökki" Clicked="PoistaClicked" HeightRequest="50" />
         </VerticalStackLayout>
 
         <!-- Alakulman vasemman puolen napit -->
@@ -64,19 +64,19 @@
              Margin="0,20,0,0">
 
             <controls:ThreeDButton 
-                Text="Etusivu"
+                Text="🏠 Etusivu"
                 Clicked="Navigoi_Clicked"
                 CommandParameter="Etusivu" />
 
             <controls:ThreeDButton 
-                Text="Takaisin"
+                Text="🡸 Takaisin"
                 Clicked="Navigoi_Clicked"
                 CommandParameter="HallintaPage" />
         </StackLayout>
 
         <!-- Oikean alakulman nappi -->
             <controls:ThreeDButton 
-                Text="Uusi mökki"
+                Text="Uusi mökki 🡺"
                 Clicked="Navigoi_Clicked"
                 CommandParameter="UusiMokkiPage"
                 Margin="0,20,0,0"

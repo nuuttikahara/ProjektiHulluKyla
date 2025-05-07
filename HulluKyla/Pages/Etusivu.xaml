@@ -22,36 +22,34 @@
               ColumnDefinitions="Auto,Auto">
 
             <!-- Napit -->
-
             <controls:ThreeDButton 
-                    Text="Seuranta"
+                    Text="🧾 Laskutus"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="SeurantaPage"
                     Grid.Row="0" Grid.Column="0"
-                    WidthRequest="110"/>
+                    WidthRequest="130"/>
 
             <controls:ThreeDButton 
-                    Text="Raportointi"
+                    Text="📑 Raportointi"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="RaportointiPage"
                     Grid.Row="0" Grid.Column="1"
-                    WidthRequest="110"/>
+                    WidthRequest="130"/>
 
             <controls:ThreeDButton 
-                    Text="Hallinta"
+                    Text="🔧 Hallinta"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="HallintaPage"
                     Grid.Row="1" Grid.Column="0"
-                    WidthRequest="110"/>
+                    WidthRequest="130"/>
 
             <controls:ThreeDButton 
-                    Text="Varaukset"
+                    Text="📅 Varaukset"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="VarausListaPage"
                     Grid.Row="1" Grid.Column="1"
-                    WidthRequest="110"/>
+                    WidthRequest="130"/>
 
         </Grid>
-
     </Grid>
 </ContentPage>

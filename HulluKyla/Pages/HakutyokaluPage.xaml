@@ -34,7 +34,7 @@
                HorizontalOptions="Fill"
                VerticalOptions="Fill">
             <ScrollView>
-            <StackLayout Spacing="10">
+            <StackLayout Spacing="15">
                 <Label Text="Vapaiden mökkien haku" FontAttributes="Bold"/>
                 <Picker x:Name="MokinAluePicker" Title="Valitse alue" HeightRequest="70" ItemDisplayBinding="{Binding Nimi}"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="35">
@@ -51,7 +51,7 @@
                     </VerticalStackLayout>
                 </HorizontalStackLayout>
                 <Entry x:Name="HenkilomaaraEntry" Placeholder="Henkilömäärä (vapaaehtoinen)" HeightRequest="40" />
-                <controls:ThreeDButton Text="Hae mökit" Clicked="HaeMokitClicked" WidthRequest="150" />
+                    <controls:ThreeDButton Text="🔍 Hae mökit" Clicked="HaeMokitClicked" WidthRequest="150" />
                 <CollectionView x:Name="MokkiTulosLista">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -154,12 +154,12 @@
                      Margin="0,20,0,0">
 
             <controls:ThreeDButton 
-                    Text="Etusivu"
+                    Text="🏠 Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
 
             <controls:ThreeDButton 
-                    Text="Takaisin"
+                    Text="🡸 Takaisin raportointiin"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="RaportointiPage" />
 

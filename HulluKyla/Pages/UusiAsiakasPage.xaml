@@ -20,7 +20,7 @@
                 <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50"/>
                 <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50" />
             <controls:ThreeDButton 
-                Text="Lisää asiakas"
+                Text="✅ Lisää asiakas"
                 Clicked="Tallenna_Clicked"
                 HorizontalOptions="Fill"
                 HeightRequest="50"/>
@@ -34,12 +34,12 @@
                      VerticalOptions="End"
                      Margin="0,20,0,0">
             <controls:ThreeDButton 
-                    Text="Etusivu"
+                    Text="🏠 Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
 
             <controls:ThreeDButton 
-                    Text="Takaisin muokkaukseen"
+                    Text="🡸 Takaisin muokkaukseen"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="AsiakasListaPage" />
         </StackLayout>

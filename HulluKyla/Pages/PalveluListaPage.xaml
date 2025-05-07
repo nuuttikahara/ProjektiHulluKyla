@@ -50,8 +50,8 @@
             <Entry x:Name="KuvausEntry" Placeholder="Palvelun kuvaus..." HeightRequest="50"/>
             <Entry x:Name="HintaEntry" Placeholder="Palvelun hinta..." HeightRequest="50"/>
             <Entry x:Name="AlvEntry" Placeholder="Palvelun arvonlisävero..." HeightRequest="50"/>
-            <controls:ThreeDButton Text="Tallenna palvelu" Clicked="TallennaClicked" HeightRequest="50"/>
-            <controls:ThreeDButton Text="Poista palvelu" Clicked="PoistaClicked" HeightRequest="50"/>
+            <controls:ThreeDButton Text="✅ Tallenna palvelu" Clicked="TallennaClicked" HeightRequest="50"/>
+            <controls:ThreeDButton Text="❌ Poista palvelu" Clicked="PoistaClicked" HeightRequest="50"/>
         </VerticalStackLayout>
 
         <!-- Vasemman alakulman napit -->
@@ -62,18 +62,18 @@
                      VerticalOptions="End"
                      Margin="0,20,0,0">
             <controls:ThreeDButton 
-                    Text="Etusivu"
+                    Text="🏠 Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
             <controls:ThreeDButton 
-                    Text="Takaisin"
+                    Text="🡸 Takaisin"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="HallintaPage" />
         </StackLayout>
 
         <!-- Oikean alakulman nappi -->
             <controls:ThreeDButton 
-                    Text="Uusi palvelu"
+                    Text="Uusi palvelu 🡺"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="UusiPalveluPage" 
                     HorizontalOptions="End" 

@@ -8,10 +8,11 @@
     
     <Grid Padding="20"
           RowDefinitions="*,Auto"
-          ColumnDefinitions="*,*">
+          ColumnDefinitions="*,*"
+          ColumnSpacing="15">
 
         <!-- Asiakaslista -->
-        <Frame BorderColor="Gray" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0">
+        <Frame BorderColor="Gray" BackgroundColor="Transparent">
             <CollectionView x:Name="AsiakasLista"
                         SelectionMode="Single"
                         SelectionChanged="AsiakasSelected">
@@ -19,9 +20,9 @@
                     <DataTemplate>
                             <Frame BackgroundColor="Transparent" BorderColor="Gray">
                                 <VerticalStackLayout>
-                                <Label Text="{Binding Etunimi}" FontAttributes="Bold" FontSize="14" />
-                                <Label Text="{Binding Sukunimi}" FontSize="14" />
-                                <Label Text="{Binding Email}" FontSize="14" />
+                                <Label Text="{Binding Etunimi}" FontAttributes="Bold" />
+                                <Label Text="{Binding Sukunimi}" />
+                                <Label Text="{Binding Email}" />
                                 </VerticalStackLayout>
                             </Frame>
                     </DataTemplate>
@@ -30,17 +31,15 @@
         </Frame>
 
         <!-- Asiakastietojen muokkaus -->
-        <VerticalStackLayout Grid.Row="0" Grid.Column="1"
-                             Spacing="10"
-                             Padding="10">
+        <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="10">
             <Entry x:Name="EtunimiEntry" Placeholder="Etunimi..." HeightRequest="50" />
             <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi..." HeightRequest="50" />
-            <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." HeightRequest="50"/>
-            <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
-            <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50"/>
-            <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50"/>
-            <controls:ThreeDButton Text="Tallenna asiakas" Clicked="TallennaClicked" HeightRequest="50" />
-            <controls:ThreeDButton Text="Poista asiakas" Clicked="PoistaClicked" HeightRequest="50" />
+            <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." HeightRequest="50" />
+            <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." HeightRequest="50" />
+            <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50" />
+            <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50" />
+            <controls:ThreeDButton Text="✅ Tallenna asiakas" Clicked="TallennaClicked" HeightRequest="50" />
+            <controls:ThreeDButton Text="❌ Poista asiakas" Clicked="PoistaClicked" HeightRequest="50" />
         </VerticalStackLayout>
 
         <!-- Vasemman alakulman napit -->
@@ -51,25 +50,24 @@
                      VerticalOptions="End"
                      Margin="0,20,0,0">
             <controls:ThreeDButton 
-                    Text="Etusivu"
+                    Text="🏠 Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
             <controls:ThreeDButton 
-                    Text="Takaisin"
+                    Text="🡸 Takaisin"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="HallintaPage" />
         </StackLayout>
 
         <!-- Oikean alakulman nappi -->
         <controls:ThreeDButton 
-                  Text="Uusi asiakas"
+                  Text="Uusi asiakas 🡺"
                   Clicked="Navigoi_Clicked"
                   CommandParameter="UusiAsiakasPage"
                   HorizontalOptions="End"
                   Margin="0,20,0,0"
                   Grid.Column="1"
                   Grid.Row="1"/>
-
     </Grid>
 </ContentPage>
 

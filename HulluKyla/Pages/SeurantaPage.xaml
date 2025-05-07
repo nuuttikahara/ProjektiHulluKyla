@@ -1,8 +1,9 @@
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
-             x:Class="HulluKyla.Pages.SeurantaPage"
-             Title="Laskujen seuranta">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
+                 x:Class="HulluKyla.Pages.SeurantaPage"
+                 Title="Laskujen seuranta ja hallinta">
 
     <ScrollView>
         <Grid RowDefinitions="*,*,Auto" Padding="20" RowSpacing="15">
@@ -87,30 +88,30 @@
             <Grid Grid.Row="2" ColumnDefinitions="*,*" Padding="10">
                 <!-- Etusivu-nappi -->
                 <controls:ThreeDButton
-                        Text="Etusivu"
+                        Text="🏠 Etusivu"
                         Clicked="Navigoi_Clicked"
                         CommandParameter="Etusivu"
                         HorizontalOptions="Start"
                         CornerRadius="10"
-                        WidthRequest="100"/>
+                        WidthRequest="110"/>
 
                 <HorizontalStackLayout HorizontalOptions="End" Spacing="10" Grid.Column="1">
                     <!-- Tulosta-nappi -->
                     <controls:ThreeDButton 
-                        Text="Tulosta"
+                        Text="📄 Luo PDF"
                         Clicked="TulostaLasku_Clicked"
                         x:Name="TulostaButton"
                         CornerRadius="10"
-                        WidthRequest="100"
+                        WidthRequest="120"
                         HorizontalOptions="Center"/>
 
                     <!-- Merkitse maksetuksi-nappi -->
                     <controls:ThreeDButton 
-                        Text="Merkitse maksetuksi"
+                        Text="✅ Merkitse maksetuksi"
                         Clicked="MerkitseMaksetuksi_Clicked"
                         x:Name="MerkitseMaksetuksiButton"
                         CornerRadius="10"
-                        WidthRequest="180"
+                        WidthRequest="200"
                         HorizontalOptions="End"/>
                 </HorizontalStackLayout>
             </Grid>

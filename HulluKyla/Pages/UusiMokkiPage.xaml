@@ -30,7 +30,7 @@
             
             <controls:ThreeDButton 
                         Grid.Row="2" Grid.Column="2"
-                        Text="Lisää mökki"
+                        Text="✅ Lisää mökki"
                         Clicked="LisaaClicked"
                         HorizontalOptions="Fill"
                         HeightRequest="50"/>
@@ -45,12 +45,12 @@
                      Margin="0,20,0,0">
 
             <controls:ThreeDButton 
-                    Text="Etusivu"
+                    Text="🏠 Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
 
             <controls:ThreeDButton 
-                    Text="Takaisin muokkaukseen"
+                    Text="🡸 Takaisin muokkaukseen"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="MokkiListaPage" />
         </StackLayout>

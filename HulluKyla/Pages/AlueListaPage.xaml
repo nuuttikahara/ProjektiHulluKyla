@@ -12,7 +12,7 @@
 
         <!-- Aluelista -->
         <Grid Grid.Row="0" Grid.Column="0">
-            <Frame BorderColor="Gray" BackgroundColor="Transparent" Grid.Row="0">
+            <Frame BorderColor="Gray" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0">
                 <CollectionView x:Name="AlueLista"
                             SelectionMode="Single" 
                             SelectionChanged="AlueSelected" >
@@ -32,8 +32,8 @@
         <!-- Oikea reuna (muokkauslohko) -->
         <VerticalStackLayout Spacing="10" Grid.Column="1" Grid.Row="0" VerticalOptions="Start" HorizontalOptions="Fill">
             <Entry x:Name="NimiEntry" Placeholder="Alueen nimi..." HeightRequest="50"/>
-            <controls:ThreeDButton Text="Tallenna alue" Clicked="TallennaClicked" HeightRequest="50" />
-            <controls:ThreeDButton Text="Poista alue" Clicked="PoistaClicked" HeightRequest="50" />
+            <controls:ThreeDButton Text="✅ Tallenna alue" Clicked="TallennaClicked" HeightRequest="50" />
+            <controls:ThreeDButton Text="❌ Poista alue" Clicked="PoistaClicked" HeightRequest="50" />
         </VerticalStackLayout>
 
         <!-- Alakulman vasemman puolen napit -->
@@ -45,19 +45,19 @@
                      Margin="0,20,0,0">
 
             <controls:ThreeDButton 
-                    Text="Etusivu"
+                    Text="🏠 Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
 
             <controls:ThreeDButton 
-                    Text="Takaisin"
+                    Text="🡸 Takaisin"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="HallintaPage" />
         </StackLayout>
 
         <!-- Oikean alakulma nappi-->
         <controls:ThreeDButton 
-                    Text="Uusi alue"
+                    Text="Uusi alue 🡺"
                     Grid.Column="1"
                     Grid.Row="1"
                     HorizontalOptions="End"
