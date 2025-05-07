@@ -39,18 +39,18 @@
                 <Picker x:Name="MokinAluePicker" Title="Valitse alue" HeightRequest="70" ItemDisplayBinding="{Binding Nimi}"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="35">
                     <VerticalStackLayout Spacing="7" VerticalOptions="Center">
-                        <Label Text="Haku alkaa..." TextColor="Green" HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="Haku alkaa" TextColor="Green" HorizontalOptions="Center" FontAttributes="Bold"/>
                         <DatePicker x:Name="AlkuPvmPicker" WidthRequest="300"/>
                         <TimePicker x:Name="AlkuAikaPicker" Format="HH:mm" WidthRequest="300"/>
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Spacing="7" VerticalOptions="Center">
-                        <Label Text="Haku loppuu..." TextColor="Red" HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Text="Haku loppuu" TextColor="Red" HorizontalOptions="Center" FontAttributes="Bold"/>
                         <DatePicker x:Name="LoppuPvmPicker" WidthRequest="300"/>
                         <TimePicker x:Name="LoppuAikaPicker" Format="HH:mm" WidthRequest="300"/>
                     </VerticalStackLayout>
                 </HorizontalStackLayout>
-                <Entry x:Name="HenkilomaaraEntry" Placeholder="Henkilömäärä (vapaaehtoinen)" HeightRequest="40" />
+                <Entry x:Name="HenkilomaaraEntry" Placeholder="Henkilömäärä (vapaaehtoinen)..." HeightRequest="40" />
                     <controls:ThreeDButton Text="🔍 Hae mökit" Clicked="HaeMokitClicked" WidthRequest="150" />
                 <CollectionView x:Name="MokkiTulosLista">
                         <CollectionView.ItemTemplate>

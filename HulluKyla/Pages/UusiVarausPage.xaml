@@ -103,11 +103,11 @@
                             <!-- Varauksen tallennus button -->
                             <controls:ThreeDButton 
                                     Grid.Column="2"
-                                    Text="Lisää varaus"
+                                    Text="✅ Lisää varaus"
                                     Clicked="LisaaVaraus_Clicked"
                                     HorizontalOptions="Center"
                                     HeightRequest="45"
-                                    WidthRequest="130"/>   
+                                    WidthRequest="140"/>   
                         </Grid>
 
                         <!-- Asiakaslista -->
@@ -122,8 +122,7 @@
                                            Padding="10"
                                            CornerRadius="10">
                                         <StackLayout>
-                                            <Label Text="{Binding Etunimi}" />
-                                            <Label Text="{Binding Sukunimi}" />
+                                            <Label Text="{Binding KokoNimi}" FontAttributes="Bold" />
                                             <Label Text="{Binding Email}" />
                                         </StackLayout>
                                     </Frame>

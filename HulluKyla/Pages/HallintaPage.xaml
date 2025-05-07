@@ -16,8 +16,7 @@
                              HorizontalOptions="Fill">
 
             <controls:ThreeDButton 
-                    Text="👤 Asiakkaat"
-                
+                    Text="👤 Asiakkaat"                
                     Clicked="Navigoi_Clicked"
                     CommandParameter="AsiakasListaPage"
                     WidthRequest="190"/>
@@ -82,7 +81,7 @@
                         HorizontalTextAlignment="Center"/>
 
                 <Entry x:Name="SalasanaEntry"
-                        Placeholder="Syötä salasana"
+                        Placeholder="Syötä salasana..."
                         IsPassword="True"
                         TextColor="White"
                         PlaceholderColor="Gray"
@@ -91,7 +90,7 @@
                         Margin="0,10"/>
 
                 <controls:ThreeDButton 
-                        Text="Tyhjennä"
+                        Text="🗑️ Tyhjennä"
                         Clicked="Tyhjenna_Clicked"
                         BackgroundColor="DarkRed"
                         TextColor="White"

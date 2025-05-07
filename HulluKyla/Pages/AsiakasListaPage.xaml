@@ -20,8 +20,7 @@
                     <DataTemplate>
                             <Frame BackgroundColor="Transparent" BorderColor="Gray">
                                 <VerticalStackLayout>
-                                <Label Text="{Binding Etunimi}" FontAttributes="Bold" />
-                                <Label Text="{Binding Sukunimi}" />
+                                <Label Text="{Binding KokoNimi}" FontAttributes="Bold" />
                                 <Label Text="{Binding Email}" />
                                 </VerticalStackLayout>
                             </Frame>

@@ -35,7 +35,7 @@
                                    BorderColor="Gray"
                                    CornerRadius="10">
                                     <VerticalStackLayout>
-                                        <Label Text="{Binding KokoNimi}"
+                                        <Label Text="{Binding KokoNimi}" FontAttributes="Bold"
                                                />
                                         <Label Text="{Binding Email}"
                                                />
@@ -198,7 +198,7 @@
                     Spacing="10">
 
                     <Entry x:Name="LkmEntry"
-                           Placeholder="Kappalemäärä"
+                           Placeholder="Kappalemäärä..."
                            HeightRequest="40">
                         
                     </Entry>
