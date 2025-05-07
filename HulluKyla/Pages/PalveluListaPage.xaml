@@ -39,9 +39,9 @@
                             <Frame BackgroundColor="Transparent" BorderColor="Gray">
                                 <VerticalStackLayout>
                                     <Label FontAttributes="Bold" Text="{Binding Nimi}" />
-                                    <Label FontSize="12" Text="{Binding Kuvaus}" />
-                                    <Label Text="{Binding Hinta}" />
-                                    <Label Text="{Binding Alv}" />
+                                    <Label FontSize="14" Text="{Binding Kuvaus, StringFormat='Kuvaus: {0}'}" />
+                                    <Label Text="{Binding Hinta, StringFormat='Hinta: {0} €'}" />
+                                    <Label Text="{Binding Alv, StringFormat='ALV: {0} %'}" />
                                 </VerticalStackLayout>
                             </Frame>
                         </DataTemplate>
@@ -51,36 +51,36 @@
         </Frame>
 
         <!--  Entryt ja buttonit  -->
-        <VerticalStackLayout
-            Grid.Column="1"
-            HorizontalOptions="Fill"
+        <ScrollView Grid.Column="1">
+            <VerticalStackLayout
             Spacing="10"
             VerticalOptions="Start">
-            <Entry
+                <Entry
                 x:Name="NimiEntry"
                 HeightRequest="50"
                 Placeholder="Palvelun nimi..." />
-            <Entry
+                <Entry
                 x:Name="KuvausEntry"
                 HeightRequest="50"
                 Placeholder="Palvelun kuvaus..." />
-            <Entry
+                <Entry
                 x:Name="HintaEntry"
                 HeightRequest="50"
                 Placeholder="Palvelun hinta..." />
-            <Entry
+                <Entry
                 x:Name="AlvEntry"
                 HeightRequest="50"
                 Placeholder="Palvelun arvonlisävero..." />
-            <controls:ThreeDButton
+                <controls:ThreeDButton
                 Clicked="TallennaClicked"
                 HeightRequest="50"
                 Text="✅ Tallenna palvelu" />
-            <controls:ThreeDButton
+                <controls:ThreeDButton
                 Clicked="PoistaClicked"
                 HeightRequest="50"
                 Text="❌ Poista palvelu" />
-        </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
 
         <!--  Vasemman alakulman napit  -->
         <StackLayout

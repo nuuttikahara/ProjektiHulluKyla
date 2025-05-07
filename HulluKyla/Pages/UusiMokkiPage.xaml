@@ -9,33 +9,34 @@
           RowDefinitions="*,Auto" >
 
         <!-- Alueen valinta -->
+        <ScrollView>
             <StackLayout Grid.Row="0"
              HorizontalOptions="Fill"
              VerticalOptions="Center" 
              Spacing="10" >
-            <Picker Grid.Column="1"
+                <Picker Grid.Column="1"
                 x:Name="AluePicker" 
                 Title="Valitse alue" 
                 SelectedIndexChanged="AluePickerSelected" 
                 ItemDisplayBinding="{Binding Nimi}"
                 HeightRequest="70"/>
 
-            <Entry x:Name="NimiEntry" Placeholder="Mökin nimi..." HeightRequest="50" />
-                    <Entry x:Name="OsoiteEntry" Placeholder="Katuosoite..." HeightRequest="50" />
-                    <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
-                    <Entry x:Name="HintaEntry" Placeholder="Hinta..." HeightRequest="50"/>
-                    <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." HeightRequest="50"/>
-                    <Entry x:Name="HloMaaraEntry" Placeholder="Henkilömäärä..." HeightRequest="50"/>
-                    <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." HeightRequest="50"/>
-            
-            <controls:ThreeDButton 
+                <Entry x:Name="NimiEntry" Placeholder="Mökin nimi..." HeightRequest="50" />
+                <Entry x:Name="OsoiteEntry" Placeholder="Katuosoite..." HeightRequest="50" />
+                <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
+                <Entry x:Name="HintaEntry" Placeholder="Hinta..." HeightRequest="50"/>
+                <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." HeightRequest="50"/>
+                <Entry x:Name="HloMaaraEntry" Placeholder="Henkilömäärä..." HeightRequest="50"/>
+                <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." HeightRequest="50"/>
+
+                <controls:ThreeDButton 
                         Grid.Row="2" Grid.Column="2"
                         Text="✅ Lisää mökki"
                         Clicked="LisaaClicked"
                         HorizontalOptions="Fill"
                         HeightRequest="50"/>
-        </StackLayout>
-
+            </StackLayout>
+        </ScrollView>
         <!-- Vasemman reunan napit -->
         <StackLayout Grid.Row="1"
                      Orientation="Horizontal"

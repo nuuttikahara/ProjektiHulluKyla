@@ -9,6 +9,7 @@
           RowDefinitions="*,Auto">
 
         <!-- Asiakasentryt -->
+        <ScrollView>
             <VerticalStackLayout 
                              Spacing="10"
                              HorizontalOptions="Fill"
@@ -19,12 +20,13 @@
                 <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
                 <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50"/>
                 <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50" />
-            <controls:ThreeDButton 
+                <controls:ThreeDButton 
                 Text="✅ Lisää asiakas"
                 Clicked="Tallenna_Clicked"
                 HorizontalOptions="Fill"
                 HeightRequest="50"/>
-        </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
 
         <!-- Vasemman reunan napit -->
         <StackLayout Grid.Row="1" Grid.Column="0"

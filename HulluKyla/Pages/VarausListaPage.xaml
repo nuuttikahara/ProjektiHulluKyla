@@ -37,9 +37,9 @@
                                     <VerticalStackLayout>
                                         <Label Text="{Binding KokoNimi}" FontAttributes="Bold"
                                                />
-                                        <Label Text="{Binding Email}"
+                                        <Label Text="{Binding Email, StringFormat='Email: {0}'}"
                                                />
-                                        <Label Text="{Binding Puhelinnro}"
+                                        <Label Text="{Binding Puhelinnro, StringFormat='Puhelin: {0}'}"
                                                />
                                     </VerticalStackLayout>
                                 </Frame>
@@ -73,7 +73,7 @@
                            TextDecorations="Underline" />
                         <CollectionView x:Name="AsiakkaanVaraukset"
                                 SelectionChanged="VarausSelected"
-                                HeightRequest="200"
+                                HeightRequest="400"
                                 SelectionMode="Single">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
@@ -159,11 +159,11 @@
                                            BackgroundColor="Transparent"
                                            CornerRadius="10">
                                         <VerticalStackLayout>
-                                            <Label Text="{Binding Nimi }"
+                                            <Label Text="{Binding Nimi, StringFormat='Palvelun nimi: {0}'}"
                                                     />
-                                            <Label Text="{Binding Kuvaus}"
+                                            <Label Text="{Binding Kuvaus, StringFormat='Kuvaus: {0}'}"
                                                     />
-                                            <Label Text="{Binding Hinta }"
+                                            <Label Text="{Binding Hinta, StringFormat='Hinta: {0} €'}"
                                                     />
                                         </VerticalStackLayout>
                                     </Frame>

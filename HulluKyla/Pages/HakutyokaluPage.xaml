@@ -40,7 +40,7 @@
             HorizontalOptions="Fill"
             IsVisible="False"
             VerticalOptions="Fill">
-            <ScrollView>
+            <Grid RowDefinitions="Auto,*" RowSpacing="10">
                 <StackLayout Spacing="15">
                     <Label FontAttributes="Bold" Text="Vapaiden mökkien haku" />
                     <Picker
@@ -83,6 +83,9 @@
                         Clicked="HaeMokitClicked"
                         Text="🔍 Hae mökit"
                         WidthRequest="150" />
+                </StackLayout>
+
+                <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
                     <CollectionView x:Name="MokkiTulosLista">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -95,34 +98,29 @@
                                     <VerticalStackLayout>
                                         <Label
                                             FontAttributes="Bold"
-                                            FontSize="14"
                                             HeightRequest="24"
-                                            HorizontalOptions="Center"
+                                            HorizontalOptions="Start"
                                             Text="{Binding MokkiNimi}" />
                                         <Label
-                                            FontSize="14"
-                                            HorizontalOptions="Center"
+                                            HorizontalOptions="Start"
                                             Text="{Binding Katuosoite, StringFormat='Osoite: {0}'}" />
                                         <Label
-                                            FontSize="14"
-                                            HorizontalOptions="Center"
+                                            HorizontalOptions="Start"
                                             Text="{Binding Postinro, StringFormat='Postinumero: {0}'}" />
                                         <Label
-                                            FontSize="14"
-                                            HorizontalOptions="Center"
+                                            HorizontalOptions="Start"
                                             Text="{Binding HenkiloMaara, StringFormat='Henkilömäärä: {0}'}" />
                                         <Label
-                                            FontSize="14"
-                                            HeightRequest="30"
-                                            HorizontalOptions="Center"
+                                            HeightRequest="20"
+                                            HorizontalOptions="Start"
                                             Text="{Binding Hinta, StringFormat='Hinta: {0} €'}" />
                                     </VerticalStackLayout>
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </StackLayout>
-            </ScrollView>
+                </Frame>
+            </Grid>
         </Frame>
 
         <!--  Asiakkaat  -->
@@ -137,53 +135,50 @@
             HorizontalOptions="Fill"
             IsVisible="False"
             VerticalOptions="Fill">
-            <ScrollView>
-                <StackLayout Spacing="10">
-                    <Label FontAttributes="Bold" Text="Asiakkaiden haku" />
+            <Grid RowDefinitions="Auto,*" RowSpacing="10">
+                <StackLayout Spacing="15">
+                    <Label Grid.Row="0" FontAttributes="Bold" Text="Asiakkaiden haku" />
                     <SearchBar
                         x:Name="AsiakasSearchBar"
                         Placeholder="Hae hakusanalla..."
-                        SearchButtonPressed="HaeAsiakkaatClicked" />
+                        SearchButtonPressed="HaeAsiakkaatClicked"
+                        HeightRequest="50"/>
+                </StackLayout>
+
+                <Frame Grid.Row="1" BackgroundColor="Transparent" BorderColor="Gray" CornerRadius="10">
                     <CollectionView x:Name="AsiakasTulosLista">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame
-                                    Margin="0,2"
-                                    Padding="10"
                                     BackgroundColor="Transparent"
                                     BorderColor="Gray"
                                     CornerRadius="10">
                                     <VerticalStackLayout>
                                         <Label
                                             FontAttributes="Bold"
-                                            FontSize="14"
                                             HeightRequest="24"
-                                            HorizontalOptions="Center"
+                                            HorizontalOptions="Start"
                                             Text="{Binding KokoNimi}" />
                                         <Label
-                                            FontSize="14"
-                                            HorizontalOptions="Center"
+                                            HorizontalOptions="Start"
                                             Text="{Binding Email, StringFormat='Email: {0}'}" />
                                         <Label
-                                            FontSize="14"
-                                            HorizontalOptions="Center"
+                                            HorizontalOptions="Start"
                                             Text="{Binding Puhelinnro, StringFormat='Puhelin: {0}'}" />
                                         <Label
-                                            FontSize="14"
-                                            HorizontalOptions="Center"
+                                            HorizontalOptions="Start"
                                             Text="{Binding Lahiosoite, StringFormat='Osoite: {0}'}" />
                                         <Label
-                                            FontSize="14"
-                                            HeightRequest="30"
-                                            HorizontalOptions="Center"
+                                            HeightRequest="15"
+                                            HorizontalOptions="Start"
                                             Text="{Binding Postinro, StringFormat='Postinumero: {0}'}" />
                                     </VerticalStackLayout>
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </StackLayout>
-            </ScrollView>
+                </Frame>
+            </Grid>
         </Frame>
 
         <!--  Palvelut  -->
@@ -198,7 +193,7 @@
             HorizontalOptions="Fill"
             IsVisible="False"
             VerticalOptions="Fill">
-            <ScrollView>
+            <Grid RowDefinitions="Auto,*" RowSpacing="10">
                 <StackLayout Spacing="10">
                     <Label FontAttributes="Bold" Text="Palveluiden haku" />
                     <Picker
@@ -207,6 +202,9 @@
                         HeightRequest="70"
                         ItemDisplayBinding="{Binding Nimi}"
                         SelectedIndexChanged="PalvelunAlueSelected" />
+                </StackLayout>
+
+                <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
                     <CollectionView x:Name="PalveluTulosLista">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -219,26 +217,23 @@
                                     <VerticalStackLayout>
                                         <Label
                                             FontAttributes="Bold"
-                                            FontSize="14"
                                             HeightRequest="24"
-                                            HorizontalOptions="Center"
+                                            HorizontalOptions="Start"
                                             Text="{Binding Nimi}" />
                                         <Label
-                                            FontSize="14"
-                                            HorizontalOptions="Center"
+                                            HorizontalOptions="Start"
                                             Text="{Binding Kuvaus, StringFormat='Kuvaus: {0}'}" />
                                         <Label
-                                            FontSize="14"
-                                            HeightRequest="30"
-                                            HorizontalOptions="Center"
+                                            HeightRequest="25"
+                                            HorizontalOptions="Start"
                                             Text="{Binding Hinta, StringFormat='Hinta: {0} €'}" />
                                     </VerticalStackLayout>
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </StackLayout>
-            </ScrollView>
+                </Frame>
+            </Grid>
         </Frame>
 
         <!--  Napit  -->

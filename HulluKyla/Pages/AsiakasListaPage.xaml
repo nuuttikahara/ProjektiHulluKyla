@@ -5,7 +5,7 @@
              x:Class="HulluKyla.Pages.AsiakasListaPage"
              Title="Asiakkaiden muokkaus">
 
-    
+
     <Grid Padding="20"
           RowDefinitions="*,Auto"
           ColumnDefinitions="*,*"
@@ -18,28 +18,30 @@
                         SelectionChanged="AsiakasSelected">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                            <Frame BackgroundColor="Transparent" BorderColor="Gray">
-                                <VerticalStackLayout>
+                        <Frame BackgroundColor="Transparent" BorderColor="Gray">
+                            <VerticalStackLayout>
                                 <Label Text="{Binding KokoNimi}" FontAttributes="Bold" />
-                                <Label Text="{Binding Email}" />
-                                </VerticalStackLayout>
-                            </Frame>
+                                <Label Text="{Binding Email, StringFormat='Email: {0}'}" />
+                            </VerticalStackLayout>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Frame>
 
         <!-- Asiakastietojen muokkaus -->
-        <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="10">
-            <Entry x:Name="EtunimiEntry" Placeholder="Etunimi..." HeightRequest="50" />
-            <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi..." HeightRequest="50" />
-            <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." HeightRequest="50" />
-            <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." HeightRequest="50" />
-            <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50" />
-            <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50" />
-            <controls:ThreeDButton Text="✅ Tallenna asiakas" Clicked="TallennaClicked" HeightRequest="50" />
-            <controls:ThreeDButton Text="❌ Poista asiakas" Clicked="PoistaClicked" HeightRequest="50" />
-        </VerticalStackLayout>
+        <ScrollView Grid.Row="0" Grid.Column="1">
+            <VerticalStackLayout Spacing="10">
+                <Entry x:Name="EtunimiEntry" Placeholder="Etunimi..." HeightRequest="50" />
+                <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi..." HeightRequest="50" />
+                <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." HeightRequest="50" />
+                <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." HeightRequest="50" />
+                <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50" />
+                <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50" />
+                <controls:ThreeDButton Text="✅ Tallenna asiakas" Clicked="TallennaClicked" HeightRequest="50" />
+                <controls:ThreeDButton Text="❌ Poista asiakas" Clicked="PoistaClicked" HeightRequest="50" />
+            </VerticalStackLayout>
+        </ScrollView>
 
         <!-- Vasemman alakulman napit -->
         <StackLayout Grid.Row="1" Grid.Column="0"

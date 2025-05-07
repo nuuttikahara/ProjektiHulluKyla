@@ -1,45 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  xmlns:controls="clr-namespace:HulluKyla.Models.Controls"
                  x:Class="HulluKyla.Pages.SeurantaPage"
                  Title="Laskujen seuranta ja hallinta">
 
-    <ScrollView>
-        <Grid RowDefinitions="*,*,Auto" Padding="20" RowSpacing="15">
-            
+    <Grid RowDefinitions="*,*,Auto" 
+          Padding="20" 
+          RowSpacing="15">
 
-            <!-- Asiakasvalinta-alue -->
-            <Frame Grid.Row="0" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10" Padding="10">
-                <VerticalStackLayout Spacing="10">
-                    <SearchBar x:Name="AsiakasSearchBar"
-                               Placeholder="Etsi asiakasta..."
-                               TextChanged="AsiakasSearchBar_TextChanged"
-                               HorizontalOptions="Center"
-                               WidthRequest="300"/>
+        <!-- Asiakasvalinta-alue -->
+        <Frame Grid.Row="0" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
+            <Grid RowDefinitions="Auto,*" RowSpacing="15">
+
+                <SearchBar x:Name="AsiakasSearchBar"
+                           Placeholder="Etsi asiakasta..."
+                           TextChanged="AsiakasSearchBar_TextChanged"
+                           HorizontalOptions="Center"
+                           WidthRequest="300"/>
+
+                <!-- Asiakaslista -->
+                <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10" >
                     <CollectionView x:Name="AsiakasListaView"
-                                    HeightRequest="300"
                                     SelectionMode="Single"
                                     SelectionChanged="AsiakasListaView_SelectionChanged">
+
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Frame Padding="10" BorderColor="Gray" Margin="0,5" BackgroundColor="Transparent" CornerRadius="10">
+                                <Frame BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
                                     <StackLayout>
-                                        <Label Text="{Binding KokoNimi}"/>
-                                        <Label Text="{Binding Email}" />
+                                        <Label Text="{Binding KokoNimi}" FontAttributes="Bold"/>
+                                        <Label Text="{Binding Email, StringFormat='Email: {0}'}" />
                                     </StackLayout>
                                 </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-                </VerticalStackLayout>
-            </Frame>
+                </Frame>
+            </Grid>
+        </Frame>
 
-            <!-- Laskut-alue -->
-            <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10" Padding="10">
-                <VerticalStackLayout Spacing="10">
+        <!-- Laskut-alue -->
+        <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
+            <Grid RowDefinitions="Auto,*,Auto" RowSpacing="10">
 
-                    <!-- Laskun moodi nappi -->
+                <!-- Laskun moodi nappi -->
+                <StackLayout>
                     <controls:ThreeDButton 
                             x:Name="VaihdaNakymaButton"
                             Text="Maksamattomat Laskut"
@@ -50,44 +56,49 @@
 
                     <!-- Sarakeotsikot -->
                     <Grid ColumnDefinitions="*,*,*" Padding="0,5">
-                        <Label Text="Lasku ID" TextColor="Gray" FontAttributes="Bold"/>
-                        <Label Text="Varaus ID" TextColor="Gray" FontAttributes="Bold" Grid.Column="1"/>
-                        <Label Text="Summa" TextColor="Gray" FontAttributes="Bold" Grid.Column="2" HorizontalTextAlignment="End"/>
+                        <Label Text="Lasku ID" FontAttributes="Bold"/>
+                        <Label Text="Varaus ID" FontAttributes="Bold" Grid.Column="1"/>
+                        <Label Text="Summa" FontAttributes="Bold" Grid.Column="2" HorizontalTextAlignment="End"/>
                     </Grid>
-
-                    <!-- Laskulista -->
-                    <CollectionView x:Name="LaskuLista" HeightRequest="300"
-                                    SelectionMode="Single"
-                                    SelectionChanged="LaskuLista_SelectionChanged">
+                </StackLayout>
+                
+                <!-- Laskulista -->
+                <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
+                    <CollectionView x:Name="LaskuLista" 
+                                SelectionMode="Single"
+                                SelectionChanged="LaskuLista_SelectionChanged">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid ColumnDefinitions="*,*,*" Padding="5" Margin="0,5">
-                                    <Label Text="{Binding LaskuId}" Grid.Column="0" VerticalOptions="Center"/>
-                                    <Label Text="{Binding VarausId}"  Grid.Column="1" VerticalOptions="Center"/>
-                                    <Label Text="{Binding Summa, StringFormat='{0:0.00} euroa'}"
+                                <Frame BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
+                                    <Grid ColumnDefinitions="*,*,*">
+                                        <Label Text="{Binding LaskuId}" Grid.Column="0" VerticalOptions="Center"/>
+                                        <Label Text="{Binding VarausId}"  Grid.Column="1" VerticalOptions="Center"/>
+                                        <Label Text="{Binding Summa, StringFormat='{0:0.00} euroa'}"
                                            HorizontalTextAlignment="End"
                                            Grid.Column="2"
                                            VerticalOptions="Center"/>
-                                </Grid>
+                                    </Grid>
+                                </Frame>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+                </Frame>
+                
+                <!-- Ei laskuja ilmoitus -->
+                <Label x:Name="TyhjaIlmoitus"
+                       Text="Ei laskuja"
+                       Grid.Row="2"
+                       FontAttributes="Italic"
+                       HorizontalOptions="Center"
+                       IsVisible="False"/>
+            </Grid>
+        </Frame>
 
-                    <!-- Ei laskuja ilmoitus -->
-                    <Label x:Name="TyhjaIlmoitus"
-                           Text="Ei laskuja"
-                           TextColor="Gray"
-                           FontAttributes="Italic"
-                           HorizontalOptions="Center"
-                           IsVisible="False"/>
-                </VerticalStackLayout>
-            </Frame>
 
-
-            <!-- Napit -->
-            <Grid Grid.Row="2" ColumnDefinitions="*,*" Padding="10">
-                <!-- Etusivu-nappi -->
-                <controls:ThreeDButton
+        <!-- Napit -->
+        <Grid Grid.Row="2" ColumnDefinitions="*,*" Padding="10">
+            <!-- Etusivu-nappi -->
+            <controls:ThreeDButton
                         Text="🏠 Etusivu"
                         Clicked="Navigoi_Clicked"
                         CommandParameter="Etusivu"
@@ -95,9 +106,9 @@
                         CornerRadius="10"
                         WidthRequest="110"/>
 
-                <HorizontalStackLayout HorizontalOptions="End" Spacing="10" Grid.Column="1">
-                    <!-- Tulosta-nappi -->
-                    <controls:ThreeDButton 
+            <HorizontalStackLayout HorizontalOptions="End" Spacing="10" Grid.Column="1">
+                <!-- Tulosta-nappi -->
+                <controls:ThreeDButton 
                         Text="📄 Luo PDF"
                         Clicked="TulostaLasku_Clicked"
                         x:Name="TulostaButton"
@@ -105,16 +116,15 @@
                         WidthRequest="120"
                         HorizontalOptions="Center"/>
 
-                    <!-- Merkitse maksetuksi-nappi -->
-                    <controls:ThreeDButton 
+                <!-- Merkitse maksetuksi-nappi -->
+                <controls:ThreeDButton 
                         Text="✅ Merkitse maksetuksi"
                         Clicked="MerkitseMaksetuksi_Clicked"
                         x:Name="MerkitseMaksetuksiButton"
                         CornerRadius="10"
                         WidthRequest="200"
                         HorizontalOptions="End"/>
-                </HorizontalStackLayout>
-            </Grid>
+            </HorizontalStackLayout>
         </Grid>
-    </ScrollView>
+    </Grid>
 </ContentPage>

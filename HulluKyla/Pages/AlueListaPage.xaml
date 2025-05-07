@@ -30,7 +30,7 @@
                                     Margin="5"
                                     BackgroundColor="Transparent"
                                     BorderColor="Gray">
-                                    <Label HeightRequest="20" Text="{Binding Nimi}" />
+                                    <Label HeightRequest="20" Text="{Binding Nimi}" FontAttributes="Bold" />
                                 </Frame>
                             </VerticalStackLayout>
                         </DataTemplate>

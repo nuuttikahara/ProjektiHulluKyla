@@ -5,58 +5,62 @@
              x:Class="HulluKyla.Pages.MokkiListaPage"
              Title="Mökkien muokkaus">
 
-
     <Grid Padding="20"
           RowDefinitions="*,Auto"
           ColumnDefinitions="*,*"
           ColumnSpacing="15">
 
         <!-- Alueen valinta -->
-        <Frame BackgroundColor="Transparent" BorderColor="Gray" HorizontalOptions="Fill">
-            <StackLayout Spacing="10">
+        <Frame BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
+            <Grid Grid.Row="0" Grid.Column="0" RowDefinitions="Auto,*" RowSpacing="10">
+
                 <Picker x:Name="AluePicker" 
-                Title="Valitse alue" 
-                SelectedIndexChanged="AluePickerSelected" 
-                ItemDisplayBinding="{Binding Nimi}"
-                HeightRequest="70"/>
+                        Title="Valitse alue" 
+                        SelectedIndexChanged="AluePickerSelected" 
+                        ItemDisplayBinding="{Binding Nimi}"
+                        HeightRequest="70"
+                        HorizontalOptions="Fill"/>
 
                 <!-- Mökkilista -->
-                <CollectionView x:Name="MokkiLista"
+                <Frame Grid.Row="1" BackgroundColor="Transparent" BorderColor="Gray" HorizontalOptions="Fill" CornerRadius="10">
+                    <CollectionView x:Name="MokkiLista"
                             SelectionMode="Single" 
-                            SelectionChanged="MokkiSelected"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Fill" >
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame BackgroundColor="Transparent" BorderColor="Gray">
-                                <VerticalStackLayout>
-                                    <Label Text="{Binding MokkiNimi}" FontAttributes="Bold" />
-                                    <Label Text="{Binding Katuosoite, StringFormat='Osoite: {0}'}" />
-                                    <Label Text="{Binding Postinro, StringFormat='Postinumero: {0}'}" />
-                                    <Label Text="{Binding HenkiloMaara, StringFormat='Henkilömäärä: {0}'}" />
-                                </VerticalStackLayout>
-                            </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
+                            SelectionChanged="MokkiSelected">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="Transparent" BorderColor="Gray" CornerRadius="10">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding MokkiNimi}" FontAttributes="Bold" />
+                                        <Label Text="{Binding Katuosoite, StringFormat='Osoite: {0}'}" />
+                                        <Label Text="{Binding Postinro, StringFormat='Postinumero: {0}'}" />
+                                        <Label Text="{Binding HenkiloMaara, StringFormat='Henkilömäärä: {0}'}" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+            </Grid>
         </Frame>
 
         <!-- Entryt ja buttonit -->
-        <VerticalStackLayout Spacing="10" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Fill">
-            <Entry x:Name="MokkiNimiEntry" Placeholder="Mökin nimi..." HeightRequest="50" />
-            <Entry x:Name="KatuosoiteEntry" Placeholder="Katuosoite..." HeightRequest="50" />
-            <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." HeightRequest="50" />
-            <Entry x:Name="HintaEntry" Placeholder="Hinta..." HeightRequest="50" />
-            <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." HeightRequest="50" />
-            <Entry x:Name="HenkiloMaaraEntry" Placeholder="Henkilömäärä..." HeightRequest="50" />
-            <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." HeightRequest="50" />
-            <controls:ThreeDButton Text="✅ Tallenna mökki" Clicked="TallennaClicked" HeightRequest="50" />
-            <controls:ThreeDButton Text="❌ Poista mökki" Clicked="PoistaClicked" HeightRequest="50" />
-        </VerticalStackLayout>
+        <ScrollView Grid.Column="1">
+            <VerticalStackLayout Spacing="10">
+                <Entry x:Name="MokkiNimiEntry" Placeholder="Mökin nimi..." HeightRequest="50" />
+                <Entry x:Name="KatuosoiteEntry" Placeholder="Katuosoite..." HeightRequest="50" />
+                <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." HeightRequest="50" />
+                <Entry x:Name="HintaEntry" Placeholder="Hinta..." HeightRequest="50" />
+                <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." HeightRequest="50" />
+                <Entry x:Name="HenkiloMaaraEntry" Placeholder="Henkilömäärä..." HeightRequest="50" />
+                <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." HeightRequest="50" />
+                <controls:ThreeDButton Text="✅ Tallenna mökki" Clicked="TallennaClicked" HeightRequest="50" />
+                <controls:ThreeDButton Text="❌ Poista mökki" Clicked="PoistaClicked" HeightRequest="50" />
+            </VerticalStackLayout>
+        </ScrollView>
 
-        <!-- Alakulman vasemman puolen napit -->
-        <StackLayout Grid.Row="2" Grid.Column="0"
+        <!-- Vasemman alakulman napit -->
+        <StackLayout Grid.Row="1" Grid.Column="0"
              Orientation="Horizontal"
              Spacing="15"
              HorizontalOptions="Start"
@@ -75,7 +79,7 @@
         </StackLayout>
 
         <!-- Oikean alakulman nappi -->
-            <controls:ThreeDButton 
+        <controls:ThreeDButton 
                 Text="Uusi mökki 🡺"
                 Clicked="Navigoi_Clicked"
                 CommandParameter="UusiMokkiPage"

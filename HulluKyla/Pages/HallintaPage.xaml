@@ -5,44 +5,45 @@
              x:Class="HulluKyla.Pages.HallintaPage"
              Title="Hallintasivu">
 
-    <Grid Padding="20"
+    <ScrollView>
+        <Grid Padding="20"
           RowDefinitions="*,Auto"
           ColumnDefinitions="*,*">
 
-        <!-- Napit -->
+            <!-- Napit -->
             <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2"
                              Spacing="20" Padding="5"
                              VerticalOptions="Center"
                              HorizontalOptions="Fill">
 
-            <controls:ThreeDButton 
+                <controls:ThreeDButton 
                     Text="👤 Asiakkaat"                
                     Clicked="Navigoi_Clicked"
                     CommandParameter="AsiakasListaPage"
                     WidthRequest="190"/>
 
-            <controls:ThreeDButton 
+                <controls:ThreeDButton 
                     Text="🌍 Alueet"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="AlueListaPage"
                     WidthRequest="190"/>
 
-            <controls:ThreeDButton 
+                <controls:ThreeDButton 
                     Text="🏡 Mökit"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="MokkiListaPage"
                     WidthRequest="190"/>
 
-            <controls:ThreeDButton 
+                <controls:ThreeDButton 
                     Text="🛎️ Palvelut"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="PalveluListaPage"
                     WidthRequest="190"/>
 
-        </VerticalStackLayout>
+            </VerticalStackLayout>
 
-        <!-- Etusivu nappi - Standardi vasenkulma? -->
-        <controls:ThreeDButton 
+            <!-- Etusivu nappi - Standardi vasenkulma? -->
+            <controls:ThreeDButton 
                 Grid.Row="1" Grid.Column="0"
                 Text="🏠 Etusivu"
                 Clicked="Navigoi_Clicked"
@@ -51,36 +52,36 @@
                 VerticalOptions="End"
                 Margin="0,20,0,0" />
 
-        <!-- Admin-nappi -->
-        <controls:ThreeDButton Grid.Row="1" Grid.Column="1"
+            <!-- Admin-nappi -->
+            <controls:ThreeDButton Grid.Row="1" Grid.Column="1"
                            Text="🔒 Admin"
                            Clicked="Admin_Clicked"
                            HorizontalOptions="End"
                            VerticalOptions="End"
                            Margin="0,20,0,0" />
 
-        <!-- Admin Frame (oletuksena piilossa) -->
-        <Frame x:Name="AdminFrame"
+            <!-- Admin Frame (oletuksena piilossa) -->
+            <Frame x:Name="AdminFrame"
                 IsVisible="False"
                 Grid.Row="0" Grid.ColumnSpan="2"
                 BackgroundColor="#333"
                 CornerRadius="15"
                 VerticalOptions="Center"
                 HorizontalOptions="Center">
-            <VerticalStackLayout Spacing="15" MaximumWidthRequest="400">
-                <Label Text="Tervetuloa admin-ikkunaan"
+                <VerticalStackLayout Spacing="15" MaximumWidthRequest="400">
+                    <Label Text="Tervetuloa admin-ikkunaan"
                         TextColor="White"
                         FontSize="20"
                         FontAttributes="Bold"
                         HorizontalOptions="Center"/>
 
-                <Label Text="Syötä salasana ja paina nappia tyhjentääksesi maksetut laskut sekä niihin liittyvät varaukset ja asiakkaat (jos heillä ei ole muita aktiivisia laskuja/varauksia)."
+                    <Label Text="Syötä salasana ja paina nappia tyhjentääksesi maksetut laskut sekä niihin liittyvät varaukset ja asiakkaat (jos heillä ei ole muita aktiivisia laskuja/varauksia)."
                         TextColor="LightGray"
                         FontSize="16"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"/>
 
-                <Entry x:Name="SalasanaEntry"
+                    <Entry x:Name="SalasanaEntry"
                         Placeholder="Syötä salasana..."
                         IsPassword="True"
                         TextColor="White"
@@ -89,7 +90,7 @@
                         HeightRequest="40"
                         Margin="0,10"/>
 
-                <controls:ThreeDButton 
+                    <controls:ThreeDButton 
                         Text="🗑️ Tyhjennä"
                         Clicked="Tyhjenna_Clicked"
                         BackgroundColor="DarkRed"
@@ -97,7 +98,8 @@
                         CornerRadius="20"
                         WidthRequest="200"
                         HorizontalOptions="Center"/>
-            </VerticalStackLayout>
-        </Frame>
-    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+    </ScrollView>
 </ContentPage>

@@ -5,14 +5,12 @@
              x:Class="HulluKyla.Pages.Etusivu"
              Title="Etusivu">
 
+    <ScrollView>
+        <Grid RowDefinitions="Auto,*" Padding="20">
 
-    <Grid RowDefinitions="Auto,*" Padding="20">
-
-
-        <Image WidthRequest="500" HeightRequest="500" Source="logo.png" 
+            <Image WidthRequest="500" HeightRequest="500" Source="logo.png" 
                HorizontalOptions="Center"/>
-
-        <Grid Grid.Row="1"
+            <Grid Grid.Row="1"
               VerticalOptions="Center"
               HorizontalOptions="Center"
               ColumnSpacing="20"
@@ -21,35 +19,36 @@
               RowDefinitions="Auto,Auto"
               ColumnDefinitions="Auto,Auto">
 
-            <!-- Napit -->
-            <controls:ThreeDButton 
+                <!-- Napit -->
+                <controls:ThreeDButton 
                     Text="🧾 Laskutus"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="SeurantaPage"
                     Grid.Row="0" Grid.Column="0"
                     WidthRequest="130"/>
 
-            <controls:ThreeDButton 
+                <controls:ThreeDButton 
                     Text="📑 Raportointi"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="RaportointiPage"
                     Grid.Row="0" Grid.Column="1"
                     WidthRequest="130"/>
 
-            <controls:ThreeDButton 
+                <controls:ThreeDButton 
                     Text="🔧 Hallinta"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="HallintaPage"
                     Grid.Row="1" Grid.Column="0"
                     WidthRequest="130"/>
 
-            <controls:ThreeDButton 
+                <controls:ThreeDButton 
                     Text="📅 Varaukset"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="VarausListaPage"
                     Grid.Row="1" Grid.Column="1"
                     WidthRequest="130"/>
 
+            </Grid>
         </Grid>
-    </Grid>
+    </ScrollView>
 </ContentPage>

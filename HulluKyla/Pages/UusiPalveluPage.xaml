@@ -9,24 +9,26 @@
           RowDefinitions="*,Auto">
 
         <!-- Uuden palvelun entryt -->
-        <StackLayout HorizontalOptions="Fill"
+        <ScrollView>
+            <StackLayout HorizontalOptions="Fill"
                      VerticalOptions="Center"
                      Spacing="10">
-            <Picker x:Name="AluePicker" 
+                <Picker x:Name="AluePicker" 
                     Title="Valitse palvelun alue" 
                     HeightRequest="70"
                     ItemDisplayBinding="{Binding Nimi}"/>
-            <Entry x:Name="NimiEntry" Placeholder="Palvelun nimi..." HeightRequest="50"/>
-            <Entry x:Name="KuvausEntry" Placeholder="Palvelun kuvaus..." HeightRequest="50"/>
-            <Entry x:Name="HintaEntry" Placeholder="Palvelun hinta..." HeightRequest="50"/>
-            <Entry x:Name="AlvEntry" Placeholder="Palvelun arvonlisävero..." HeightRequest="50"/>
-            <controls:ThreeDButton 
+                <Entry x:Name="NimiEntry" Placeholder="Palvelun nimi..." HeightRequest="50"/>
+                <Entry x:Name="KuvausEntry" Placeholder="Palvelun kuvaus..." HeightRequest="50"/>
+                <Entry x:Name="HintaEntry" Placeholder="Palvelun hinta..." HeightRequest="50"/>
+                <Entry x:Name="AlvEntry" Placeholder="Palvelun arvonlisävero..." HeightRequest="50"/>
+                <controls:ThreeDButton 
                     Text="✅ Lisää palvelu"
                     Clicked="LisaaClicked"
                     HorizontalOptions="Fill"
                     HeightRequest="50"/>
-        </StackLayout>
-        
+            </StackLayout>
+        </ScrollView>
+
         <!-- Vasemman reunan napit -->
         <StackLayout Grid.Row="1" Grid.Column="0"
                      Orientation="Horizontal"
