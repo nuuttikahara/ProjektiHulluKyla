@@ -48,7 +48,7 @@
                         <!-- Mökkien haku button -->
                         <controls:ThreeDButton 
                                 Grid.Row="1" Grid.Column="3"
-                                Text="Hae mökit"
+                                Text="🔍 Hae mökit"
                                 Clicked="MokkiHaku_Clicked"
                                 HeightRequest="45"
                                 WidthRequest="150"/>
@@ -144,12 +144,12 @@
                      Margin="0,20,0,0">
 
             <controls:ThreeDButton 
-                    Text="Etusivu"
+                    Text="🏠 Etusivu"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu"/>
 
             <controls:ThreeDButton 
-                    Text="Takaisin varauksiin"
+                    Text="🡸 Takaisin varauksiin"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="VarausListaPage"/>
 

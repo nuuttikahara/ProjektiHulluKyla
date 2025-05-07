@@ -179,7 +179,7 @@
                          Orientation="Horizontal"
                          HorizontalOptions="Center">
                     <controls:ThreeDButton 
-                            Text="Poista varaus" Margin="5"
+                            Text="❌ Poista varaus" Margin="5"
                             Clicked="PoistaVaraus_Clicked"/>
             </StackLayout>
 
@@ -187,7 +187,7 @@
                     Grid.Row="1"
                     Grid.Column="1"
                     Clicked="PoistaPalvelu_Clicked"
-                    Text="Poista palvelu varauksesta"
+                    Text="❌ Poista palvelu"
                     HorizontalOptions="Center"
                     Margin="5" />
 
@@ -204,7 +204,7 @@
                     </Entry>
                     <controls:ThreeDButton 
                             Clicked="LisaaPalvelu_Clicked"
-                            Text="Lisää palvelu varaukseen"
+                            Text="✅ Lisää palvelu"
                             HorizontalOptions="Center"
                             Margin="5" />
                 </HorizontalStackLayout>
@@ -220,7 +220,7 @@
                      VerticalOptions="End"
                      Margin="10,0,0,5">
             <controls:ThreeDButton 
-                    Text="Etusivu"
+                    Text="🏠 Etusivu"
                     Margin="5"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="Etusivu" />
@@ -233,7 +233,7 @@
                      VerticalOptions="End"
                      Margin="0,0,10,5">
             <controls:ThreeDButton 
-                    Text="Uusi varaus"
+                    Text="Uusi varaus 🡺"
                     Clicked="Navigoi_Clicked"
                     CommandParameter="UusiVarausPage" />
         </StackLayout>

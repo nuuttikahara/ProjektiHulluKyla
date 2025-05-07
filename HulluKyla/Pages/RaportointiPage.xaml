@@ -46,7 +46,7 @@
                     </Frame>
 
                     <!-- Laske-nappi -->
-                    <controls:ThreeDButton Text="Laske tuotto"
+                    <controls:ThreeDButton Text="📊 Laske tuotto"
                                Clicked="LaskeTuottoClicked"
                                HeightRequest="45"
                                WidthRequest="150"
@@ -150,7 +150,7 @@
         <!-- Etusivu-nappi -->
         <controls:ThreeDButton
                 Grid.Row="2" Grid.Column="0"
-                Text="Takaisin"
+                Text="🡸 Takaisin"
                 Clicked="Navigoi_Clicked"
                 CommandParameter="Etusivu"
                 HorizontalOptions="Start"
@@ -160,7 +160,7 @@
         <!-- Hakutyökalu-nappi -->
         <controls:ThreeDButton 
                 Grid.Row="2" Grid.Column="1"
-                Text="Hakutyökalu"
+                Text="Hakutyökalu 🡺"
                 Clicked="Navigoi_Clicked"
                 CommandParameter="HakutyokaluPage"
                 HorizontalOptions="End"
