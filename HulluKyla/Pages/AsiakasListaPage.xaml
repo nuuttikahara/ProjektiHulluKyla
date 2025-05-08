@@ -12,21 +12,34 @@
           ColumnSpacing="15">
 
         <!-- Asiakaslista -->
-        <Frame BorderColor="Gray" BackgroundColor="Transparent">
-            <CollectionView x:Name="AsiakasLista"
+        <Frame BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10" >
+            <Grid RowDefinitions="Auto,*" RowSpacing="20">
+                <SearchBar
+                    x:Name="AsiakasSearchBar"
+                    Placeholder="Hae hakusanalla..."
+                    SearchButtonPressed="HaeAsiakkaatClicked"
+                    HeightRequest="50"/>
+
+                <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="Transparent">
+                    <CollectionView x:Name="AsiakasLista"
                         SelectionMode="Single"
                         SelectionChanged="AsiakasSelected">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame BackgroundColor="Transparent" BorderColor="Gray">
-                            <VerticalStackLayout>
-                                <Label Text="{Binding KokoNimi}" FontAttributes="Bold" />
-                                <Label Text="{Binding Email, StringFormat='Email: {0}'}" />
-                            </VerticalStackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="Transparent" BorderColor="Gray">
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding KokoNimi}" FontAttributes="Bold" />
+                                        <Label Text="{Binding Email, StringFormat='Email: {0}'}" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+            </Grid>
         </Frame>
 
         <!-- Asiakastietojen muokkaus -->

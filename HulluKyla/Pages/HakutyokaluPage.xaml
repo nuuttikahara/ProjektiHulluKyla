@@ -87,6 +87,9 @@
 
                 <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
                     <CollectionView x:Name="MokkiTulosLista">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame
@@ -147,6 +150,9 @@
 
                 <Frame Grid.Row="1" BackgroundColor="Transparent" BorderColor="Gray" CornerRadius="10">
                     <CollectionView x:Name="AsiakasTulosLista">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame
@@ -206,6 +212,9 @@
 
                 <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
                     <CollectionView x:Name="PalveluTulosLista">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame

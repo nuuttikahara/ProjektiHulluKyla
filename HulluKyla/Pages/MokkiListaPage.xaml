@@ -26,7 +26,10 @@
                     <CollectionView x:Name="MokkiLista"
                             SelectionMode="Single" 
                             SelectionChanged="MokkiSelected">
-
+                        
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame BackgroundColor="Transparent" BorderColor="Gray" CornerRadius="10">

@@ -24,7 +24,10 @@
                     <CollectionView x:Name="AsiakasListaView"
                                     SelectionMode="Single"
                                     SelectionChanged="AsiakasListaView_SelectionChanged">
-
+                        
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
@@ -67,6 +70,10 @@
                     <CollectionView x:Name="LaskuLista" 
                                 SelectionMode="Single"
                                 SelectionChanged="LaskuLista_SelectionChanged">
+                        
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Frame BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">

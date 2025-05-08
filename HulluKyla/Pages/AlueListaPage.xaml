@@ -19,23 +19,33 @@
                 Grid.Column="0"
                 BackgroundColor="Transparent"
                 BorderColor="Gray">
-                <CollectionView
-                    x:Name="AlueLista"
-                    SelectionChanged="AlueSelected"
-                    SelectionMode="Single">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <VerticalStackLayout>
-                                <Frame
-                                    Margin="5"
-                                    BackgroundColor="Transparent"
-                                    BorderColor="Gray">
-                                    <Label HeightRequest="20" Text="{Binding Nimi}" FontAttributes="Bold" />
-                                </Frame>
-                            </VerticalStackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                <Grid RowDefinitions="Auto,*" RowSpacing="20">
+                    
+                    <!-- Täs on tää paska mikä on (ehkä) turha ja .cs tiedostossa on methodi tehty pohjaks -->
+                    <SearchBar x:Name="AlueSearchBar"
+                               Placeholder="Hae hakusanalla..."
+                               SearchButtonPressed="HaeAlueetClicked"
+                               HeightRequest="50"/>
+
+                    <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
+                        <CollectionView
+                                x:Name="AlueLista"
+                                SelectionChanged="AlueSelected"
+                                SelectionMode="Single">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout>
+                                        <Frame Margin="5"
+                                                BackgroundColor="Transparent"
+                                                BorderColor="Gray">
+                                            <Label HeightRequest="20" Text="{Binding Nimi}" FontAttributes="Bold" />
+                                        </Frame>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                </Grid>
             </Frame>
         </Grid>
 

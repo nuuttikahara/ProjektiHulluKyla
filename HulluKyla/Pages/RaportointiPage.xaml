@@ -158,6 +158,10 @@
                                 x:Name="TuottoLista"
                                 BackgroundColor="Transparent"
                                 HeightRequest="300">
+                                
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                                </CollectionView.ItemsLayout>
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
                                         <Frame

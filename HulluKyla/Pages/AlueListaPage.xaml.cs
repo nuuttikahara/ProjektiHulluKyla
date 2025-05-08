@@ -51,6 +51,14 @@ public partial class AlueListaPage : ContentPage {
         }
     }
 
+    private async void HaeAlueetClicked(object sender, EventArgs e) {
+
+        // Täytyis tehä uus AlueService.HaeHakusanalla, jos tätä haluu käyttää.
+        // Voit poistaa tän, jos aattelet et tolla aluepagella ei tarttee hakupalkkia
+        // mut olis samal tavalla kun kaikil muillaki sivuilla jos sen hakupalkin lisäis ja se
+        // olis ihan näppärä myös jatkoo aatellen
+       
+    } 
 
     // Tallennus-metodi
     private async void TallennaClicked(object sender, EventArgs e) {

@@ -29,7 +29,10 @@
                                 SelectionChanged="AsiakasSelected"
                                 HeightRequest="200"
                                 SelectionMode="Single">
-                    <CollectionView.ItemTemplate>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame BackgroundColor="Transparent"
                                    BorderColor="Gray"
@@ -75,6 +78,9 @@
                                 SelectionChanged="VarausSelected"
                                 HeightRequest="400"
                                 SelectionMode="Single">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                            </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Frame Padding="10"
@@ -115,6 +121,9 @@
                             SelectionChanged="VarauksenPalveluSelected"
                             HeightRequest="200"
                             SelectionMode="Single">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                            </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Frame BorderColor="Gray"
@@ -151,6 +160,9 @@
                            SelectionChanged="KaikkiPalvelutSelected"
                            HeightRequest="200"
                            SelectionMode="Single">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                            </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Frame Padding="10"

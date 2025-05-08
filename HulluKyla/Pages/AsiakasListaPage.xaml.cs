@@ -42,6 +42,7 @@ namespace HulluKyla.Pages {
             PostinroEntry.Text = "";
             EmailEntry.Text = "";
             PuhelinnroEntry.Text = "";
+            AsiakasSearchBar.Text = "";
             valittuAsiakas = null;
         }
 
@@ -85,6 +86,14 @@ namespace HulluKyla.Pages {
             }
         }
 
+        private void HaeAsiakkaatClicked(object sender, EventArgs e) {
+            string hakusana = AsiakasSearchBar.Text?.Trim();
+
+            if (!string.IsNullOrWhiteSpace(hakusana))
+                AsiakasLista.ItemsSource = AsiakasService.HaeHakusanalla(hakusana);
+            else
+                AsiakasLista.ItemsSource = AsiakasService.HaeKaikki();
+        }
 
         private async void Navigoi_Clicked(object sender, EventArgs e) {
             if (sender is Button btn && btn.CommandParameter is string target) {
@@ -93,3 +102,4 @@ namespace HulluKyla.Pages {
         }
     }
 }
+

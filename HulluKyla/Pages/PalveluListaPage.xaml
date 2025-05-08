@@ -34,6 +34,9 @@
                     SelectionChanged="PalveluSelected"
                     SelectionMode="Single"
                     VerticalOptions="Fill">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                    </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame BackgroundColor="Transparent" BorderColor="Gray">
