@@ -21,7 +21,6 @@
                 BorderColor="Gray">
                 <Grid RowDefinitions="Auto,*" RowSpacing="20">
                     
-                    <!-- Täs on tää paska mikä on (ehkä) turha ja .cs tiedostossa on methodi tehty pohjaks -->
                     <SearchBar x:Name="AlueSearchBar"
                                Placeholder="Hae hakusanalla..."
                                SearchButtonPressed="HaeAlueetClicked"

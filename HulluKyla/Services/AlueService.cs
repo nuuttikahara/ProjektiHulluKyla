@@ -32,6 +32,26 @@ namespace HulluKyla.Services
             return alueet;
         }
 
+        public static List<Alue> HaeHakusanalla(string hakusana) {
+            var alueet = new List<Alue>();
+
+            using var conn = SqlService.GetConnection();
+            conn.Open();
+
+            var cmd = new MySqlCommand("SELECT * FROM alue WHERE LOWER(nimi) LIKE @haku", conn);
+            cmd.Parameters.AddWithValue("@haku", "%" + hakusana.ToLower() + "%");
+
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read()) {
+                alueet.Add(new Alue(
+                    (uint)reader.GetInt32("alue_id"),
+                    reader.GetString("nimi")
+                ));
+            }
+
+            return alueet;
+        }
+
 
         public static void Lisaa(Alue a) 
         {
