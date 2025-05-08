@@ -5,38 +5,42 @@
              x:Class="HulluKyla.Pages.VarausListaPage"
              Title="Varaukset">
 
-    <ScrollView>
-        <Grid RowDefinitions="Auto,*,Auto"
+    <Grid RowDefinitions="0.3*,0.55*,Auto"
           ColumnDefinitions="*,Auto"
           Padding="10">
 
         <!-- Asiakasvalinta-alue -->
         <Frame BorderColor="Gray"
                BackgroundColor="Transparent"
-               CornerRadius="10"
+               CornerRadius="3"
                Padding="10"
                Grid.ColumnSpan="2">
 
-            <VerticalStackLayout Spacing="10">
+            <Grid RowDefinitions="Auto,*" RowSpacing="10">
                 <SearchBar x:Name="AsiakasSearchBar"
                            Placeholder="Etsi asiakasta..."
                            SearchButtonPressed="AsiakasSearchPressed"
                            WidthRequest="300"
+                           BackgroundColor="#f2f2f2"
                            HorizontalOptions="Center"
                            PlaceholderColor="Gray" />
-
-                <CollectionView x:Name="AsiakasListaView"
+                <Frame Grid.Row="1" 
+                       BorderColor="Gray" 
+                       BackgroundColor="Transparent"
+                       CornerRadius="5"
+                       Padding="5">
+                    <CollectionView x:Name="AsiakasListaView"
                                 SelectionChanged="AsiakasSelected"
-                                HeightRequest="200"
                                 SelectionMode="Single">
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Frame BackgroundColor="Transparent"
+                            <DataTemplate>
+                                <Frame BackgroundColor="Transparent"
                                    BorderColor="Gray"
-                                   CornerRadius="10">
+                                   CornerRadius="10"
+                                       Padding="5">
                                     <VerticalStackLayout>
                                         <Label Text="{Binding KokoNimi}" FontAttributes="Bold"
                                                />
@@ -46,10 +50,11 @@
                                                />
                                     </VerticalStackLayout>
                                 </Frame>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Frame>
+            </Grid >
         </Frame>
 
         <!-- Keskialue -->
@@ -65,18 +70,22 @@
                    Grid.Column="0"
                    Margin="5"
                    BackgroundColor="Transparent"
-                   CornerRadius="10"
+                   CornerRadius="3"
                    BorderColor="Gray"
-                   
                    Padding="10">
-                <VerticalStackLayout Spacing="5">
+                <Grid RowDefinitions="Auto,*" RowSpacing="5">
                     <Label Text="Varaukset"
                            FontAttributes="Bold"
                            HorizontalOptions="Center" 
                            TextDecorations="Underline" />
+
+                    <Frame Grid.Row="1" 
+                           BorderColor="Gray" 
+                           BackgroundColor="Transparent"
+                           CornerRadius="5"
+                           Padding="5">
                         <CollectionView x:Name="AsiakkaanVaraukset"
                                 SelectionChanged="VarausSelected"
-                                HeightRequest="400"
                                 SelectionMode="Single">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
@@ -84,10 +93,10 @@
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Frame Padding="10"
-                                        Margin="0,5"
-                                        BorderColor="Gray"
-                                        BackgroundColor="Transparent"
-                                        CornerRadius="10">
+                                           Margin="0,5"
+                                           BorderColor="Gray"
+                                           BackgroundColor="Transparent"
+                                           CornerRadius="10">
                                         <VerticalStackLayout>
                                             <Label Text="{Binding Mokki.MokkiNimi, StringFormat='Mökin nimi: {0}'}"
                                                     />
@@ -99,8 +108,9 @@
                                     </Frame>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
-                        </CollectionView> 
-                </VerticalStackLayout>
+                        </CollectionView>
+                    </Frame>
+                </Grid>
             </Frame>
 
             <!-- Keskisarake: Varauksen palvelut -->
@@ -117,29 +127,28 @@
                            FontAttributes="Bold"
                            HorizontalOptions="Center" 
                            TextDecorations="Underline" />
-                        <CollectionView x:Name="VarauksenPalvelut"
+                    <CollectionView x:Name="VarauksenPalvelut"
                             SelectionChanged="VarauksenPalveluSelected"
-                            HeightRequest="200"
                             SelectionMode="Single">
-                            <CollectionView.ItemsLayout>
-                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame BorderColor="Gray"
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="Gray"
                                            BackgroundColor="Transparent"
                                            CornerRadius="10">
-                                        <VerticalStackLayout>
-                                            <Label Text="{Binding Palvelu.Nimi, StringFormat='Palvelun nimi: {0}'}"
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Palvelu.Nimi, StringFormat='Palvelun nimi: {0}'}"
                                              />
-                                            <Label Text="{Binding Lkm, StringFormat='Määrä: {0}'}"
+                                        <Label Text="{Binding Lkm, StringFormat='Määrä: {0}'}"
                                             />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
             </Frame>
 
             <!-- Oikea sarake: Kaikki palvelut -->
@@ -156,41 +165,40 @@
                            FontAttributes="Bold"
                            HorizontalOptions="Center"
                            TextDecorations="Underline" />
-                        <CollectionView x:Name="KaikkiPalvelut"
+                    <CollectionView x:Name="KaikkiPalvelut"
                            SelectionChanged="KaikkiPalvelutSelected"
-                           HeightRequest="200"
                            SelectionMode="Single">
-                            <CollectionView.ItemsLayout>
-                                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
-                            </CollectionView.ItemsLayout>
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame Padding="10"
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Padding="10"
                                            Margin="0,5"
                                            BorderColor="Gray"
                                            BackgroundColor="Transparent"
                                            CornerRadius="10">
-                                        <VerticalStackLayout>
-                                            <Label Text="{Binding Nimi, StringFormat='Palvelun nimi: {0}'}"
+                                    <VerticalStackLayout>
+                                        <Label Text="{Binding Nimi, StringFormat='Palvelun nimi: {0}'}"
                                                     />
-                                            <Label Text="{Binding Kuvaus, StringFormat='Kuvaus: {0}'}"
+                                        <Label Text="{Binding Kuvaus, StringFormat='Kuvaus: {0}'}"
                                                     />
-                                            <Label Text="{Binding Hinta, StringFormat='Hinta: {0} €'}"
+                                        <Label Text="{Binding Hinta, StringFormat='Hinta: {0} €'}"
                                                     />
-                                        </VerticalStackLayout>
-                                    </Frame>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </VerticalStackLayout>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
             </Frame>
 
             <!-- Napit -->
-                <StackLayout Grid.Row="1"
+            <StackLayout Grid.Row="1"
                          Grid.Column="0"
                          Orientation="Horizontal"
                          HorizontalOptions="Center">
-                    <controls:ThreeDButton 
+                <controls:ThreeDButton 
                             Text="❌ Poista varaus" Margin="5"
                             Clicked="PoistaVaraus_Clicked"/>
             </StackLayout>
@@ -203,25 +211,25 @@
                     HorizontalOptions="Center"
                     Margin="5" />
 
-                <HorizontalStackLayout 
+            <HorizontalStackLayout 
                     Grid.Row="1"
                     Grid.Column="2"
                     HorizontalOptions="Center"
                     Spacing="10">
 
-                    <Entry x:Name="LkmEntry"
+                <Entry x:Name="LkmEntry"
                            Placeholder="Kappalemäärä..."
                            HeightRequest="40">
-                        
-                    </Entry>
-                    <controls:ThreeDButton 
+
+                </Entry>
+                <controls:ThreeDButton 
                             Clicked="LisaaPalvelu_Clicked"
                             Text="✅ Lisää palvelu"
                             HorizontalOptions="Center"
                             Margin="5" />
-                </HorizontalStackLayout>
-            
-            
+            </HorizontalStackLayout>
+
+
         </Grid>
 
         <!-- Alapainikkeet -->
@@ -249,7 +257,6 @@
                     Clicked="Navigoi_Clicked"
                     CommandParameter="UusiVarausPage" />
         </StackLayout>
-        </Grid>
-    </ScrollView>
+    </Grid>
 
 </ContentPage>
