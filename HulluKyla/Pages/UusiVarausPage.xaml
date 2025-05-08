@@ -37,7 +37,7 @@
                         </VerticalStackLayout>
                     </HorizontalStackLayout>
 
-                    <Entry x:Name="HenkiloMaaraEntry"
+                    <Entry Style="{StaticResource ThemedEntry}" x:Name="HenkiloMaaraEntry"
                        Placeholder="Henkilömäärä..."
                        HeightRequest="50"
                        HorizontalOptions="Fill"/>
@@ -83,7 +83,8 @@
                 <Grid Grid.Row="0" ColumnDefinitions="*,*,*">
 
                     <!-- Asiakashaku ja pickerit -->
-                    <SearchBar x:Name="AsiakasSearchBar" 
+                    <SearchBar Style="{StaticResource ThemedSearchBar}"
+                        x:Name="AsiakasSearchBar" 
                            Placeholder="Hae asiakasta..."
                            SearchButtonPressed="AsiakasSearchPressed"
                            HorizontalOptions="Fill"

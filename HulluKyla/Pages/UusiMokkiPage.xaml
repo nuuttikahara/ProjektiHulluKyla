@@ -21,13 +21,13 @@
                 ItemDisplayBinding="{Binding Nimi}"
                 HeightRequest="70"/>
 
-                <Entry x:Name="NimiEntry" Placeholder="Mökin nimi..." HeightRequest="50" />
-                <Entry x:Name="OsoiteEntry" Placeholder="Katuosoite..." HeightRequest="50" />
-                <Entry x:Name="PostiNroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
-                <Entry x:Name="HintaEntry" Placeholder="Hinta..." HeightRequest="50"/>
-                <Entry x:Name="KuvausEntry" Placeholder="Kuvaus..." HeightRequest="50"/>
-                <Entry x:Name="HloMaaraEntry" Placeholder="Henkilömäärä..." HeightRequest="50"/>
-                <Entry x:Name="VarusteluEntry" Placeholder="Varustelu..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="NimiEntry" Placeholder="Mökin nimi..." HeightRequest="50" />
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="OsoiteEntry" Placeholder="Katuosoite..." HeightRequest="50" />
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="PostiNroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="HintaEntry" Placeholder="Hinta..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="KuvausEntry" Placeholder="Kuvaus..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="HloMaaraEntry" Placeholder="Henkilömäärä..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="VarusteluEntry" Placeholder="Varustelu..." HeightRequest="50"/>
 
                 <controls:ThreeDButton 
                         Grid.Row="2" Grid.Column="2"

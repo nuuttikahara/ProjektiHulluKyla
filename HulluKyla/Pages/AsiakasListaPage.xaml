@@ -12,15 +12,16 @@
           ColumnSpacing="15">
 
         <!-- Asiakaslista -->
-        <Frame BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10" >
+        <Frame Style="{StaticResource CustomerFrame}" CornerRadius="10" >
             <Grid RowDefinitions="Auto,*" RowSpacing="20">
-                <SearchBar
+                <SearchBar Style="{StaticResource ThemedSearchBar}"
                     x:Name="AsiakasSearchBar"
                     Placeholder="Hae hakusanalla..."
+                    PlaceholderColor="#999999"
                     SearchButtonPressed="HaeAsiakkaatClicked"
                     HeightRequest="50"/>
 
-                <Frame Grid.Row="1" BorderColor="Gray" BackgroundColor="Transparent">
+                <Frame Grid.Row="1" Style="{StaticResource CustomerFrame}">
                     <CollectionView x:Name="AsiakasLista"
                         SelectionMode="Single"
                         SelectionChanged="AsiakasSelected">
@@ -29,7 +30,10 @@
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Frame BackgroundColor="Transparent" BorderColor="Gray">
+                                <Frame
+                                       Style="{StaticResource CustomerFrame}"
+                                       BackgroundColor="#dddddd" 
+                                       BorderColor="#ffffff">
                                     <VerticalStackLayout>
                                         <Label Text="{Binding KokoNimi}" FontAttributes="Bold" />
                                         <Label Text="{Binding Email, StringFormat='Email: {0}'}" />
@@ -45,12 +49,12 @@
         <!-- Asiakastietojen muokkaus -->
         <ScrollView Grid.Row="0" Grid.Column="1">
             <VerticalStackLayout Spacing="10">
-                <Entry x:Name="EtunimiEntry" Placeholder="Etunimi..." HeightRequest="50" />
-                <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi..." HeightRequest="50" />
-                <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." HeightRequest="50" />
-                <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." HeightRequest="50" />
-                <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50" />
-                <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50" />
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="EtunimiEntry" Placeholder="Etunimi..." HeightRequest="50" />
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="SukunimiEntry" Placeholder="Sukunimi..." HeightRequest="50" />
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." HeightRequest="50" />
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="PostinroEntry" Placeholder="Postinumero..." HeightRequest="50" />
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50" />
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50" />
                 <controls:ThreeDButton Text="✅ Tallenna asiakas" Clicked="TallennaClicked" HeightRequest="50" />
                 <controls:ThreeDButton Text="❌ Poista asiakas" Clicked="PoistaClicked" HeightRequest="50" />
             </VerticalStackLayout>

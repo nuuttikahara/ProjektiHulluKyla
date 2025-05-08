@@ -30,6 +30,32 @@
             </Setter>
         </Style>
 
+        <!-- Frame-värit -->
+        <Color x:Key="FrameBackgroundLight">#FFFFFF</Color>
+        <Color x:Key="FrameBackgroundDark">#1E1E1E</Color>
+
+        <Color x:Key="FrameHighlightLight">#E8E8E8</Color>
+        <Color x:Key="FrameHighlightDark">#2A2A2A</Color>
+
+        <Color x:Key="FrameBorderLight">#DDDDDD</Color>
+        <Color x:Key="FrameBorderDark">#333333</Color>
+
+        <!-- Frame-tyylit -->
+        <Style TargetType="Frame" x:Key="CustomerFrame">
+            <Setter Property="BackgroundColor">
+                <AppThemeBinding Light="{StaticResource FrameBackgroundLight}"
+                         Dark="{StaticResource FrameBackgroundDark}" />
+            </Setter>
+            <Setter Property="BorderColor">
+                <AppThemeBinding Light="{StaticResource FrameBorderLight}"
+                         Dark="{StaticResource FrameBorderDark}" />
+            </Setter>
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="Margin" Value="0,0,0,10" />
+        </Style>
+
         <!-- 🏷️ Label-tekstit (myös CollectionViewin sisällä) -->
         <Style TargetType="Label">
             <Setter Property="TextColor">
@@ -38,21 +64,6 @@
             </Setter>
         </Style>
 
-        <!-- 🔍 SearchBar -->
-        <Style TargetType="SearchBar">
-            <Setter Property="TextColor">
-                <AppThemeBinding Light="{StaticResource TextColorLight}"
-                                 Dark="{StaticResource TextColorDark}" />
-            </Setter>
-            <Setter Property="PlaceholderColor">
-                <AppThemeBinding Light="#666666" Dark="#AAAAAA" />
-            </Setter>
-            <Setter Property="BackgroundColor">
-                <AppThemeBinding Light="{StaticResource ControlBackgroundLight}"
-                                 Dark="{StaticResource ControlBackgroundDark}" />
-            </Setter>
-            <Setter Property="FontSize" Value="16" />
-        </Style>
 
         <!-- 🔽 Picker -->
         <Style TargetType="Picker">
@@ -73,17 +84,53 @@
             <Setter Property="HeightRequest" Value="40" />
         </Style>
 
-        <!-- ✍️ Entry -->
-        <Style TargetType="Entry">
+        <!-- 🔍 SearchBar ja Entry -taustavärit -->
+        <Color x:Key="InputBackgroundLight">#F2F2F2</Color>
+        <Color x:Key="InputBackgroundDark">#1A1A1A</Color>
+
+        <Color x:Key="InputPlaceholderLight">#666666</Color>
+        <Color x:Key="InputPlaceholderDark">#AAAAAA</Color>
+
+        <Color x:Key="InputBorderLight">#CCCCCC</Color>
+        <Color x:Key="InputBorderDark">#333333</Color>
+
+        <Style TargetType="SearchBar" x:Key="ThemedSearchBar">
             <Setter Property="TextColor">
                 <AppThemeBinding Light="{StaticResource TextColorLight}"
-                                 Dark="{StaticResource TextColorDark}" />
+                         Dark="{StaticResource TextColorDark}" />
+            </Setter>
+            <Setter Property="PlaceholderColor">
+                <AppThemeBinding Light="{StaticResource InputPlaceholderLight}"
+                         Dark="{StaticResource InputPlaceholderDark}" />
             </Setter>
             <Setter Property="BackgroundColor">
-                <AppThemeBinding Light="{StaticResource ControlBackgroundLight}"
-                                 Dark="{StaticResource ControlBackgroundDark}" />
+                <AppThemeBinding Light="{StaticResource InputBackgroundLight}"
+                         Dark="{StaticResource InputBackgroundDark}" />
             </Setter>
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="0,0,0,10" />
+            <Setter Property="HeightRequest" Value="40" />
         </Style>
+
+        <Style TargetType="Entry" x:Key="ThemedEntry">
+            <Setter Property="TextColor">
+                <AppThemeBinding Light="{StaticResource TextColorLight}"
+                         Dark="{StaticResource TextColorDark}" />
+            </Setter>
+            <Setter Property="PlaceholderColor">
+                <AppThemeBinding Light="{StaticResource InputPlaceholderLight}"
+                         Dark="{StaticResource InputPlaceholderDark}" />
+            </Setter>
+            <Setter Property="BackgroundColor">
+                <AppThemeBinding Light="{StaticResource InputBackgroundLight}"
+                         Dark="{StaticResource InputBackgroundDark}" />
+            </Setter>
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="0,5,0,5" />
+            <Setter Property="HeightRequest" Value="40" />
+        </Style>
+
+
 
         <!-- 📝 Editor -->
         <Style TargetType="Editor">

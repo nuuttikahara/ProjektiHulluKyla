@@ -14,12 +14,12 @@
                              Spacing="10"
                              HorizontalOptions="Fill"
                              VerticalOptions="Center">
-                <Entry x:Name="EtunimiEntry" Placeholder="Etunimi..." HeightRequest="50"/>
-                <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi..." HeightRequest="50"/>
-                <Entry x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." HeightRequest="50"/>
-                <Entry x:Name="PostinroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
-                <Entry x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50"/>
-                <Entry x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50" />
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="EtunimiEntry" Placeholder="Etunimi..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="SukunimiEntry" Placeholder="Sukunimi..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="LahiosoiteEntry" Placeholder="Lähiosoite..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="PostinroEntry" Placeholder="Postinumero..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="EmailEntry" Placeholder="Sähköposti..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="PuhelinnroEntry" Placeholder="Puhelinnumero..." HeightRequest="50" />
                 <controls:ThreeDButton 
                 Text="✅ Lisää asiakas"
                 Clicked="Tallenna_Clicked"

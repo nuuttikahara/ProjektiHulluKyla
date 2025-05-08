@@ -75,7 +75,7 @@
                                 WidthRequest="300" />
                         </VerticalStackLayout>
                     </HorizontalStackLayout>
-                    <Entry
+                    <Entry Style="{StaticResource ThemedEntry}"
                         x:Name="HenkilomaaraEntry"
                         HeightRequest="40"
                         Placeholder="Henkilömäärä (vapaaehtoinen)..." />
@@ -141,7 +141,7 @@
             <Grid RowDefinitions="Auto,*" RowSpacing="10">
                 <StackLayout Spacing="15">
                     <Label Grid.Row="0" FontAttributes="Bold" Text="Asiakkaiden haku" />
-                    <SearchBar
+                    <SearchBar Style="{StaticResource ThemedSearchBar}"
                         x:Name="AsiakasSearchBar"
                         Placeholder="Hae hakusanalla..."
                         SearchButtonPressed="HaeAsiakkaatClicked"

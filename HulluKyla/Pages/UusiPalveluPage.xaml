@@ -17,10 +17,10 @@
                     Title="Valitse palvelun alue" 
                     HeightRequest="70"
                     ItemDisplayBinding="{Binding Nimi}"/>
-                <Entry x:Name="NimiEntry" Placeholder="Palvelun nimi..." HeightRequest="50"/>
-                <Entry x:Name="KuvausEntry" Placeholder="Palvelun kuvaus..." HeightRequest="50"/>
-                <Entry x:Name="HintaEntry" Placeholder="Palvelun hinta..." HeightRequest="50"/>
-                <Entry x:Name="AlvEntry" Placeholder="Palvelun arvonlisävero..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="NimiEntry" Placeholder="Palvelun nimi..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="KuvausEntry" Placeholder="Palvelun kuvaus..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="HintaEntry" Placeholder="Palvelun hinta..." HeightRequest="50"/>
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="AlvEntry" Placeholder="Palvelun arvonlisävero..." HeightRequest="50"/>
                 <controls:ThreeDButton 
                     Text="✅ Lisää palvelu"
                     Clicked="LisaaClicked"

@@ -20,8 +20,9 @@
                 BackgroundColor="Transparent"
                 BorderColor="Gray">
                 <Grid RowDefinitions="Auto,*" RowSpacing="20">
-                    
-                    <SearchBar x:Name="AlueSearchBar"
+
+                    <SearchBar Style="{StaticResource ThemedSearchBar}" 
+                        x:Name="AlueSearchBar"
                                Placeholder="Hae hakusanalla..."
                                SearchButtonPressed="HaeAlueetClicked"
                                HeightRequest="50"/>
@@ -55,7 +56,7 @@
             HorizontalOptions="Fill"
             Spacing="10"
             VerticalOptions="Start">
-            <Entry
+            <Entry Style="{StaticResource ThemedEntry}"
                 x:Name="NimiEntry"
                 HeightRequest="50"
                 Placeholder="Alueen nimi..." />

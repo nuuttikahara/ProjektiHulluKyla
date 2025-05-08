@@ -13,7 +13,8 @@
         <Frame Grid.Row="0" BorderColor="Gray" BackgroundColor="Transparent" CornerRadius="10">
             <Grid RowDefinitions="Auto,*" RowSpacing="15">
 
-                <SearchBar x:Name="AsiakasSearchBar"
+                <SearchBar Style="{StaticResource ThemedSearchBar}" 
+                    x:Name="AsiakasSearchBar"
                            Placeholder="Etsi asiakasta..."
                            TextChanged="AsiakasSearchBar_TextChanged"
                            HorizontalOptions="Center"

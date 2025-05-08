@@ -58,19 +58,19 @@
             <VerticalStackLayout
             Spacing="10"
             VerticalOptions="Start">
-                <Entry
+                <Entry Style="{StaticResource ThemedEntry}"
                 x:Name="NimiEntry"
                 HeightRequest="50"
                 Placeholder="Palvelun nimi..." />
-                <Entry
+                <Entry Style="{StaticResource ThemedEntry}"
                 x:Name="KuvausEntry"
                 HeightRequest="50"
                 Placeholder="Palvelun kuvaus..." />
-                <Entry
+                <Entry Style="{StaticResource ThemedEntry}"
                 x:Name="HintaEntry"
                 HeightRequest="50"
                 Placeholder="Palvelun hinta..." />
-                <Entry
+                <Entry Style="{StaticResource ThemedEntry}"
                 x:Name="AlvEntry"
                 HeightRequest="50"
                 Placeholder="Palvelun arvonlisävero..." />

@@ -14,8 +14,8 @@
              HorizontalOptions="Fill"
              VerticalOptions="Center" 
              Spacing="10">
-            
-            <Entry x:Name="NimiEntry" Placeholder="Alueen nimi..." HeightRequest="50" />
+
+            <Entry Style="{StaticResource ThemedEntry}" x:Name="NimiEntry" Placeholder="Alueen nimi..." HeightRequest="50" />
             <controls:ThreeDButton
                 Text="✅ Lisää alue"
                 Clicked="LisaaClicked"

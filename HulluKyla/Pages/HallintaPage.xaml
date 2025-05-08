@@ -81,7 +81,8 @@
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"/>
 
-                    <Entry x:Name="SalasanaEntry"
+                    <Entry Style="{StaticResource ThemedEntry}"
+                        x:Name="SalasanaEntry"
                         Placeholder="Syötä salasana..."
                         IsPassword="True"
                         TextColor="White"

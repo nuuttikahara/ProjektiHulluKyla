@@ -17,7 +17,8 @@
                Grid.ColumnSpan="2">
 
             <Grid RowDefinitions="Auto,*" RowSpacing="10">
-                <SearchBar x:Name="AsiakasSearchBar"
+                <SearchBar Style="{StaticResource ThemedSearchBar}" 
+                    x:Name="AsiakasSearchBar"
                            Placeholder="Etsi asiakasta..."
                            SearchButtonPressed="AsiakasSearchPressed"
                            WidthRequest="300"
@@ -217,7 +218,7 @@
                     HorizontalOptions="Center"
                     Spacing="10">
 
-                <Entry x:Name="LkmEntry"
+                <Entry Style="{StaticResource ThemedEntry}" x:Name="LkmEntry"
                            Placeholder="Kappalemäärä..."
                            HeightRequest="40">
 
